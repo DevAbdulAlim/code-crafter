@@ -11,18 +11,18 @@ datasource db {
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -38,11 +38,12 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String       @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?      @unique
   emailVerified DateTime?
   image         String?
+  enrollments   Enrollment[]
   accounts      Account[]
   sessions      Session[]
 }
@@ -53,4 +54,53 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+// Site Models
+model Category {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  parentId    String?
+  parent      Category?  @relation("ChildCategories", fields: [parentId], references: [id])
+  children    Category[] @relation("ChildCategories")
+  courses     Course[]
+}
+
+model Course {
+  id          String       @id @default(cuid())
+  title       String
+  description String?
+  lessons     Lesson[]
+  enrollments Enrollment[]
+  categoryId  String
+  category    Category     @relation(fields: [categoryId], references: [id])
+}
+
+model Lesson {
+  id          String    @id @default(cuid())
+  LessonId    Int       @unique
+  title       String
+  description String?
+  contents    Content[]
+  courseId    String
+  course      Course    @relation(fields: [courseId], references: [id])
+}
+
+model Content {
+  id          String  @id @default(cuid())
+  contentId   Int     @unique
+  titles      String
+  description String?
+  media       String
+  lessonId    String
+  lesson      Lesson  @relation(fields: [lessonId], references: [id])
+}
+
+model Enrollment {
+  id       String @id @default(cuid())
+  userId   String
+  courseId String
+  user     User   @relation(fields: [userId], references: [id])
+  course   Course @relation(fields: [courseId], references: [id])
 }
