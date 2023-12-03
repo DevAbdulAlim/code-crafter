@@ -1,6 +1,6 @@
 export default function page() {
     return (
-      <div>Users</div>
+      <div>Lessons</div>
     )
   }
   
