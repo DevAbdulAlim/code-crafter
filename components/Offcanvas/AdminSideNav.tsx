@@ -21,7 +21,7 @@ const AdminSideNav: React.FC = () => {
           Categories
         </Link>
 
-        <Link href="/admin/courses" className="text-gray-300 py-2 px-4 hover:bg-gray-700 hover:text-white">
+        <Link href="/admin/courses/list" className="text-gray-300 py-2 px-4 hover:bg-gray-700 hover:text-white">
           Courses
         </Link>
 

@@ -11,7 +11,6 @@ export default function Modal({ children }: { children: React.ReactNode }) {
   const onDismiss = useCallback(() => {
     router.back()
     router.refresh()
-
   }, [router])
 
   const onClick: MouseEventHandler = useCallback(

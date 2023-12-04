@@ -1,23 +1,29 @@
-
 import LinkButton from "@/components/Buttons/LinkButton";
 import OutlineButton from "@/components/Buttons/OutlineButton";
-import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import prisma from "@/config/prisma";
-import Link from "next/link";
 import DeleteButton from "@/components/Buttons/DeleteButton";
 import handleCourseAction from '@/app/(dashboard)/admin/courses/actions';
 import EditButton from "@/components/Buttons/EditButton";
 import ViewButton from "@/components/Buttons/ViewButton";
+import Pagination from "@/components/Pagination/Pagination";
+import Link from "next/link";
 
-const CoursesListPage: React.FC = async () => {
- 
-  const courses = await prisma.course.findMany();
-  
-  // Dummy pagination data for illustration
+
+const CoursesListPage = async ({searchParams}: {searchParams: {page:number}}) => {
+  const { page } = searchParams;
+  const currentPage = page || 1;
   const itemsPerPage = 10;
-  const totalItems = courses.length;
+  const skipAmount = (currentPage - 1) * itemsPerPage;
+  
+  const [courses, totalItems] = await prisma.$transaction([
+    prisma.course.findMany({
+      skip: skipAmount,
+      take: itemsPerPage,
+    }),
+    prisma.course.count(),
+  ]);
+
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const currentPage = 1;
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
@@ -72,11 +78,11 @@ const CoursesListPage: React.FC = async () => {
               </h2>
 
               <div className="flex items-center text-gray-500 mt-2">
-                <span className="mr-2">{course.category}</span>
+                <span className="mr-2">Undefined</span>
                 <span>&#8226;</span>
-                <span className="ml-2">{course.lessons} Lessons</span>
+                <span className="ml-2">10 Lessons</span>
               </div>
-              <span className="text-blue-500">Enrolled: {course.enrolled}</span>
+              <span className="text-blue-500">Enrolled: 20</span>
             </div>
             <div className="space-x-2 flex md:justify-end md:items-center">
               <ViewButton to={`/admin/courses/show/${course.id}`}>
@@ -92,26 +98,8 @@ const CoursesListPage: React.FC = async () => {
       </ul>
 
       {/* Pagination */}
-      <div className="mt-6 flex items-center justify-between text-sm text-gray-500">
-        <div>
-          <span className="font-medium">
-          showing {itemsPerPage} out of {totalItems} items
-          </span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <OutlineButton>
-            Previous
-          </OutlineButton>
-          <span className="text-blue-500">
-            Page {currentPage} of {totalPages}
-          </span>
-          <OutlineButton>
-            Next
-          </OutlineButton>
-        </div>
-      </div>
+      <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage}  totalPages={totalPages}  currentPage={currentPage}  />
    
-
     </div>
   );
 };
