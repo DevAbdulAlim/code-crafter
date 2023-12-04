@@ -1,11 +1,11 @@
-import CourseForm from '@/components/Form/CourseForm'
 import Modal from '@/components/Modal/Modal'
-import React from 'react'
+import CourseCreateForm from '../../CourseCreateFrom'
+import handleCourseAction from '../../actions'
 
-export default function page() {
+export default async function page() {
   return (
     <Modal>
-        <CourseForm />
+        <CourseCreateForm handleCourseAction={handleCourseAction} />
     </Modal>
   )
 }

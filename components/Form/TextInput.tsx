@@ -1,20 +1,25 @@
 type TextInputType = {
-    title:string;
-    required?:boolean,
-}
-export default function TextInput({}) {
+  title: string;
+  required?: boolean;
+};
+
+const TextInput: React.FC<TextInputType> = ({ title, required = true }) => {
+  const formattedTitle = title.replace(/\s+/g, '');
+
   return (
     <div className="mb-4">
-    <label htmlFor="courseTitle" className="block text-gray-700 text-sm font-bold mb-2">
-      Course Title
-    </label>
-    <input
-      type="text"
-      id="courseTitle"
-      name="title"
-      className="w-full p-2 border border-gray-300 rounded"
-      required
-    />
-  </div>
-  )
-}
+      <label htmlFor={formattedTitle} className="block text-gray-700 text-sm font-bold mb-2">
+        {title}
+      </label>
+      <input
+        type="text"
+        id={formattedTitle}
+        name={formattedTitle}
+        className="w-full p-2 border border-gray-300 rounded"
+        required={required}
+      />
+    </div>
+  );
+};
+
+export default TextInput;

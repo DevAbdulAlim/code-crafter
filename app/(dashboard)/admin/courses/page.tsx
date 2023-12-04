@@ -2,6 +2,7 @@
 import LinkButton from "@/components/Buttons/LinkButton";
 import OutlineButton from "@/components/Buttons/OutlineButton";
 import prisma from "@/config/prisma";
+import Link from "next/link";
 
 const CoursesListPage: React.FC = async () => {
  
@@ -77,9 +78,9 @@ const CoursesListPage: React.FC = async () => {
               <button className="text-sm text-gray-600 hover:text-blue-500 focus:outline-none">
                 Details
               </button>
-              <button className="text-sm text-yellow-600 hover:text-yellow-700 focus:outline-none">
+              <Link href={`/admin/courses/edit/${course.id}`} className="text-sm text-yellow-600 hover:text-yellow-700 focus:outline-none">
                 Edit
-              </button>
+              </Link>
               <button className="text-sm text-red-600 hover:text-red-700 focus:outline-none">
                 Delete
               </button>

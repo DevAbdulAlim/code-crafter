@@ -1,17 +1,20 @@
 "use client";
-import SubmitButton from "../Buttons/SubmitButton";
+
 import { useRef } from "react";
+// import handleCourseAction from "@/app/(dashboard)/admin/courses/actions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import TextInput from "./TextInput";
-import TextAreaInput from "./TextAreaInput";
-import handleCourseAction from "@/app/(dashboard)/admin/courses/actions";
+
+// Importing UI Components
+import SubmitButton from "@/components/Buttons/SubmitButton";
+import TextInput from "@/components/Form/TextInput";
+import TextAreaInput from "@/components/Form/TextAreaInput";
 
 /**
  * Component for adding a new course in the admin dashboard.
  * @returns JSX element representing the course form.
  */
-const CourseForm = () => {
+const CourseCreateForm = ({handleCourseAction} : {handleCourseAction: any}) => {
   // Reference to the form element
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -51,4 +54,4 @@ const CourseForm = () => {
   );
 };
 
-export default CourseForm;
+export default CourseCreateForm;

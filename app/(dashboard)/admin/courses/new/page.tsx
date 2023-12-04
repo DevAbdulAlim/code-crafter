@@ -1,12 +1,10 @@
-import CategoryForm from '@/components/Form/CategoryForm'
-import CourseForm from '@/components/Form/CourseForm'
-import React from 'react'
+import CourseCreateForm from "../CourseCreateFrom";
+import handleCourseAction from "../actions";
 
-export default function page() {
+export default async function page() {
   return (
     <div>
-      <CourseForm />
-      {/* <CategoryForm /> */}
+      <CourseCreateForm handleCourseAction={handleCourseAction} />
     </div>
   )
 }

@@ -2,7 +2,7 @@
 
 import SecondaryButton from "../Buttons/SecondaryButton";
 import { useTransition } from "react";
-import getAllCourses from '../../app/(dashboard)/admin/courses/action';
+import getAllCourses from '../../app/(dashboard)/admin/courses/actions';
 
 interface PaginationProps {
   currentPage: number;
