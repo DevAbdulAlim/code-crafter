@@ -1,65 +1,18 @@
 
 import LinkButton from "@/components/Buttons/LinkButton";
 import OutlineButton from "@/components/Buttons/OutlineButton";
-import React from "react";
-import Pagination from '../../../../components/Pagination/Pagination';
+import prisma from "@/config/prisma";
 
-const CoursesListPage: React.FC = () => {
-  const courses = [
-    {
-      id: 1,
-      name: "Web Development 101",
-      description: "Master the basics of web development.",
-      enrolled: 120,
-      lessons: 15,
-      category: "Programming",
-    },
-    {
-      id: 2,
-      name: "Web Development 101",
-      description: "Master the basics of web development.",
-      enrolled: 120,
-      lessons: 15,
-      category: "Programming",
-    },
-    {
-      id: 3,
-      name: "Web Development 101",
-      description: "Master the basics of web development.",
-      enrolled: 120,
-      lessons: 15,
-      category: "Programming",
-    },
-    {
-      id: 4,
-      name: "Web Development 101",
-      description: "Master the basics of web development.",
-      enrolled: 120,
-      lessons: 15,
-      category: "Programming",
-    },
-    {
-      id: 5,
-      name: "Web Development 101",
-      description: "Master the basics of web development.",
-      enrolled: 120,
-      lessons: 15,
-      category: "Programming",
-    },
-    // Add more courses as needed
-  ];
-
+const CoursesListPage: React.FC = async () => {
+ 
+  const courses = await prisma.course.findMany();
+  
   // Dummy pagination data for illustration
   const itemsPerPage = 10;
   const totalItems = courses.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const currentPage = 1;
 
-
-  const handlePaginationChange = (page:number) => {
-    'use server'
-    console.log("Pagination changed");
-  }
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
@@ -110,7 +63,7 @@ const CoursesListPage: React.FC = () => {
           <li key={course.id} className="py-4 grid grid-cols-1 md:grid-cols-2">
             <div>
               <h2 className="text-lg font-semibold text-gray-800">
-                {course.name}
+                {course.title}
               </h2>
 
               <div className="flex items-center text-gray-500 mt-2">

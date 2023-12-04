@@ -26,7 +26,7 @@ export async function createCourse(prevState: any, formData: FormData) {
     data: {
         title: data.title,
         description: data.description,
-        categoryId: 'clpl4gxyo0001eilyxxc6gfgm', 
+        categoryId: '1', 
     }
   })
 

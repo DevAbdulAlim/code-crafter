@@ -1,12 +1,11 @@
-import CategoryForm from '@/components/Form/CategoryForm'
 import CourseForm from '@/components/Form/CourseForm'
+import Modal from '@/components/Modal/Modal'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>
-      <CourseForm />
-      {/* <CategoryForm /> */}
-    </div>
+    <Modal>
+        <CourseForm />
+    </Modal>
   )
 }
