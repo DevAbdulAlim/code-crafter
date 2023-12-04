@@ -1,8 +1,13 @@
 
 import LinkButton from "@/components/Buttons/LinkButton";
 import OutlineButton from "@/components/Buttons/OutlineButton";
+import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import prisma from "@/config/prisma";
 import Link from "next/link";
+import DeleteButton from "@/components/Buttons/DeleteButton";
+import handleCourseAction from '@/app/(dashboard)/admin/courses/actions';
+import EditButton from "@/components/Buttons/EditButton";
+import ViewButton from "@/components/Buttons/ViewButton";
 
 const CoursesListPage: React.FC = async () => {
  
@@ -13,7 +18,6 @@ const CoursesListPage: React.FC = async () => {
   const totalItems = courses.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const currentPage = 1;
-
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
@@ -74,16 +78,14 @@ const CoursesListPage: React.FC = async () => {
               </div>
               <span className="text-blue-500">Enrolled: {course.enrolled}</span>
             </div>
-            <div className="space-x-2 flex md:justify-end">
-              <button className="text-sm text-gray-600 hover:text-blue-500 focus:outline-none">
+            <div className="space-x-2 flex md:justify-end md:items-center">
+              <ViewButton to={`/admin/courses/show/${course.id}`}>
                 Details
-              </button>
-              <Link href={`/admin/courses/edit/${course.id}`} className="text-sm text-yellow-600 hover:text-yellow-700 focus:outline-none">
+              </ViewButton>
+              <EditButton to={`/admin/courses/edit/${course.id}`} >
                 Edit
-              </Link>
-              <button className="text-sm text-red-600 hover:text-red-700 focus:outline-none">
-                Delete
-              </button>
+              </EditButton>
+              <DeleteButton id={course.id} handleDelete={handleCourseAction} />
             </div>
           </li>
         ))}
@@ -93,7 +95,7 @@ const CoursesListPage: React.FC = async () => {
       <div className="mt-6 flex items-center justify-between text-sm text-gray-500">
         <div>
           <span className="font-medium">
-            Showing {itemsPerPage} items per page | Total Items: {totalItems}
+          showing {itemsPerPage} out of {totalItems} items
           </span>
         </div>
         <div className="flex items-center space-x-2">
