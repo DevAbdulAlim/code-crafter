@@ -1,9 +1,11 @@
+'use client'
 type TextInputType = {
   title: string;
+  value?: string;
   required?: boolean;
 };
 
-const TextInput: React.FC<TextInputType> = ({ title, required = true }) => {
+const TextInput: React.FC<TextInputType> = ({ title, value = '', required = true }) => {
   const formattedTitle = title.replace(/\s+/g, '');
 
   return (
@@ -14,9 +16,11 @@ const TextInput: React.FC<TextInputType> = ({ title, required = true }) => {
       <input
         type="text"
         id={formattedTitle}
+        defaultValue={value}
         name={formattedTitle}
         className="w-full p-2 border border-gray-300 rounded"
         required={required}
+        aria-label={formattedTitle} // Accessibility enhancement
       />
     </div>
   );

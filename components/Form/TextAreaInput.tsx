@@ -1,9 +1,11 @@
+'use client'
 type TextInputType = {
     title: string;
+    value?: string;
     required?: boolean;
   };
 
-const TextAreaInput:React.FC<TextInputType> = ({title, required = true}) => {
+const TextAreaInput:React.FC<TextInputType> = ({title, value, required = true}) => {
     const formattedTitle = title.replace(/\s+/g, '');
   return (
     <div className="mb-4">
@@ -13,6 +15,7 @@ const TextAreaInput:React.FC<TextInputType> = ({title, required = true}) => {
           <textarea
             id={formattedTitle}
             name={formattedTitle}
+            defaultValue={value}
             className="w-full p-2 border border-gray-300 rounded"
             required={required}
           />

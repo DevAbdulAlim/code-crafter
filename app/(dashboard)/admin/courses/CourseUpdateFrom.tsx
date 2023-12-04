@@ -10,13 +10,31 @@ import SubmitButton from "@/components/Buttons/SubmitButton";
 import TextInput from "@/components/Form/TextInput";
 import TextAreaInput from "@/components/Form/TextAreaInput";
 
+
+type CourseDataType = {
+    title: string;
+    description: string | null;
+}
+
+
+type CourseUpdateFormProps = {
+    id: string;
+    handleCourseAction: any;
+    course: CourseDataType | null; // Updated to allow for null
+  };
+  
+
 /**
  * Component for adding a new course in the admin dashboard.
  * @returns JSX element representing the course form.
  */
-const CourseUpdateForm = ({id, handleCourseAction} : {id: string, handleCourseAction: any}) => {
+const CourseUpdateForm:React.FC<CourseUpdateFormProps> = ({id, handleCourseAction, course}) => {
   // Reference to the form element
   const formRef = useRef<HTMLFormElement>(null);
+
+  if(!course) {
+    return <div>Error Loading Data</div>
+  }
 
   /**
    * Handles form submission to create a new course.
@@ -46,8 +64,8 @@ const CourseUpdateForm = ({id, handleCourseAction} : {id: string, handleCourseAc
       <ToastContainer />
       {/* Course form */}
       <form ref={formRef} onSubmit={handleSubmit}>
-        <TextInput title="Course Title" />
-        <TextAreaInput title="Course Description" />
+        <TextInput title="Course Title" value={course.title} />
+        <TextAreaInput title="Course Description" value={course.description? course.description : ''} />
         <SubmitButton />
       </form>
     </div>
