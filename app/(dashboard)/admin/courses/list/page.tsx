@@ -7,6 +7,8 @@ import ViewButton from "@/components/Buttons/ViewButton";
 import Pagination from "@/components/Pagination/Pagination";
 import CourseSearchForm from '../CourseSearchForm';
 import CourseSortForm from "../CourseSortForm";
+import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+
 
 
 const CoursesListPage = async ({searchParams}: {searchParams: {page:number, order:string, sort:string, title:string, category:string}}) => {
@@ -49,14 +51,8 @@ const CoursesListPage = async ({searchParams}: {searchParams: {page:number, orde
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
       <div className="flex justify-between">
-        {/* Breadcrumbs */}
-        <div className="mb-4 text-sm text-gray-500">
-          <span className="text-blue-500 hover:underline cursor-pointer">
-            Dashboard
-          </span>
-          <span className="mx-2">/</span>
-          <span>Courses List</span>
-        </div>
+        <Breadcrumb />
+       {/* <Breadcrumb /> */}
         {/* Add New Course Button */}
         <div>
           <LinkButton to="/admin/courses/new">
