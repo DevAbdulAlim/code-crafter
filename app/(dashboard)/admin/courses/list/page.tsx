@@ -9,19 +9,36 @@ import Pagination from "@/components/Pagination/Pagination";
 import Link from "next/link";
 
 
-const CoursesListPage = async ({searchParams}: {searchParams: {page:number}}) => {
-  const { page } = searchParams;
+const CoursesListPage = async ({searchParams}: {searchParams: {page:number, order:string, title:string, category:string}}) => {
+  const { page, order, title, category } = searchParams;
   const currentPage = page || 1;
   const itemsPerPage = 10;
   const skipAmount = (currentPage - 1) * itemsPerPage;
+  const orderBy = order || 'asc';
+  const courseTitle = title || undefined;
+  console.log(title);
+
   
   const [courses, totalItems] = await prisma.$transaction([
     prisma.course.findMany({
       skip: skipAmount,
       take: itemsPerPage,
+      orderBy: {
+        title: orderBy as 'asc' | 'desc', // Adjust the type here
+      },
+      where: {
+        title: {
+          contains: courseTitle || undefined,
+        },
+        categoryId: {
+          contains: category || undefined, // Add category filtering
+        },
+      },
     }),
     prisma.course.count(),
   ]);
+  
+  
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
