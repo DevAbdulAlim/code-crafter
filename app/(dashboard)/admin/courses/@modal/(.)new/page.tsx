@@ -1,5 +1,5 @@
 import Modal from '@/components/Modal/Modal'
-import CourseCreateForm from '../../CourseCreateFrom'
+import CourseCreateForm from '../../CourseCreateForm'
 import handleCourseAction from '../../actions'
 
 export default async function page() {

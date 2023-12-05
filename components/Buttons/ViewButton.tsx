@@ -11,6 +11,7 @@ const ViewButton: React.FC<ButtonType> = ({
     <Link
       href={to}
       className="bg-gray-800 text-white px-3 py-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring focus:border-blue-300"
+      scroll={false}
     >
       <div className="flex">
         <span className="text-2xl me-2">

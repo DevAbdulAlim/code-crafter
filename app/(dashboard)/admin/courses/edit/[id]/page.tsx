@@ -1,7 +1,6 @@
-import Modal from "@/components/Modal/Modal";
 import prisma from "@/config/prisma";
 import handleCourseAction from "../../actions";
-import CourseUpdateForm from "../../CourseUpdateFrom";
+import CourseUpdateForm from "../../CourseUpdateForm";
 
 export default async function page({ params }: { params: { id: string } }) {
   try {

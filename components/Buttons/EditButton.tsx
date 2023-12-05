@@ -7,6 +7,7 @@ const EditButton: React.FC<ButtonType> = ({ to, children, disabled = false }) =>
     <Link
       href={to}
       className="bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+      scroll={false}
     >
     <div className="flex">
         <span className="text-2xl me-2">

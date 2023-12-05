@@ -1,5 +1,5 @@
 import Modal from '@/components/Modal/Modal'
-import CourseUpdateForm from '../../../CourseUpdateFrom'
+import CourseUpdateForm from '../../../CourseUpdateForm'
 import handleCourseAction from '../../../actions'
 import prisma from '@/config/prisma'
 

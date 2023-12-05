@@ -1,37 +1,41 @@
 import LinkButton from "@/components/Buttons/LinkButton";
-import OutlineButton from "@/components/Buttons/OutlineButton";
 import prisma from "@/config/prisma";
 import DeleteButton from "@/components/Buttons/DeleteButton";
 import handleCourseAction from '@/app/(dashboard)/admin/courses/actions';
 import EditButton from "@/components/Buttons/EditButton";
 import ViewButton from "@/components/Buttons/ViewButton";
 import Pagination from "@/components/Pagination/Pagination";
-import Link from "next/link";
+import CourseSearchForm from '../CourseSearchForm';
+import CourseSortForm from "../CourseSortForm";
 
 
-const CoursesListPage = async ({searchParams}: {searchParams: {page:number, order:string, title:string, category:string}}) => {
-  const { page, order, title, category } = searchParams;
+const CoursesListPage = async ({searchParams}: {searchParams: {page:number, order:string, sort:string, title:string, category:string}}) => {
+  const { page, order, sort, title, category } = searchParams;
   const currentPage = page || 1;
   const itemsPerPage = 10;
   const skipAmount = (currentPage - 1) * itemsPerPage;
-  const orderBy = order || 'asc';
+  const orderBy = order || 'title';
+  const sortBy = sort || 'asc';
   const courseTitle = title || undefined;
-  console.log(title);
+
+  const orderByField = {
+    [orderBy]: sortBy as 'asc' | 'desc',
+  };
 
   
   const [courses, totalItems] = await prisma.$transaction([
     prisma.course.findMany({
       skip: skipAmount,
       take: itemsPerPage,
-      orderBy: {
-        title: orderBy as 'asc' | 'desc', // Adjust the type here
-      },
+      orderBy: orderByField,
       where: {
         title: {
           contains: courseTitle || undefined,
+          mode: 'insensitive',
         },
         categoryId: {
           contains: category || undefined, // Add category filtering
+          mode: 'insensitive',
         },
       },
     }),
@@ -61,28 +65,13 @@ const CoursesListPage = async ({searchParams}: {searchParams: {page:number, orde
         </div>
       </div>
 
-      {/* Search and Filter */}
+      {/* Search and Sort */}
       <div className="my-8 flex items-center justify-between">
-        {/* Search Bar */}
-        <div className="flex items-center space-x-4">
-          <input
-            type="text"
-            placeholder="Search courses..."
-            className="px-4 py-2 border border-gray-300 rounded focus:outline-none"
-          />
-          <OutlineButton>
-            Search
-          </OutlineButton>
-        </div>
+        {/* Search by */}
+         <CourseSearchForm />
 
-        {/* Filter Options */}
-        <div className="flex items-center space-x-4">
-          <span className="text-gray-500">Filter by:</span>
-          <select aria-label="filer" className="px-4 py-2 border border-gray-300 rounded focus:outline-none">
-            <option value="">All Categories</option>
-            {/* Add your categories dynamically here */}
-          </select>
-        </div>
+        {/* Sort by */}
+        <CourseSortForm />
       </div>
 
       {/* Course List */}
