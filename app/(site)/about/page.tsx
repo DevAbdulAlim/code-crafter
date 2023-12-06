@@ -4,7 +4,7 @@ import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
 const AboutPage = () => {
   return (
     <div className="w-full min-h-screen p-8 ">
-      <div className="container mx-auto">
+      <div className="max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-12">

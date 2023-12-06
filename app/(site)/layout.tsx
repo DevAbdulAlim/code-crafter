@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import MainNav from "./MainNav";
-import Footer from "./Footer";
+import MainNav from "@/components/sections/MainNav";
+import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <div className="min-h-screen flex flex-col ">
       <header>
         <MainNav />
       </header>
-      <main>{children}</main>
+      <main className="grow">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }

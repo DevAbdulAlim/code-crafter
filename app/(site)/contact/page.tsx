@@ -1,59 +1,84 @@
 import React from "react";
-import { FaEnvelope, FaFacebook, FaLinkedin, FaMapMarkerAlt, FaPhone, FaTwitter } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaLinkedin,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaTwitter,
+} from "react-icons/fa";
 const TwoColumnPage = () => {
   return (
     <div className="flex min-h-screen">
       {/* Left Column */}
       <div className="w-1/2 p-8 xl:p-40 flex items-center">
-        <div className="container mx-auto">
-        
- {/* Logo Section */}
- <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800">Logo</h1>
-        </div>
-        {/* Get in Touch Section */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2 text-gray-800">Get in Touch</h1>
-          <p className="text-gray-700 mb-8 text-xl font-semibold">
-            Fill in the form to the right to get in touch with someone on our
-            team, and we will reach out shortly.
-          </p>
-          <p className="text-gray-600">
-            If you are seeking support, please visit our support portal before
-            reaching out directly.
-          </p>
-        </div>
-
-        {/* Contact Information */}
-        <div className="mb-8">
-          <p className="text-2xl font-semibold mb-4 text-gray-800">Contact Information</p>
-          <div className="flex items-start">
-            <FaPhone className="text-blue-500 mt-1 mr-2" />
-            <p className="text-gray-600">+0123-456-7890</p>
+        <div className="max-w-7xl mx-auto">
+          {/* Logo Section */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-800">Logo</h1>
           </div>
-          <div className="flex items-start">
-            <FaEnvelope className="text-blue-500 mt-1 mr-2" />
-            <p className="text-gray-600">hello@geekui.com</p>
+          {/* Get in Touch Section */}
+          <div className="mb-8">
+            <h1 className="text-4xl font-bold mb-2 text-gray-800">
+              Get in Touch
+            </h1>
+            <p className="text-gray-700 mb-8 text-xl font-semibold">
+              Fill in the form to the right to get in touch with someone on our
+              team, and we will reach out shortly.
+            </p>
+            <p className="text-gray-600">
+              If you are seeking support, please visit our support portal before
+              reaching out directly.
+            </p>
           </div>
-          <div className="flex items-start">
-            <FaMapMarkerAlt className="text-blue-500 mt-1 mr-2" />
-            <p className="text-gray-600">2652 Kooter Lane, Charlotte, NC 28263</p>
+
+          {/* Contact Information */}
+          <div className="mb-8">
+            <p className="text-2xl font-semibold mb-4 text-gray-800">
+              Contact Information
+            </p>
+            <div className="flex items-start">
+              <FaPhone className="text-blue-500 mt-1 mr-2" />
+              <p className="text-gray-600">+0123-456-7890</p>
+            </div>
+            <div className="flex items-start">
+              <FaEnvelope className="text-blue-500 mt-1 mr-2" />
+              <p className="text-gray-600">hello@geekui.com</p>
+            </div>
+            <div className="flex items-start">
+              <FaMapMarkerAlt className="text-blue-500 mt-1 mr-2" />
+              <p className="text-gray-600">
+                2652 Kooter Lane, Charlotte, NC 28263
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Social Media Links */}
-        <div className="flex">
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="mr-4">
-            <FaFacebook size={24} className="text-blue-500" />
-          </a>
-          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="mr-4">
-            <FaTwitter size={24} className="text-blue-500" />
-          </a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin size={24} className="text-blue-500" />
-          </a>
-        </div>
-
+          {/* Social Media Links */}
+          <div className="flex">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mr-4"
+            >
+              <FaFacebook size={24} className="text-blue-500" />
+            </a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mr-4"
+            >
+              <FaTwitter size={24} className="text-blue-500" />
+            </a>
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin size={24} className="text-blue-500" />
+            </a>
+          </div>
         </div>
       </div>
 

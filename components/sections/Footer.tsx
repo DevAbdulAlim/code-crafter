@@ -1,10 +1,9 @@
-import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white p-8">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Column 1 - About Us */}
         <div>
           <h2 className="text-lg font-semibold mb-4">About Us</h2>
@@ -45,7 +44,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-8 border-t border-gray-700 pt-4">
+      <div className="mt-8 border-t text-center border-gray-700 pt-4">
         <p className="text-sm text-gray-500">&copy; 2023 Your Company. All rights reserved.</p>
       </div>
     </footer>
