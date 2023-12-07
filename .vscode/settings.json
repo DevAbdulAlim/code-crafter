@@ -1,9 +1,6 @@
 {
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "WillLuke.nextjs.hasPrompted": true,
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#351778",
-        "titleBar.activeBackground": "#4A20A7",
-        "titleBar.activeForeground": "#FCFCFE"
-    }
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
