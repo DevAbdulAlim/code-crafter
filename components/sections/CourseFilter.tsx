@@ -21,7 +21,7 @@ export default function CourseFilter() {
     console.log(value);
   };
   return (
-    <div className="shadow-md h-full p-5">
+    <div className="shadow-md h-full p-5 bg-white">
       <h2 className="text 2xl mb-4 font-bold text-gray-700">Filter</h2>
       <hr className="mb-4" />
       <h3 className="mb-4 text-sm font-semibold text-gray-500"> CATEGORY</h3>

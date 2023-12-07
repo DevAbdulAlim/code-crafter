@@ -1,9 +1,9 @@
 import prisma from "@/config/prisma";
 import Pagination from "@/components/Pagination/Pagination";
-import CourseSearchForm from "@/app/(dashboard)/admin/courses/CourseSearchForm";
-import CourseSortForm from "@/app/(dashboard)/admin/courses/CourseSortForm";
+import CourseSearchForm from "@/components/sections/CourseSearchForm";
+import CourseSortForm from "@/components/sections/CourseSortForm";
 import CourseFilter from "@/components/sections/CourseFilter";
-import CourseCard2 from "@/components/Cards/CourseCard2";
+import CourseCard from "@/components/Cards/CourseCard";
 
 const CoursesListPage = async ({
   searchParams,
@@ -50,42 +50,49 @@ const CoursesListPage = async ({
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
-    <section className="py-12">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
-            <CourseFilter />
-          </div>
-
-          {/* course list */}
-          <div className="md:col-span-3">
-            {/* Search and Sort */}
-            <div className="my-8 flex items-center justify-between">
-              {/* Search by */}
-              <CourseSearchForm />
-
-              {/* Sort by */}
-              <CourseSortForm />
+    <>
+      {/* <div className="bg-gray-600 py-20 text-center text-white text-4xl">
+        Search Your Courses
+      </div> */}
+      <section className="py-12 px-4 bg-blue-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="md:col-span-1">
+              <CourseFilter />
             </div>
 
-            {/* Course List */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {courses.map((course, index) => (
-                <CourseCard2 key={index} {...course} />
-              ))}
-            </div>
+            {/* course list */}
+            <div className="md:col-span-3 flex flex-col h-full">
+              {/* Search and Sort */}
+              <div className="my-8 flex items-center justify-between">
+                {/* Search by */}
+                <CourseSearchForm />
 
-            {/* Pagination */}
-            <Pagination
-              totalItems={totalItems}
-              itemsPerPage={itemsPerPage}
-              totalPages={totalPages}
-              currentPage={currentPage}
-            />
+                {/* Sort by */}
+                <CourseSortForm />
+              </div>
+
+              {/* Course List */}
+              <div className="grow">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {courses.map((course, index) => (
+                    <CourseCard key={index} {...course} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Pagination */}
+              <Pagination
+                totalItems={totalItems}
+                itemsPerPage={itemsPerPage}
+                totalPages={totalPages}
+                currentPage={currentPage}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
