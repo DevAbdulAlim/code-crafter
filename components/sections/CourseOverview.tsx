@@ -15,7 +15,7 @@ export default function CourseOverview() {
           Add to cart
         </button>
         <button className="w-full px-6 py-3 my-4 font-sans font-semibold text-white bg-blue-500 rounded-lg">
-          Buy
+          Enroll Now
         </button>
         <hr />
         <div className="my-4">
@@ -24,7 +24,7 @@ export default function CourseOverview() {
           </h3>
           <div className="flex justify-between">
             <span className="flex">
-              <span className="text-xl mr-2 flex justify-center items-center">
+              <span className=" mr-2 flex justify-center items-center">
                 <FaBookOpen />
               </span>
               Lectures
@@ -34,7 +34,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className="text-xl mr-2 flex justify-center items-center">
+              <span className=" mr-2 flex justify-center items-center">
                 <FaClock />
               </span>
               Duration
@@ -44,7 +44,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className="text-xl mr-2 flex justify-center items-center">
+              <span className=" mr-2 flex justify-center items-center">
                 <FaUser />
               </span>
               Skills
@@ -54,7 +54,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className="text-xl mr-2 flex justify-center items-center">
+              <span className=" mr-2 flex justify-center items-center">
                 <FaLanguage />
               </span>
               Language
@@ -64,7 +64,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className="text-xl mr-2 flex justify-center items-center">
+              <span className=" mr-2 flex justify-center items-center">
                 <FaCalendarAlt />
               </span>
               Deadline
@@ -74,7 +74,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className="text-xl mr-2 flex justify-center items-center">
+              <span className=" mr-2 flex justify-center items-center">
                 <FaCertificate />
               </span>
               Certificate
@@ -86,7 +86,7 @@ export default function CourseOverview() {
         <hr />
 
         {/* Instructor Profile  */}
-        <div>
+        <div className="mt-4">
           <div className="flex items-center">
             <img
               src="https://t4.ftcdn.net/jpg/01/42/20/17/360_F_142201762_qMCuIAolgpz4NbF5T5m66KQJzYzrEbUv.jpg"
@@ -96,14 +96,13 @@ export default function CourseOverview() {
             <div>
               <p className="text-xl font-semibold">Jacqueline Miller</p>
               <p className="text-gray-500">Founder Eduport company</p>
-              <p className="text-xl mt-2">4.5/5.0</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="border p-4 mt-4">
-        <h3 className="text-2xl font-semibold mb-4">Popular Tags</h3>
+        <h3 className="text-xl font-semibold mb-4">Popular Tags</h3>
         <div className="flex flex-wrap">
           <a
             href="#"
