@@ -1,18 +1,18 @@
 "use client";
-import { ChangeEvent, useState } from "react";
 
-interface CheckboxProps {
+type CheckboxProps = {
+  id: string;
   label: string;
-  onChange: (value: boolean) => void;
-}
+  checked: boolean;
+  onChange: () => void;
+};
 
-const Checkbox: React.FC<CheckboxProps> = ({ label, onChange }) => {
-  const [isChecked, setIsChecked] = useState(false);
-  const handleChange = () => {
-    setIsChecked(!isChecked);
-    onChange(isChecked);
-  };
-
+const Checkbox: React.FC<CheckboxProps> = ({
+  id,
+  label,
+  checked,
+  onChange,
+}) => {
   return (
     <div className="mb-4">
       <label className="cursor-pointer flex justify-start items-center text-sm">
@@ -20,11 +20,12 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, onChange }) => {
           type="checkbox"
           name=""
           id=""
-          onChange={handleChange}
-          checked={isChecked}
+          value={label}
+          onChange={onChange}
+          checked={checked}
           className="hidden"
         />
-        {isChecked ? (
+        {checked ? (
           <span className="inline-flex items-center justify-center w-5 h-5 p-1 text-white mr-2 bg-blue-500 rounded-md">
             <svg
               xmlns="http://www.w3.org/2000/svg"

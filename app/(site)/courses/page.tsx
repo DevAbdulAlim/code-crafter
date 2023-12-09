@@ -4,6 +4,7 @@ import CourseSearchForm from "@/components/sections/CourseSearchForm";
 import CourseSortForm from "@/components/sections/CourseSortForm";
 import CourseFilter from "@/components/sections/CourseFilter";
 import CourseCard from "@/components/Cards/CourseCard";
+import CourseNotFound from "@/components/sections/CourseNotFound";
 
 const CoursesListPage = async ({
   searchParams,
@@ -13,16 +14,17 @@ const CoursesListPage = async ({
     order: string;
     sort: string;
     title: string;
-    category: string;
+    categories: string[];
   };
 }) => {
-  const { page, order, sort, title, category } = searchParams;
+  const { page, order, sort, title, categories } = searchParams;
   const currentPage = page || 1;
   const itemsPerPage = 5;
   const skipAmount = (currentPage - 1) * itemsPerPage;
   const orderBy = order || "title";
   const sortBy = sort || "asc";
   const courseTitle = title || undefined;
+  const categoryIds = categories || [];
 
   const orderByField = {
     [orderBy]: sortBy as "asc" | "desc",
@@ -38,10 +40,16 @@ const CoursesListPage = async ({
           contains: courseTitle || undefined,
           mode: "insensitive",
         },
-        categoryId: {
-          contains: category || undefined, // Add category filtering
-          mode: "insensitive",
-        },
+        categoryId:
+          categoryIds.length > 1
+            ? {
+                in: categoryIds,
+                mode: "insensitive",
+              }
+            : {
+                equals: categoryIds[0],
+                mode: "insensitive",
+              },
       },
     }),
     prisma.course.count(),
@@ -74,11 +82,15 @@ const CoursesListPage = async ({
 
               {/* Course List */}
               <div className="grow">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {courses.map((course, index) => (
-                    <CourseCard key={index} {...course} />
-                  ))}
-                </div>
+                {courses.length < 1 ? (
+                  <CourseNotFound />
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {courses.map((course, index) => (
+                      <CourseCard key={index} {...course} />
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Pagination */}

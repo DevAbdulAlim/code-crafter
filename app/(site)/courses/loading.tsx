@@ -1,6 +1,6 @@
 import Loader from "@/components/Loader/Loader";
+import React from "react";
 
 export default function Loading() {
-  // Or a custom loading skeleton component
   return <Loader />;
 }
