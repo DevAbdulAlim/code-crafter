@@ -7,11 +7,12 @@ import { FormEvent, useState } from "react";
 export default function CourseSearchForm() {
   const [title, setTitle] = useState("");
   const router = useRouter();
-  const pathname = usePathname();
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    router.push(`${pathname}?title=${title}`);
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set("title", title);
+    router.push(currentUrl.toString());
   };
 
   return (

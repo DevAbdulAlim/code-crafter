@@ -18,7 +18,10 @@ export default async function MainNav() {
         <span className="text-4xl">
           <FcDoughnutChart />
         </span>
-        <span className="ml-2 text-xl font-bold">Oxyport</span>
+        <p className="ml-2 text-xl font-bold">
+          <span className="text-blue-500">Code</span>
+          <span className="text-teal-500">Crafter</span>
+        </p>
       </Link>
 
       <CategoryDropdown categories={categories} />

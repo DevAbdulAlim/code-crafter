@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import { MdClose } from "react-icons/md";
 
@@ -33,11 +33,12 @@ export default function Search({
         </div>
 
         {/* Search form */}
-        <form className="p-8">
+        <form className="p-8" action="/courses">
           <div className="flex">
             <input
               type="text"
               placeholder="Enter your search query"
+              name="title"
               className="border p-2 rounded-l-md flex-1"
             />
             <button
@@ -48,7 +49,6 @@ export default function Search({
             </button>
           </div>
         </form>
-
       </div>
     </div>
   );

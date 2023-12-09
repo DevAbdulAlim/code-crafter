@@ -13,13 +13,13 @@ export default function SearchForm() {
   return (
     <>
       <form
-        action=""
+        action="/courses"
         className="relative grow hidden border-2 md:mx-8 rounded-full md:flex items-center"
       >
         <input
           className="h-full w-full focus:text-blue-200 rounded-full p-2 focus:outline-none focus:ring focus:ring-blue-800"
           type="text"
-          name="search"
+          name="title"
           placeholder="Search"
         />
         <button

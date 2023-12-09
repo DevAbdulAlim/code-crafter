@@ -1,6 +1,6 @@
 "use client";
-import LinkButton from "../Buttons/LinkButton";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import SecondaryButton from "../Buttons/SecondaryButton";
 
 interface PaginationProps {
   itemsPerPage: number;
@@ -15,7 +15,20 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   currentPage,
 }) => {
-  const pathname = usePathname();
+  const router = useRouter();
+
+  const handlePrevious = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("page", (Number(currentPage) - 1).toString());
+    router.push(url.toString());
+  };
+
+  const handleNext = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("page", (Number(currentPage) + 1).toString());
+    router.push(url.toString());
+  };
+
   return (
     <div className="mt-6 flex items-center justify-between text-sm text-gray-500">
       <div>
@@ -25,18 +38,14 @@ const Pagination: React.FC<PaginationProps> = ({
       </div>
       <div className="flex items-center space-x-2">
         {currentPage > 1 && (
-          <LinkButton to={`${pathname}?page=${Number(currentPage) - 1}`}>
-            Previous
-          </LinkButton>
+          <SecondaryButton onClick={handlePrevious}>Previous</SecondaryButton>
         )}
 
         <span className="text-blue-500">
           Page {currentPage} of {totalPages}
         </span>
         {currentPage < totalPages && (
-          <LinkButton to={`${pathname}?page=${Number(currentPage) + 1}`}>
-            Next
-          </LinkButton>
+          <SecondaryButton onClick={handleNext}>Next</SecondaryButton>
         )}
       </div>
     </div>

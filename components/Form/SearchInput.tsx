@@ -1,5 +1,5 @@
-'use client'
-import React, { ChangeEvent } from 'react';
+"use client";
+import React, { ChangeEvent } from "react";
 
 interface TextInputType {
   title: string;
@@ -8,8 +8,13 @@ interface TextInputType {
   required?: boolean;
 }
 
-const SearchInput: React.FC<TextInputType> = ({ title, value = '', onChange, required = true }) => {
-  const formattedTitle = title.replace(/\s+/g, '');
+const SearchInput: React.FC<TextInputType> = ({
+  title,
+  value = "",
+  onChange,
+  required = true,
+}) => {
+  const formattedTitle = title.replace(/\s+/g, "");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
