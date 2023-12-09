@@ -11,9 +11,10 @@ export default function CourseOverview() {
   return (
     <section>
       <div className="border p-4">
-        <button className="w-full font-medium bg-transparent border border-blue-500 text-blue-500 px-6 py-3 rounded-lg">
-          Add to cart
-        </button>
+        <div className="flex my-4 justify-around">
+          <span className="text-2xl text-red-500 font-bold">$450</span>
+          <del className="text-2xl text-gray-500  font-bold">$500</del>
+        </div>
         <button className="w-full px-6 py-3 my-4 font-sans font-semibold text-white bg-blue-500 rounded-lg">
           Enroll Now
         </button>

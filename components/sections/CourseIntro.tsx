@@ -6,7 +6,7 @@ import { MdAccessTimeFilled } from "react-icons/md";
 export default function CourseIntro() {
   return (
     <div className="mb-8">
-      <h3 className="py-2 px-4 w-40 bg-red-100 text-gray-700  rounded-md">
+      <h3 className="py-2 px-4 w-40 bg-red-50 text-red-500  rounded-md">
         Digital Marketing
       </h3>
       <h1 className="text-4xl my-4 font-bold text-gray-800">
