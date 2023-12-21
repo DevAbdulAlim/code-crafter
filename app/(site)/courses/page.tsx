@@ -1,5 +1,5 @@
 import prisma from "@/config/prisma";
-import Pagination from "@/components/Pagination/Pagination";
+import Pagination from "@/components/Pagination";
 import CourseSearchForm from "@/components/sections/CourseSearchForm";
 import CourseSortForm from "@/components/sections/CourseSortForm";
 import CourseFilter from "@/components/sections/CourseFilter";

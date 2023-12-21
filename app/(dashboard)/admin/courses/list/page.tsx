@@ -4,10 +4,10 @@ import DeleteButton from "@/components/Buttons/DeleteButton";
 import handleCourseAction from "@/app/(dashboard)/admin/courses/actions";
 import EditButton from "@/components/Buttons/EditButton";
 import ViewButton from "@/components/Buttons/ViewButton";
-import Pagination from "@/components/Pagination/Pagination";
+import Pagination from "@/components/Pagination";
 import CourseSearchForm from "../../../../../components/sections/CourseSearchForm";
 import CourseSortForm from "../../../../../components/sections/CourseSortForm";
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const CoursesListPage = async ({
   searchParams,
