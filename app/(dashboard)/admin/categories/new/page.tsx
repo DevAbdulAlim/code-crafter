@@ -1,10 +1,10 @@
-import CategoryForm from '@/components/Form/CategoryForm'
-import React from 'react'
+import CreateForm from "@/components/admin/categories/create-form";
+import React from "react";
 
-export default function page() {
+export default function NewCategory() {
   return (
     <div>
-      {/* <CategoryForm /> */}
-      </div>
-  )
+      <CreateForm />
+    </div>
+  );
 }
