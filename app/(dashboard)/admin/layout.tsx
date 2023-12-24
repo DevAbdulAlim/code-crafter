@@ -1,4 +1,5 @@
 import AdminSideNav from "@/components/Offcanvas/AdminSideNav";
+import Navbar from "@/components/admin/navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,17 +9,15 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen ">
+    <div className="flex m-h-screen ">
       {/* Sidebar */}
-      <AdminSideNav />
+      {/* <AdminSideNav /> */}
+      <Navbar />
 
-      {/* Main Content */}
-
-      {/* Your content goes here */}
-      <main className="flex-1 p-4 ">
-        {/* Main content of the dashboard */}
-        {children}
-      </main>
+      {/* Main Content Area */}
+      <div className="flex flex-col w-full min-h-full mt-16">
+        <main className="flex-1">{children}</main>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,14 @@
 "use client";
 import SelectInput from "@/components/Form/SelectInput";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -24,9 +33,19 @@ export default function Sort() {
 
   return (
     <form>
-      <div className="flex items-center space-x-4">
-        <span className="text-gray-500">Sort by:</span>
-        <SelectInput sortOptions={sortOptions} onSortChange={handleSubmit} />
+      <div className="flex items-center ml-4 space-x-4">
+        <Select onValueChange={handleSubmit}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Sort By" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Name</SelectLabel>
+              <SelectItem value="Name (Asc)">Name (Asc)</SelectItem>
+              <SelectItem value="Name (Desc)">Name (Desc)</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
     </form>
   );
