@@ -8,18 +8,17 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-  <div className="flex h-screen bg-gray-100">
-  {/* Sidebar */}
-  <AdminSideNav />
+    <div className="flex h-screen ">
+      {/* Sidebar */}
+      <AdminSideNav />
 
-  {/* Main Content */}
-  <div className="flex-1 max-w-7xl mx-auto flex flex-col overflow-hidden">
-    {/* Your content goes here */}
-    <main className="flex-1 overflow-x-hidden overflow-y-auto p-4 ">
-      {/* Main content of the dashboard */}
-     {children}
-    </main>
-  </div>
-</div>
+      {/* Main Content */}
+
+      {/* Your content goes here */}
+      <main className="flex-1 p-4 ">
+        {/* Main content of the dashboard */}
+        {children}
+      </main>
+    </div>
   );
 }
