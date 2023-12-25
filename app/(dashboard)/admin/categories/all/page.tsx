@@ -1,4 +1,3 @@
-import prisma from "@/config/prisma";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/admin/categories/table";
 import Search from "@/components/search";
