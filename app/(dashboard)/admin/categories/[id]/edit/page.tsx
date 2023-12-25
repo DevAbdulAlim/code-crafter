@@ -1,20 +1,21 @@
 import prisma from "@/config/prisma";
 import EditForm from "@/components/admin/categories/edit-form";
 import Breadcrumbs from "@/components/Breadcrumb";
+import { getCategoryById } from "@/lib/actions/categoryActions";
 
 export default async function page({ params }: { params: { id: string } }) {
   try {
     // Fetch the course data using Prisma.
-    const category = await prisma.category.findUnique({
-      where: {
-        id: params.id,
-      },
-    });
+    const category = await getCategoryById(params.id);
 
-    // Check if the course is found before accessing its properties.
-    if (category) {
+    const categoryData = category.data as {
+      id: string;
+      name: string;
+      description: string | null;
+    } | null;
+    if (categoryData) {
       // Destructure the properties from the course.
-      const { name, description } = category;
+      const { name, description } = categoryData;
 
       // Render the EditForm component with the fetched course data.
       return (

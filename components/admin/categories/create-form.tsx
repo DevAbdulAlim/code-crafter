@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import CategoryAction from "@/lib/actions/categoryActions";
+
 import { ToastContainer, toast } from "react-toastify";
+import { createCategory } from "@/lib/actions/categoryActions";
 import "react-toastify/dist/ReactToastify.css";
 
 // Importing UI Components
@@ -10,7 +11,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ButtonLink from "@/components/ui/buttonLink";
-import Breadcrumbs from "@/components/Breadcrumb";
 
 /**
  * Component for adding a new course in the admin dashboard.
@@ -30,7 +30,7 @@ const CreateForm = () => {
 
     try {
       // Attempt to create a new category
-      CategoryAction("create", formData);
+      createCategory(formData);
 
       // Reset the form after successful submission
       formRef.current?.reset();

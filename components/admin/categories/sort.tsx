@@ -1,5 +1,5 @@
 "use client";
-import SelectInput from "@/components/Form/SelectInput";
+
 import {
   Select,
   SelectContent,
@@ -10,12 +10,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 
 export default function Sort() {
   const router = useRouter();
-
-  const sortOptions = ["Name (Asc)", "Name (Desc)"];
 
   const handleSubmit = (selectedSort: string) => {
     const [orderBy, sortBy] = selectedSort

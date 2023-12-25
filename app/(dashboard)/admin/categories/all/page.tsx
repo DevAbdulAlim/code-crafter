@@ -7,6 +7,7 @@ import Sort from "@/components/admin/categories/sort";
 import ButtonLink from "@/components/ui/buttonLink";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
+import { getAllCategories } from "@/lib/actions/categoryActions";
 
 const CoursesListPage = async ({
   searchParams,
@@ -24,30 +25,25 @@ const CoursesListPage = async ({
   const skipAmount = (currentPage - 1) * itemsPerPage;
   const orderBy = order || "name";
   const sortBy = sort || "asc";
-
   const orderByField = {
     [orderBy]: sortBy as "asc" | "desc",
   };
-
   const whereClause: Prisma.CategoryWhereInput = query
     ? {
         OR: [{ name: { contains: query, mode: "insensitive" } }],
       }
     : {};
 
-  const [categories, totalItems] = await prisma.$transaction([
-    prisma.category.findMany({
-      skip: skipAmount,
-      take: itemsPerPage,
-      orderBy: orderByField,
-      where: whereClause,
-    }),
-    prisma.category.count({
-      where: whereClause,
-    }),
-  ]);
+  const foundedCategories = await getAllCategories(
+    skipAmount,
+    itemsPerPage,
+    orderByField,
+    whereClause
+  );
 
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const [categories, totalItems] = foundedCategories.data;
+
+  const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
   console.log(categories);
 
   return (
@@ -62,28 +58,22 @@ const CoursesListPage = async ({
             },
           ]}
         />
-        {/* Add New Course Button */}
+
         <ButtonLink href="/admin/categories/create">
           <span className="hidden md:block">Create Category</span>
           <PlusIcon className="md:ml-4" />
         </ButtonLink>
       </div>
 
-      {/* Search and Sort */}
       <div className="flex items-center justify-between my-8">
-        {/* Search by */}
         <Search placeholder={query} />
-
-        {/* Sort by */}
         <Sort />
       </div>
 
-      {/* Category Table */}
       <Table data={categories} />
 
-      {/* Pagination */}
       <Pagination
-        totalItems={totalItems}
+        totalItems={totalItems as number}
         itemsPerPage={itemsPerPage}
         totalPages={totalPages}
         currentPage={currentPage}

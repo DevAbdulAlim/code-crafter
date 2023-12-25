@@ -1,13 +1,10 @@
+"use client";
+
+import { deleteCategory } from "@/lib/actions/categoryActions";
 import { TrashIcon } from "lucide-react";
-import CategoryAction from "@/lib/actions/categoryActions";
 
 export default function DeleteForm({ id }: { id: string }) {
-  const deleteCategoryWithId = CategoryAction.bind(
-    null,
-    "delete",
-    undefined,
-    id
-  );
+  const deleteCategoryWithId = deleteCategory.bind(null, id);
 
   return (
     <form action={deleteCategoryWithId}>

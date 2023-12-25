@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useRef } from "react";
-import CategoryAction from "@/lib/actions/categoryActions";
+import { updateCategory } from "@/lib/actions/categoryActions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import Breadcrumbs from "@/components/Breadcrumb";
 import ButtonLink from "@/components/ui/buttonLink";
 
 /**
@@ -53,7 +52,7 @@ const EditForm: React.FC<EditFormProps> = ({ id, category }) => {
 
     try {
       // Attempt to update the category using the provided action.
-      CategoryAction("update", formData, id);
+      updateCategory(formData, id);
 
       // Reset the form after successful submission.
       formRef.current?.reset();
