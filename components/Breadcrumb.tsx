@@ -1,28 +1,36 @@
-'use client'
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { clsx } from "clsx";
+import Link from "next/link";
+import { lusitana } from "./ui/fonts";
 
-const Breadcrumb = () => {
-  const pathName = usePathname();
-  const pathSegments = pathName.split('/').filter((segment) => segment);
+interface Breadcrumb {
+  label: string;
+  href: string;
+  active?: boolean;
+}
 
+export default function Breadcrumbs({
+  breadcrumbs,
+}: {
+  breadcrumbs: Breadcrumb[];
+}) {
   return (
-    <nav className="flex items-center text-blue-500 text-sm space-x-2" aria-label="Breadcrumb">
-      {pathSegments.map((segment, index) => (
-        <div key={index}>
-          <Link
-            href={'/' + pathSegments.slice(0, index + 1).join('/')}
-            className={`hover:underline ${index < pathSegments.length - 1 ? 'text-gray-400' : 'font-semibold'}`}
+    <nav aria-label="Breadcrumb" className="block mb-6">
+      <ol className={clsx(lusitana.className, "flex text-xl md:text-2xl")}>
+        {breadcrumbs.map((breadcrumb, index) => (
+          <li
+            key={breadcrumb.href}
+            aria-current={breadcrumb.active}
+            className={clsx(
+              breadcrumb.active ? "text-gray-900" : "text-gray-500"
+            )}
           >
-            {segment}
-          </Link>
-          {index < pathSegments.length - 1 && (
-            <span className="text-gray-400">/</span>
-          )}
-        </div>
-      ))}
+            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+            {index < breadcrumbs.length - 1 ? (
+              <span className="inline-block mx-3">/</span>
+            ) : null}
+          </li>
+        ))}
+      </ol>
     </nav>
   );
-};
-
-export default Breadcrumb;
+}

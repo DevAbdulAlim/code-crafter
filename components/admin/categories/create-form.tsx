@@ -9,6 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import ButtonLink from "@/components/ui/buttonLink";
+import Breadcrumbs from "@/components/Breadcrumb";
 
 /**
  * Component for adding a new course in the admin dashboard.
@@ -41,44 +44,54 @@ const CreateForm = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md">
-      <h2 className="mb-4 text-2xl font-bold text-gray-600">
-        Add New Category
-      </h2>
+    <div className="p-4 md:p-8">
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: "Categories", href: "/admin/categories/all" },
+          {
+            label: "Create Category",
+            href: "/admin/categories/create",
+            active: true,
+          },
+        ]}
+      />
 
       {/* Container for displaying toast notifications */}
       <ToastContainer />
       {/* Category form */}
       <form ref={formRef} onSubmit={handleSubmit}>
-        <label
-          htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-600"
-        >
-          Category Name
-        </label>
-        <Input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Category name"
-          required
-        />
+        <div className="p-4 rounded-md bg-slate-50 md:p-6">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-600"
+          >
+            Category Name
+          </label>
+          <Input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Category name"
+            required
+          />
 
-        <label
-          htmlFor="description"
-          className="block mt-4 mb-2 text-sm font-medium text-gray-600"
-        >
-          Category Description
-        </label>
-        <Textarea
-          id="description"
-          name="description"
-          placeholder="Type your message here."
-        />
+          <label
+            htmlFor="description"
+            className="block mt-4 mb-2 text-sm font-medium text-gray-600"
+          >
+            Category Description
+          </label>
+          <Textarea
+            id="description"
+            name="description"
+            placeholder="Category description here."
+          />
 
-        <Button type="submit" className="mt-4">
-          Add Category
-        </Button>
+          <div className="flex justify-end mt-4">
+            <ButtonLink to="/admin/categories/all">Cancel</ButtonLink>
+            <Button type="submit">Add Category</Button>
+          </div>
+        </div>
       </form>
     </div>
   );
