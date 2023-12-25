@@ -56,8 +56,6 @@ const CoursesListPage = async ({
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
       <div className="flex justify-between">
-        <Breadcrumb />
-        {/* <Breadcrumb /> */}
         {/* Add New Course Button */}
         <div>
           <LinkButton to="/admin/courses/new">Add New Course</LinkButton>
@@ -65,7 +63,7 @@ const CoursesListPage = async ({
       </div>
 
       {/* Search and Sort */}
-      <div className="my-8 flex items-center justify-between">
+      <div className="flex items-center justify-between my-8">
         {/* Search by */}
         <CourseSearchForm />
 
@@ -76,20 +74,20 @@ const CoursesListPage = async ({
       {/* Course List */}
       <ul className="divide-y divide-gray-200">
         {courses.map((course) => (
-          <li key={course.id} className="py-4 grid grid-cols-1 md:grid-cols-2">
+          <li key={course.id} className="grid grid-cols-1 py-4 md:grid-cols-2">
             <div>
               <h2 className="text-lg font-semibold text-gray-800">
                 {course.title}
               </h2>
 
-              <div className="flex items-center text-gray-500 mt-2">
+              <div className="flex items-center mt-2 text-gray-500">
                 <span className="mr-2">Undefined</span>
                 <span>&#8226;</span>
                 <span className="ml-2">10 Lessons</span>
               </div>
               <span className="text-blue-500">Enrolled: 20</span>
             </div>
-            <div className="space-x-2 flex md:justify-end md:items-center">
+            <div className="flex space-x-2 md:justify-end md:items-center">
               <ViewButton to={`/admin/courses/show/${course.id}`}>
                 Details
               </ViewButton>

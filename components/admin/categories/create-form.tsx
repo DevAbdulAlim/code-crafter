@@ -88,7 +88,13 @@ const CreateForm = () => {
           />
 
           <div className="flex justify-end mt-4">
-            <ButtonLink to="/admin/categories/all">Cancel</ButtonLink>
+            <ButtonLink
+              href="/admin/categories/all"
+              variant="secondary"
+              className="mr-4"
+            >
+              Cancel
+            </ButtonLink>
             <Button type="submit">Add Category</Button>
           </div>
         </div>

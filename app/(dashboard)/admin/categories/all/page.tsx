@@ -1,12 +1,11 @@
-import LinkButton from "@/components/Buttons/LinkButton";
 import prisma from "@/config/prisma";
 import Pagination from "@/components/Pagination";
-import Breadcrumb from "@/components/Breadcrumb";
 import Table from "@/components/admin/categories/table";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
 import Sort from "@/components/admin/categories/sort";
-import { CreateCategory } from "@/components/admin/categories/buttons";
+import ButtonLink from "@/components/ui/buttonLink";
+import { PlusIcon } from "lucide-react";
 
 const CoursesListPage = async ({
   searchParams,
@@ -55,7 +54,10 @@ const CoursesListPage = async ({
       <div className="flex justify-between">
         <h1 className="text-2xl">Categories</h1>
         {/* Add New Course Button */}
-        <CreateCategory />
+        <ButtonLink href="/admin/categories/create">
+          <span className="hidden md:block">Create Category</span>{" "}
+          <PlusIcon className="md:ml-4" />
+        </ButtonLink>
       </div>
 
       {/* Search and Sort */}

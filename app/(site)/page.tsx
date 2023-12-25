@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Loader from "@/components/ui/loader";
 
 export default async function page() {
   const session = await getServerSession(authOptions);
@@ -20,8 +21,8 @@ export default async function page() {
       <FeaturedCourses />
 
       {/* FAQ */}
-      <section className="py-8 max-w-7xl mx-auto">
-        <h1 className="text-center text-2xl font-bold">
+      <section className="py-8 mx-auto max-w-7xl">
+        <h1 className="text-2xl font-bold text-center">
           Frequently Asking Questions
         </h1>
         <Accordion type="single" collapsible>

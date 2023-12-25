@@ -1,10 +1,12 @@
-import { DeleteCategory, UpdateCategory } from "./buttons";
+import ButtonLink from "@/components/ui/buttonLink";
+import Delete from "./delete-form";
+import { PencilIcon } from "lucide-react";
 
 export default async function Table({ data }: { data: any }) {
   return (
     <div className="flow-root mt-6">
       <div className="inline-block min-w-full align-middle">
-        <div className="p-2 rounded-lg bg-gray-50 md:pt-0">
+        <div className="p-2 rounded-lg bg-slate-50 md:pt-0">
           <div className="md:hidden">
             {data?.map((item: any) => (
               <div
@@ -12,8 +14,14 @@ export default async function Table({ data }: { data: any }) {
                 className="w-full p-4 mb-2 bg-white rounded-md"
               >
                 <p>{item.name}</p>
-                <UpdateCategory id={item.id} />
-                <DeleteCategory id={item.id} />
+                <ButtonLink
+                  href={`/admin/categories/${item.id}/edit`}
+                  variant="ghost"
+                  className="px-2 border"
+                >
+                  <PencilIcon className="w-4 h-4" />
+                </ButtonLink>
+                <Delete id={item.id} />
               </div>
             ))}
           </div>
@@ -35,8 +43,14 @@ export default async function Table({ data }: { data: any }) {
 
                   <td className="py-3 pl-6 pr-3 whitespace-nowrap">
                     <div className="flex justify-end gap-3">
-                      <UpdateCategory id={item.id} />
-                      <DeleteCategory id={item.id} />
+                      <ButtonLink
+                        href={`/admin/categories/${item.id}/edit`}
+                        variant="ghost"
+                        className="px-2 border"
+                      >
+                        <PencilIcon className="w-4 h-4" />
+                      </ButtonLink>
+                      <Delete id={item.id} />
                     </div>
                   </td>
                 </tr>
