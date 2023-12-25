@@ -9,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import ButtonLink from "@/components/ui/buttonLink";
 import Breadcrumbs from "@/components/Breadcrumb";
 
@@ -44,18 +43,7 @@ const CreateForm = () => {
   };
 
   return (
-    <div className="p-4 md:p-8">
-      <Breadcrumbs
-        breadcrumbs={[
-          { label: "Categories", href: "/admin/categories/all" },
-          {
-            label: "Create Category",
-            href: "/admin/categories/create",
-            active: true,
-          },
-        ]}
-      />
-
+    <>
       {/* Container for displaying toast notifications */}
       <ToastContainer />
       {/* Category form */}
@@ -99,7 +87,7 @@ const CreateForm = () => {
           </div>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

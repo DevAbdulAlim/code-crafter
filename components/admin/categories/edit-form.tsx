@@ -67,18 +67,7 @@ const EditForm: React.FC<EditFormProps> = ({ id, category }) => {
   };
 
   return (
-    <div className="p-4 md:p-8">
-      <Breadcrumbs
-        breadcrumbs={[
-          { label: "Categories", href: "/admin/categories/all" },
-          {
-            label: "Edit Category",
-            href: `/admin/categories/${id}/edit`,
-            active: true,
-          },
-        ]}
-      />
-
+    <>
       {/* Toast container for displaying notifications to the user. */}
       <ToastContainer />
 
@@ -127,7 +116,7 @@ const EditForm: React.FC<EditFormProps> = ({ id, category }) => {
           </div>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

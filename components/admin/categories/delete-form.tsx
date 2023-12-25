@@ -1,7 +1,7 @@
 import { TrashIcon } from "lucide-react";
 import CategoryAction from "@/lib/actions/categoryActions";
 
-export default function Delete({ id }: { id: string }) {
+export default function DeleteForm({ id }: { id: string }) {
   const deleteCategoryWithId = CategoryAction.bind(
     null,
     "delete",

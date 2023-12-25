@@ -1,5 +1,6 @@
 import prisma from "@/config/prisma";
 import EditForm from "@/components/admin/categories/edit-form";
+import Breadcrumbs from "@/components/Breadcrumb";
 
 export default async function page({ params }: { params: { id: string } }) {
   try {
@@ -16,7 +17,21 @@ export default async function page({ params }: { params: { id: string } }) {
       const { name, description } = category;
 
       // Render the EditForm component with the fetched course data.
-      return <EditForm id={params.id} category={{ name, description }} />;
+      return (
+        <div className="p-4 md:p-8">
+          <Breadcrumbs
+            breadcrumbs={[
+              { label: "Categories", href: "/admin/categories/all" },
+              {
+                label: "Edit Category",
+                href: `/admin/categories/${params.id}/edit`,
+                active: true,
+              },
+            ]}
+          />
+          <EditForm id={params.id} category={{ name, description }} />
+        </div>
+      );
     } else {
       // If the course is not found, handle it gracefully.
       return <div>Course not found.</div>;

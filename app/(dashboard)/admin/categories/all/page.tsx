@@ -6,6 +6,7 @@ import { Prisma } from "@prisma/client";
 import Sort from "@/components/admin/categories/sort";
 import ButtonLink from "@/components/ui/buttonLink";
 import { PlusIcon } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumb";
 
 const CoursesListPage = async ({
   searchParams,
@@ -50,12 +51,20 @@ const CoursesListPage = async ({
   console.log(categories);
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-8">
       <div className="flex justify-between">
-        <h1 className="text-2xl">Categories</h1>
+        <Breadcrumbs
+          breadcrumbs={[
+            {
+              label: "Categories",
+              href: "/admin/categories/all",
+              active: true,
+            },
+          ]}
+        />
         {/* Add New Course Button */}
         <ButtonLink href="/admin/categories/create">
-          <span className="hidden md:block">Create Category</span>{" "}
+          <span className="hidden md:block">Create Category</span>
           <PlusIcon className="md:ml-4" />
         </ButtonLink>
       </div>

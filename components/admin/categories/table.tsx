@@ -1,5 +1,5 @@
 import ButtonLink from "@/components/ui/buttonLink";
-import Delete from "./delete-form";
+import DeleteForm from "./delete-form";
 import { PencilIcon } from "lucide-react";
 
 export default async function Table({ data }: { data: any }) {
@@ -21,7 +21,7 @@ export default async function Table({ data }: { data: any }) {
                 >
                   <PencilIcon className="w-4 h-4" />
                 </ButtonLink>
-                <Delete id={item.id} />
+                <DeleteForm id={item.id} />
               </div>
             ))}
           </div>
@@ -50,7 +50,7 @@ export default async function Table({ data }: { data: any }) {
                       >
                         <PencilIcon className="w-4 h-4" />
                       </ButtonLink>
-                      <Delete id={item.id} />
+                      <DeleteForm id={item.id} />
                     </div>
                   </td>
                 </tr>
