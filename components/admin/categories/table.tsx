@@ -14,14 +14,16 @@ export default async function Table({ data }: { data: any }) {
                 className="w-full p-4 mb-2 bg-white rounded-md"
               >
                 <p>{item.name}</p>
-                <ButtonLink
-                  href={`/admin/categories/${item.id}/edit`}
-                  variant="ghost"
-                  className="px-2 border"
-                >
-                  <PencilIcon className="w-4 h-4" />
-                </ButtonLink>
-                <DeleteForm id={item.id} />
+                <div className="flex justify-between mt-2">
+                  <ButtonLink
+                    href={`/admin/categories/${item.id}/edit`}
+                    variant="ghost"
+                    className="px-2 border"
+                  >
+                    <PencilIcon className="w-4 h-4" />
+                  </ButtonLink>
+                  <DeleteForm id={item.id} />
+                </div>
               </div>
             ))}
           </div>

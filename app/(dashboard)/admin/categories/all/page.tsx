@@ -7,6 +7,7 @@ import ButtonLink from "@/components/ui/buttonLink";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
 import { getAllCategories } from "@/lib/actions/categoryActions";
+import NotFound from "@/components/notFound";
 
 const CoursesListPage = async ({
   searchParams,
@@ -40,7 +41,7 @@ const CoursesListPage = async ({
     whereClause
   );
 
-  const [categories, totalItems] = foundedCategories.data;
+  const [categories = [], totalItems = 0] = foundedCategories?.data ?? [];
 
   const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
   console.log(categories);
@@ -69,14 +70,19 @@ const CoursesListPage = async ({
         <Sort />
       </div>
 
-      <Table data={categories} />
-
-      <Pagination
-        totalItems={totalItems as number}
-        itemsPerPage={itemsPerPage}
-        totalPages={totalPages}
-        currentPage={currentPage}
-      />
+      {Array.isArray(categories) && categories.length > 0 ? (
+        <>
+          <Table data={categories} />
+          <Pagination
+            totalItems={totalItems as number}
+            itemsPerPage={itemsPerPage}
+            totalPages={totalPages}
+            currentPage={currentPage}
+          />
+        </>
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 };
