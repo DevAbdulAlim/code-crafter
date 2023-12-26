@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/components/Breadcrumb";
-import CreateForm from "@/components/admin/lessons/create-form";
+import LessonCreateForm from "@/components/admin/lessons/lessonCreateFrom";
 import React from "react";
 
 export default function NewLesson() {
@@ -16,7 +16,7 @@ export default function NewLesson() {
         ]}
       />
 
-      <CreateForm />
+      <LessonCreateForm />
     </div>
   );
 }

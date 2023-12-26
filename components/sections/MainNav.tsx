@@ -5,7 +5,7 @@ import { authOptions } from "@/lib/auth";
 import CategoryDropdown from "../Dropdowns/CategoryDropdown";
 import { FcDoughnutChart } from "react-icons/fc";
 import SearchForm from "./SearchForm";
-import prisma from "@/config/prisma";
+import prisma from "@/lib/prisma";
 import Account from "../Dropdowns/Account";
 
 export default async function MainNav() {

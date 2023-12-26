@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 
-export default function Sort() {
+export default function CategorySort() {
   const router = useRouter();
 
   const handleSubmit = (selectedSort: string) => {

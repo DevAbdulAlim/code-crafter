@@ -1,5 +1,5 @@
 import Modal from "@/components/ui/modal";
-import prisma from "@/config/prisma";
+import prisma from "@/lib/prisma";
 import CourseUpdateForm from "../../../CourseUpdateForm";
 import handleCourseAction from "../../../../../../../lib/actions/courseActions";
 

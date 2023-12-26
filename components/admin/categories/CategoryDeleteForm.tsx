@@ -3,7 +3,7 @@
 import { deleteCategory } from "@/lib/actions/categoryActions";
 import { TrashIcon } from "lucide-react";
 
-export default function DeleteForm({ id }: { id: string }) {
+export default function CategoryDeleteForm({ id }: { id: string }) {
   const deleteCategoryWithId = deleteCategory.bind(null, id);
 
   return (

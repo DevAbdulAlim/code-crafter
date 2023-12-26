@@ -1,8 +1,8 @@
 import ButtonLink from "@/components/ui/buttonLink";
-import DeleteForm from "./delete-form";
+import CategoryDeleteForm from "./CategoryDeleteForm";
 import { PencilIcon } from "lucide-react";
 
-export default async function Table({ data }: { data: any }) {
+export default async function CategoryTable({ data }: { data: any }) {
   return (
     <div className="flow-root mt-6">
       <div className="inline-block min-w-full align-middle">
@@ -23,7 +23,7 @@ export default async function Table({ data }: { data: any }) {
                   >
                     <PencilIcon className="w-4 h-4" />
                   </ButtonLink>
-                  <DeleteForm id={item.id} />
+                  <CategoryDeleteForm id={item.id} />
                 </div>
               </div>
             ))}
@@ -57,7 +57,7 @@ export default async function Table({ data }: { data: any }) {
                       >
                         <PencilIcon className="w-4 h-4" />
                       </ButtonLink>
-                      <DeleteForm id={item.id} />
+                      <CategoryDeleteForm id={item.id} />
                     </div>
                   </td>
                 </tr>

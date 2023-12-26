@@ -1,5 +1,5 @@
-'use server'
-import prisma from "@/config/prisma";
+"use server";
+import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 

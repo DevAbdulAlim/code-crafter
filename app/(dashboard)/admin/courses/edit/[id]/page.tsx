@@ -1,4 +1,4 @@
-import prisma from "@/config/prisma";
+import prisma from "@/lib/prisma";
 import handleCourseAction from "../../../../../../lib/actions/courseActions";
 import CourseUpdateForm from "../../CourseUpdateForm";
 

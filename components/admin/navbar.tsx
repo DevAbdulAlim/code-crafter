@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
           {/* Sidebar links */}
           <nav className="flex flex-col mt-5">
             <Link
-              href="/admin"
+              href="/admin/dashboard"
               className="px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
             >
               Dashboard
@@ -74,21 +74,21 @@ const Navbar: React.FC = () => {
             </Link>
 
             <Link
-              href="/admin/content"
+              href="/admin/contents/all"
               className="px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
             >
               Content
             </Link>
 
             <Link
-              href="/admin/enrollments"
+              href="/admin/enrollments/all"
               className="px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
             >
               Enrollments
             </Link>
 
             <Link
-              href="/admin/users"
+              href="/admin/users/all"
               className="px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
             >
               Users

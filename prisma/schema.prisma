@@ -90,7 +90,7 @@ model Lesson {
 model Content {
   id          String  @id @default(cuid())
   contentId   Int     @unique
-  titles      String
+  title      String
   description String?
   media       String
   lessonId    String

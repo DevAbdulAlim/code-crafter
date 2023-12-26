@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/config/prisma";
+import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
@@ -38,7 +38,7 @@ const createLesson = async (formData: FormData) => {
       data,
     });
 
-    revalidatePath("/admin/lessons"); // Ensure revalidatePath is implemented
+    revalidatePath("/admin/lessons");
     return { message: "Create operation completed successfully" };
   } catch {
     return { message: "Database Error: Failed to Create Lesson" };
@@ -62,7 +62,7 @@ const updateLesson = async (formData: FormData, lessonId: string) => {
       data,
     });
 
-    revalidatePath("/admin/lessons"); // Ensure revalidatePath is implemented
+    revalidatePath("/admin/lessons");
     return { message: "Update operation completed successfully" };
   } catch {
     return { message: "Database Error: Failed to Update Lesson" };
@@ -77,7 +77,7 @@ const deleteLesson = async (lessonId: string) => {
       },
     });
 
-    revalidatePath("/admin/lessons"); // Ensure revalidatePath is implemented
+    revalidatePath("/admin/lessons");
     return { message: "Delete operation completed successfully" };
   } catch {
     return { message: "Database Error: Failed to Delete Lesson" };

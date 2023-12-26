@@ -1,5 +1,5 @@
 import LinkButton from "@/components/Buttons/LinkButton";
-import prisma from "@/config/prisma";
+import prisma from "@/lib/prisma";
 import DeleteButton from "@/components/Buttons/DeleteButton";
 import handleCourseAction from "@/lib/actions/courseActions";
 import EditButton from "@/components/Buttons/EditButton";

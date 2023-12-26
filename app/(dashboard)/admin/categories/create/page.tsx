@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/components/Breadcrumb";
-import CreateForm from "@/components/admin/categories/create-form";
+import CategoryCreateForm from "@/components/admin/categories/CategoryCreateForm";
 import React from "react";
 
 export default function NewCategory() {
@@ -16,7 +16,7 @@ export default function NewCategory() {
         ]}
       />
 
-      <CreateForm />
+      <CategoryCreateForm />
     </div>
   );
 }

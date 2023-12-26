@@ -16,7 +16,7 @@ import ButtonLink from "@/components/ui/buttonLink";
  * Component for adding a new course in the admin dashboard.
  * @returns JSX element representing the course form.
  */
-const CreateForm = () => {
+const CategoryCreateForm = () => {
   // Reference to the form element
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -91,4 +91,4 @@ const CreateForm = () => {
   );
 };
 
-export default CreateForm;
+export default CategoryCreateForm;

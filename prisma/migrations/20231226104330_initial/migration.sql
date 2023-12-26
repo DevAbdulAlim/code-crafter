@@ -79,7 +79,7 @@ CREATE TABLE "Lesson" (
 CREATE TABLE "Content" (
     "id" TEXT NOT NULL,
     "contentId" INTEGER NOT NULL,
-    "titles" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
     "description" TEXT,
     "media" TEXT NOT NULL,
     "lessonId" TEXT NOT NULL,

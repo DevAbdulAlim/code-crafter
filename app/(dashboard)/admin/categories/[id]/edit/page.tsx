@@ -1,5 +1,5 @@
-import prisma from "@/config/prisma";
-import EditForm from "@/components/admin/categories/edit-form";
+import prisma from "@/lib/prisma";
+import CategoryEditForm from "@/components/admin/categories/CategoryEditForm";
 import Breadcrumbs from "@/components/Breadcrumb";
 import { getCategoryById } from "@/lib/actions/categoryActions";
 
@@ -30,7 +30,7 @@ export default async function page({ params }: { params: { id: string } }) {
               },
             ]}
           />
-          <EditForm id={params.id} category={{ name, description }} />
+          <CategoryEditForm id={params.id} category={{ name, description }} />
         </div>
       );
     } else {

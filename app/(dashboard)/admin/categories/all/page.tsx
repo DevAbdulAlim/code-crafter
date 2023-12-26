@@ -1,8 +1,8 @@
 import Pagination from "@/components/Pagination";
-import Table from "@/components/admin/categories/table";
+import CategoryTable from "@/components/admin/categories/CategoryTable";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
-import Sort from "@/components/admin/categories/sort";
+import CategorySort from "@/components/admin/categories/CategorySort";
 import ButtonLink from "@/components/ui/buttonLink";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
@@ -67,12 +67,12 @@ const CoursesListPage = async ({
 
       <div className="flex items-center justify-between my-8">
         <Search placeholder={query} />
-        <Sort />
+        <CategorySort />
       </div>
 
       {Array.isArray(categories) && categories.length > 0 ? (
         <>
-          <Table data={categories} />
+          <CategoryTable data={categories} />
           <Pagination
             totalItems={totalItems as number}
             itemsPerPage={itemsPerPage}

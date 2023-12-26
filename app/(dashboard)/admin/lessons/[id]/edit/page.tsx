@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/components/Breadcrumb";
-import LessonEditForm from "@/components/admin/lessons/edit-form";
+import LessonEditForm from "@/components/admin/lessons/lessonEditForm";
 import { getLessonById } from "@/lib/actions/lessonActions";
 
 export default async function LessonEditPage({

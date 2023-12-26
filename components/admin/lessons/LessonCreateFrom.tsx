@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ButtonLink from "@/components/ui/buttonLink";
 
-const CreateForm = () => {
+const LessonCreateForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -110,4 +110,4 @@ const CreateForm = () => {
   );
 };
 
-export default CreateForm;
+export default LessonCreateForm;
