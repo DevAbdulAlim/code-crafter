@@ -1,27 +1,34 @@
+"use server";
+
 import prisma from "@/config/prisma";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const LessonSchema = z.object({
-  LessonId: z.number(),
+  lessonId: z.number(),
   title: z.string(),
-  description: z.string().optional(),
   courseId: z.string(),
+  description: z.string().optional(),
 });
 
-const LessonParser = (formData: FormData) =>
-  LessonSchema.safeParse({
-    LessonId: formData.get("LessonId"),
+const LessonParser = (formData: FormData) => {
+  const lessonId = formData.get("lessonId");
+  const parsedLessonId = lessonId && parseInt(String(lessonId), 10);
+
+  return LessonSchema.safeParse({
+    lessonId: parsedLessonId,
     title: formData.get("title"),
-    description: formData.get("description") || undefined,
     courseId: formData.get("courseId"),
+    description: formData.get("description") || undefined,
   });
+};
 
 const createLesson = async (formData: FormData) => {
   try {
     const parse = LessonParser(formData);
 
     if (!parse.success) {
+      console.log(parse.error.message);
       return { message: `Failed to create lesson: ${parse.error.message}` };
     }
 

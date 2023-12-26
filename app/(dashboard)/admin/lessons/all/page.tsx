@@ -1,15 +1,15 @@
-import Pagination from "@/components/Pagination";
-import Table from "@/components/admin/categories/table";
-import Search from "@/components/search";
-import { Prisma } from "@prisma/client";
-import Sort from "@/components/admin/categories/sort";
-import ButtonLink from "@/components/ui/buttonLink";
-import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
-import { getAllCategories } from "@/lib/actions/categoryActions";
+import Pagination from "@/components/Pagination";
+import LessonSort from "@/components/admin/lessons/LessonSort";
+import LessonTable from "@/components/admin/lessons/LessonTable";
 import NotFound from "@/components/notFound";
+import Search from "@/components/search";
+import ButtonLink from "@/components/ui/buttonLink";
+import { getAllLessons } from "@/lib/actions/lessonActions";
+import { Prisma } from "@prisma/client";
+import { PlusIcon } from "lucide-react";
 
-const CoursesListPage = async ({
+const LessonListPage = async ({
   searchParams,
 }: {
   searchParams: {
@@ -23,28 +23,30 @@ const CoursesListPage = async ({
   const currentPage = page || 1;
   const itemsPerPage = 5;
   const skipAmount = (currentPage - 1) * itemsPerPage;
-  const orderBy = order || "name";
+  const orderBy = order || "title";
   const sortBy = sort || "asc";
   const orderByField = {
     [orderBy]: sortBy as "asc" | "desc",
   };
-  const whereClause: Prisma.CategoryWhereInput = query
+  const whereClause: Prisma.LessonWhereInput = query
     ? {
-        OR: [{ name: { contains: query, mode: "insensitive" } }],
+        OR: [
+          { title: { contains: query, mode: "insensitive" } },
+          { courseId: { contains: query, mode: "insensitive" } },
+        ],
       }
     : {};
 
-  const foundedCategories = await getAllCategories(
+  const foundedLessons = await getAllLessons(
     skipAmount,
     itemsPerPage,
     orderByField,
     whereClause
   );
 
-  const [categories = [], totalItems = 0] = foundedCategories?.data ?? [];
+  const [lessons = [], totalItems = 0] = foundedLessons?.data ?? [];
 
   const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
-  console.log(categories);
 
   return (
     <div className="p-4 md:p-8">
@@ -52,27 +54,27 @@ const CoursesListPage = async ({
         <Breadcrumbs
           breadcrumbs={[
             {
-              label: "Categories",
-              href: "/admin/categories/all",
+              label: "Lessons",
+              href: "/admin/lessons/all",
               active: true,
             },
           ]}
         />
 
-        <ButtonLink href="/admin/categories/create">
-          <span className="hidden md:block">Create Category</span>
+        <ButtonLink href="/admin/lessons/create">
+          <span className="hidden md:block">Create Lesson</span>
           <PlusIcon className="md:ml-4" />
         </ButtonLink>
       </div>
 
       <div className="flex items-center justify-between my-8">
         <Search placeholder={query} />
-        <Sort />
+        <LessonSort />
       </div>
 
-      {Array.isArray(categories) && categories.length > 0 ? (
+      {Array.isArray(lessons) && lessons.length > 0 ? (
         <>
-          <Table data={categories} />
+          <LessonTable data={lessons} />
           <Pagination
             totalItems={totalItems as number}
             itemsPerPage={itemsPerPage}
@@ -87,4 +89,4 @@ const CoursesListPage = async ({
   );
 };
 
-export default CoursesListPage;
+export default LessonListPage;

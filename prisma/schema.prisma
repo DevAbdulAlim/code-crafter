@@ -79,7 +79,7 @@ model Course {
 
 model Lesson {
   id          String    @id @default(cuid())
-  LessonId    Int       @unique
+  lessonId    Int       @unique
   title       String
   description String?
   contents    Content[]
