@@ -33,7 +33,6 @@ const createLesson = async (formData: FormData) => {
     }
 
     const data = parse.data;
-
     await prisma.lesson.create({
       data,
     });

@@ -1,6 +1,5 @@
 import Breadcrumbs from "@/components/Breadcrumb";
-import LessonCreateForm from "@/components/admin/lessons/lessonCreateFrom";
-import React from "react";
+import LessonCreateForm from "@/components/admin/lessons/LessonCreateFrom";
 
 export default function NewLesson() {
   return (

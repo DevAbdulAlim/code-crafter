@@ -1,3 +1,5 @@
+"use server";
+
 import { z } from "zod";
 import prisma from "../prisma";
 import { revalidatePath } from "next/cache";

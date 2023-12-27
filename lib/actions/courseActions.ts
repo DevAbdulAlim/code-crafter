@@ -1,109 +1,135 @@
 "use server";
+
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
-// Define the schema for the Course object using Zod
 const CourseSchema = z.object({
-  title: z.string().min(1),
-  description: z.string().min(1),
+  title: z.string(),
+  description: z.string(),
+  categoryId: z.string(),
 });
 
-/**
- * Parses form data for a Course object using the defined schema.
- * @param formData - The form data containing 'CourseTitle' and 'CourseDescription'.
- * @returns Parsed data or an error message.
- */
-const CourseParser = (formData: FormData) =>
+const courseParser = (formData: FormData) =>
   CourseSchema.safeParse({
-    title: formData.get("CourseTitle"),
-    description: formData.get("CourseDescription"),
+    title: formData.get("title"),
+    description: formData.get("description"),
+    categoryId: formData.get("categoryId"),
   });
 
-/**
- * Handles various actions related to Course entities.
- * @param action - The action to perform ('create', 'update', 'delete', 'getAll', 'getById').
- * @param courseId - The ID of the course (used for 'update', 'delete', 'getById').
- * @param formData - The form data for creating or updating a Course.
- * @returns A message indicating the result of the action and, if applicable, additional data.
- */
-const handleCourseAction = async (
-  action: "create" | "update" | "delete" | "getAll" | "getById",
-  courseId?: string,
-  formData?: FormData
-) => {
-  switch (action) {
-    case "create": {
-      const parse = CourseParser(formData!);
+const createCourse = async (courseData: FormData) => {
+  try {
+    const parse = courseParser(courseData);
 
-      if (!parse.success) {
-        return { message: `Failed to create course: ${parse.error.message}` };
-      }
-
-      const data = parse.data;
-
-      await prisma.course.create({
-        data: {
-          title: data.title,
-          description: data.description,
-          categoryId: "1",
-        },
-      });
-
-      break;
+    if (!parse.success) {
+      console.log(parse.error.message);
+      return { message: `Failed to create course: ${parse.error.message}` };
     }
 
-    case "update": {
-      const parse = CourseParser(formData!);
+    const data = parse.data;
 
-      if (!parse.success) {
-        return { message: `Failed to update course: ${parse.error.message}` };
-      }
+    await prisma.course.create({
+      data,
+    });
 
-      const data = parse.data;
+    revalidatePath("/admin/courses");
 
-      await prisma.course.update({
-        where: {
-          id: courseId!,
-        },
-        data: {
-          title: data.title,
-          description: data.description,
-        },
-      });
-
-      break;
-    }
-
-    case "delete":
-      await prisma.course.delete({
-        where: {
-          id: courseId!,
-        },
-      });
-      break;
-
-    case "getAll":
-      const allCourses = await prisma.course.findMany();
-      return {
-        message: "Retrieved all courses successfully",
-        data: allCourses,
-      };
-
-    case "getById":
-      const singleCourse = await prisma.course.findUnique({
-        where: {
-          id: courseId!,
-        },
-      });
-      return { message: "Retrieved course successfully", data: singleCourse };
-
-    default:
-      throw new Error("Invalid action type");
+    return { message: "Create operation completed successfully" };
+  } catch {
+    return { message: "Database Error: Failed to Create Course" };
   }
-
-  revalidatePath("/");
-  return { message: `${action} operation completed successfully` };
 };
 
-export default handleCourseAction;
+const updateCourse = async (courseData: FormData, courseId: string) => {
+  try {
+    const parse = courseParser(courseData);
+
+    if (!parse.success) {
+      return { message: `Failed to update course: ${parse.error.message}` };
+    }
+
+    const data = parse.data;
+
+    await prisma.course.update({
+      where: {
+        id: courseId,
+      },
+      data,
+    });
+
+    revalidatePath("/admin/courses");
+
+    return { message: "Update operation completed successfully" };
+  } catch {
+    return { message: "Database Error: Failed to Update Course" };
+  }
+};
+
+const deleteCourse = async (courseId: string) => {
+  try {
+    await prisma.course.delete({
+      where: {
+        id: courseId,
+      },
+    });
+
+    revalidatePath("/admin/courses");
+
+    return { message: "Delete operation completed successfully" };
+  } catch {
+    return { message: "Database Error: Failed to Delete Course" };
+  }
+};
+
+const getAllCourses = async (
+  skip: number,
+  take: number,
+  orderBy: object,
+  where: object
+) => {
+  try {
+    const [courses, totalItems] = await prisma.$transaction([
+      prisma.course.findMany({
+        skip,
+        take,
+        orderBy,
+        where,
+      }),
+      prisma.course.count({
+        where,
+      }),
+    ]);
+
+    return {
+      message: "Retrieved all courses successfully",
+      data: [courses, totalItems],
+    };
+  } catch {
+    return { message: "Database Error: Failed to Retrieve Courses" };
+  }
+};
+
+const getCourseById = async (courseId: string) => {
+  try {
+    const singleCourse = await prisma.course.findUnique({
+      where: {
+        id: courseId,
+      },
+    });
+
+    return {
+      message: "Retrieved course successfully",
+      data: singleCourse,
+    };
+  } catch {
+    return { message: "Database Error: Failed to Retrieve Course" };
+  }
+};
+
+export {
+  createCourse,
+  updateCourse,
+  deleteCourse,
+  getAllCourses,
+  getCourseById,
+};

@@ -3,25 +3,25 @@
 import React, { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import ButtonLink from "@/components/ui/buttonLink";
-import { updateEnrollment } from "@/lib/actions/enrollmentActions";
+import { updateCourse } from "@/lib/actions/courseActions";
 
-type EnrollmentDataType = {
-  userId: string;
-  courseId: string;
+type CourseDataType = {
+  categoryId: string;
+  title: string;
+  description: string;
 };
 
-type EnrollmentEditFormProps = {
+type CourseEditFormProps = {
   id: string;
-  enrollment: EnrollmentDataType;
+  course: CourseDataType;
 };
 
-const EnrollmentEditForm: React.FC<EnrollmentEditFormProps> = ({
-  id,
-  enrollment,
-}) => {
+const CourseEditForm: React.FC<CourseEditFormProps> = ({ id, course }) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -29,11 +29,11 @@ const EnrollmentEditForm: React.FC<EnrollmentEditFormProps> = ({
     const formData = new FormData(event.currentTarget);
 
     try {
-      updateEnrollment(formData, id);
+      updateCourse(formData, id);
       formRef.current?.reset();
-      toast.success("Enrollment updated successfully!");
+      toast.success("Course updated successfully!");
     } catch (error) {
-      toast.error("Failed to update enrollment. Please try again.");
+      toast.error("Failed to update course. Please try again.");
     }
   };
 
@@ -47,51 +47,66 @@ const EnrollmentEditForm: React.FC<EnrollmentEditFormProps> = ({
       >
         <div>
           <label
-            htmlFor="userId"
+            htmlFor="categoryId"
             className="block mb-2 text-sm font-medium text-gray-600"
           >
-            User ID
+            Category ID
           </label>
           <Input
             type="text"
-            name="userId"
-            id="userId"
-            defaultValue={enrollment.userId}
-            placeholder="User ID"
+            name="categoryId"
+            id="categoryId"
+            defaultValue={course.categoryId}
+            placeholder="Category ID"
             required
           />
         </div>
 
         <div className="mt-4">
           <label
-            htmlFor="courseId"
+            htmlFor="title"
             className="block mb-2 text-sm font-medium text-gray-600"
           >
-            Course ID
+            Course Title
           </label>
           <Input
             type="text"
-            name="courseId"
-            id="courseId"
-            defaultValue={enrollment.courseId}
-            placeholder="Course ID"
+            name="title"
+            id="title"
+            defaultValue={course.title}
+            placeholder="Course Title"
             required
+          />
+        </div>
+
+        <div className="mt-4">
+          <label
+            htmlFor="description"
+            className="block mb-2 text-sm font-medium text-gray-600"
+          >
+            Course Description
+          </label>
+          <Textarea
+            id="description"
+            name="description"
+            defaultValue={course.description}
+            placeholder="Course description here."
           />
         </div>
 
         <div className="flex justify-end mt-4">
           <ButtonLink
-            href="/admin/enrollments/all"
+            href="/admin/courses/all"
             variant="secondary"
             className="mr-4"
           >
             Cancel
           </ButtonLink>
-          <Button type="submit">Update Enrollment</Button>
+          <Button type="submit">Update Course</Button>
         </div>
       </form>
     </>
   );
 };
 
-export default EnrollmentEditForm;
+export default CourseEditForm;

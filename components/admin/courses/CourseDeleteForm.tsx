@@ -1,14 +1,15 @@
 "use client";
 
 import React from "react";
-import { deleteEnrollment } from "@/lib/actions/enrollmentActions";
+import { deleteCourse } from "@/lib/actions/courseActions";
 import { TrashIcon } from "lucide-react";
 
-export default function EnrollmentDeleteForm({ id }: { id: string }) {
-  const deleteEnrollmentWithId = deleteEnrollment.bind(null, id);
+export default function CourseDeleteForm({ id }: { id: string }) {
+  console.log(id);
+  const deleteCourseWithId = deleteCourse.bind(null, id);
 
   return (
-    <form action={deleteEnrollmentWithId}>
+    <form action={deleteCourseWithId}>
       <button
         type="submit"
         className="p-2 border rounded-md hover:bg-slate-200"

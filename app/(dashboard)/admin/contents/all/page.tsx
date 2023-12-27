@@ -1,15 +1,15 @@
 import Pagination from "@/components/Pagination";
-import EnrollmentTable from "@/components/admin/enrollments/EnrollmentTable";
+import ContentTable from "@/components/admin/contents/ContentTable";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
-import EnrollmentSort from "@/components/admin/enrollments/EnrollmentSort";
+import ContentSort from "@/components/admin/contents/ContentSort";
 import ButtonLink from "@/components/ui/buttonLink";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
-import { getAllEnrollments } from "@/lib/actions/enrollmentActions";
+import { getAllContents } from "@/lib/actions/contentActions";
 import NotFound from "@/components/notFound";
 
-const EnrollmentListPage = async ({
+const ContentListPage = async ({
   searchParams,
 }: {
   searchParams: {
@@ -23,28 +23,28 @@ const EnrollmentListPage = async ({
   const currentPage = page || 1;
   const itemsPerPage = 5;
   const skipAmount = (currentPage - 1) * itemsPerPage;
-  const orderBy = order || "userId";
+  const orderBy = order || "title";
   const sortBy = sort || "asc";
   const orderByField = {
     [orderBy]: sortBy as "asc" | "desc",
   };
-  const whereClause: Prisma.EnrollmentWhereInput = query
+  const whereClause: Prisma.ContentWhereInput = query
     ? {
-        OR: [{ userId: { contains: query, mode: "insensitive" } }],
+        OR: [{ title: { contains: query, mode: "insensitive" } }],
       }
     : {};
 
-  const foundedEnrollments = await getAllEnrollments(
+  const foundedContents = await getAllContents(
     skipAmount,
     itemsPerPage,
     orderByField,
     whereClause
   );
 
-  const [enrollments = [], totalItems = 0] = foundedEnrollments?.data ?? [];
+  const [contents = [], totalItems = 0] = foundedContents?.data ?? [];
 
   const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
-  console.log(enrollments);
+  console.log(contents);
 
   return (
     <div className="p-4 md:p-8">
@@ -52,27 +52,27 @@ const EnrollmentListPage = async ({
         <Breadcrumbs
           breadcrumbs={[
             {
-              label: "Enrollments",
-              href: "/admin/enrollments/all",
+              label: "Contents",
+              href: "/admin/contents/all",
               active: true,
             },
           ]}
         />
 
-        <ButtonLink href="/admin/enrollments/create">
-          <span className="hidden md:block">Create Enrollment</span>
+        <ButtonLink href="/admin/contents/create">
+          <span className="hidden md:block">Create Content</span>
           <PlusIcon className="md:ml-4" />
         </ButtonLink>
       </div>
 
       <div className="flex items-center justify-between my-8">
         <Search placeholder={query} />
-        <EnrollmentSort />
+        <ContentSort />
       </div>
 
-      {Array.isArray(enrollments) && enrollments.length > 0 ? (
+      {Array.isArray(contents) && contents.length > 0 ? (
         <>
-          <EnrollmentTable data={enrollments} />
+          <ContentTable data={contents} />
           <Pagination
             totalItems={totalItems as number}
             itemsPerPage={itemsPerPage}
@@ -87,4 +87,4 @@ const EnrollmentListPage = async ({
   );
 };
 
-export default EnrollmentListPage;
+export default ContentListPage;

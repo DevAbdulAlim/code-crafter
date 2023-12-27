@@ -1,37 +1,37 @@
 import React from "react";
-import IconButton from "../Buttons/IconButton";
 import { FaPlayCircle } from "react-icons/fa";
+import { Button } from "../ui/button";
 
 export default function Curriculum() {
   return (
-    <div className="border mb-8 rounded-md">
-      <h2 className="text-2xl bg-gray-100 text-gray-800 border-b p-4 font-bold mb-4">
+    <div className="mb-8 border rounded-md">
+      <h2 className="p-4 mb-4 text-2xl font-bold text-gray-800 bg-gray-100 border-b">
         Curriculum
       </h2>
 
       {[...Array(4)].map((_, index) => (
         <div className="p-4" key={index}>
-          <h3 className="text-xl font-semibold text-gray-700 mb-2">
+          <h3 className="mb-2 text-xl font-semibold text-gray-700">
             Introduction of Digital Marketing (3 lectures)
           </h3>
           {[...Array(4)].map((_, index) => (
             <div
-              className="py-4  border-b flex justify-between items-center"
+              className="flex items-center justify-between py-4 border-b"
               key={index}
             >
-              <div className="left-content flex items-center gap-4">
-                <IconButton>
+              <div className="flex items-center gap-4 left-content">
+                <Button>
                   <FaPlayCircle />
-                </IconButton>
+                </Button>
                 <div>
-                  <p className="text-lg text-gray-600 font-semibold mb-1">
+                  <p className="mb-1 text-lg font-semibold text-gray-600">
                     What is web design?
                   </p>
                   <span className="text-sm text-gray-500">10m 56s</span>
                 </div>
               </div>
               <div className="right-content">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-full">
+                <button className="px-4 py-2 text-white bg-blue-500 rounded-full">
                   Play
                 </button>
               </div>

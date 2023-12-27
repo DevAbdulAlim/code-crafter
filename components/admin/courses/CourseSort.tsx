@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 
-export default function ContentSort() {
+export default function CourseSort() {
   const router = useRouter();
 
   const handleSubmit = (selectedSort: string) => {

@@ -1,6 +1,6 @@
 import ButtonLink from "@/components/ui/buttonLink";
 import { PencilIcon } from "lucide-react";
-import LessonDeleteForm from "./lessonDeleteForm";
+import LessonDeleteForm from "./LessonDeleteForm";
 
 export default async function LessonTable({ data }: { data: any }) {
   return (
