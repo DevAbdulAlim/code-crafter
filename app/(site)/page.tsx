@@ -10,6 +10,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Loader from "@/components/ui/loader";
+import RecentPosts from "@/components/sections/RecentPosts";
+import TestimonialSection from "@/components/sections/TestimonialSection";
+import FactsSection from "@/components/sections/FactsSection";
+import SupportSection from "@/components/sections/SupportSection";
+import AboutSection from "@/components/sections/AboutSection";
 
 export default async function page() {
   const session = await getServerSession(authOptions);
@@ -19,6 +24,11 @@ export default async function page() {
       <HeroSection />
       <FeaturedCategories />
       <FeaturedCourses />
+      <AboutSection />
+      <SupportSection />
+      <FactsSection />
+      <TestimonialSection />
+      <RecentPosts />
 
       {/* FAQ */}
       <section className="py-8 mx-auto max-w-7xl">
