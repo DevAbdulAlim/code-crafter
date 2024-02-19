@@ -1,15 +1,15 @@
 const HeroSection: React.FC = () => {
   return (
-    <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white p-10">
-      <div className="max-w-7xl mx-auto flex justify-between">
-        <div className="w-1/2 flex flex-col justify-center items-center">
-          <h1 className="text-4xl font-bold mb-4">
+    <div className="py-20 text-white bg-gradient-to-r from-blue-500 via-teal-500 to-cyan-500">
+      <div className="flex justify-between mx-auto max-w-7xl">
+        <div className="flex flex-col items-center justify-center w-1/2">
+          <h1 className="mb-4 text-4xl font-bold">
             Coding Dreams Unleashed! ✨
           </h1>
           <p className="text-lg">
             Join me on this coding odyssey and let's build wonders together!
           </p>
-          <button className="mt-6 bg-white text-purple-500 px-4 py-2 rounded-full hover:bg-purple-500 hover:text-white">
+          <button className="px-4 py-2 mt-6 text-blue-500 bg-white rounded-full hover:bg-blue-500 hover:text-white">
             Begin the Journey
           </button>
         </div>
