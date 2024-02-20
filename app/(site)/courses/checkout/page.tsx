@@ -2,12 +2,12 @@ import React from "react";
 
 const CheckoutPage = () => {
   return (
-    <div className="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
-      <h1 className="text-3xl font-semibold mb-6">Checkout</h1>
+    <div className="container p-8 mx-auto my-8 bg-white rounded-md shadow-lg">
+      <h1 className="mb-6 text-3xl font-semibold">Checkout</h1>
 
       {/* Product Information */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">Course Title</h2>
+        <h2 className="mb-4 text-xl font-semibold">Course Title</h2>
         <p>
           Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
@@ -16,7 +16,7 @@ const CheckoutPage = () => {
 
       {/* Billing Information Form */}
       <form className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">Billing Information</h2>
+        <h2 className="mb-4 text-xl font-semibold">Billing Information</h2>
 
         {/* Name */}
         <div className="mb-4">
@@ -30,7 +30,7 @@ const CheckoutPage = () => {
             type="text"
             id="name"
             name="name"
-            className="mt-1 p-2 w-full border rounded-md"
+            className="w-full p-2 mt-1 border rounded-md"
             placeholder="John Doe"
             required
           />
@@ -47,8 +47,8 @@ const CheckoutPage = () => {
           <textarea
             id="address"
             name="address"
-            rows="3"
-            className="mt-1 p-2 w-full border rounded-md"
+            rows={3}
+            className="w-full p-2 mt-1 border rounded-md"
             placeholder="123 Main Street, City, Country"
             required
           ></textarea>
@@ -66,7 +66,7 @@ const CheckoutPage = () => {
             type="text"
             id="creditCard"
             name="creditCard"
-            className="mt-1 p-2 w-full border rounded-md"
+            className="w-full p-2 mt-1 border rounded-md"
             placeholder="1234 5678 9012 3456"
             required
           />
@@ -85,7 +85,7 @@ const CheckoutPage = () => {
               type="text"
               id="expiryDate"
               name="expiryDate"
-              className="mt-1 p-2 w-full border rounded-md"
+              className="w-full p-2 mt-1 border rounded-md"
               placeholder="MM/YY"
               required
             />
@@ -101,7 +101,7 @@ const CheckoutPage = () => {
               type="text"
               id="cvv"
               name="cvv"
-              className="mt-1 p-2 w-full border rounded-md"
+              className="w-full p-2 mt-1 border rounded-md"
               placeholder="123"
               required
             />
@@ -111,20 +111,20 @@ const CheckoutPage = () => {
 
       {/* Order Summary */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
+        <h2 className="mb-4 text-xl font-semibold">Order Summary</h2>
         <p>Total Price: $295.55</p>
         {/* Add any applicable taxes, discounts, or fees */}
       </div>
 
       {/* Payment Method */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
+        <h2 className="mb-4 text-xl font-semibold">Payment Method</h2>
         <p>Card ending in 3456</p>
         {/* Display payment method options, such as credit card icons or PayPal */}
       </div>
 
       {/* Place Order Button */}
-      <button className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-700">
+      <button className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-700">
         Place Order
       </button>
     </div>

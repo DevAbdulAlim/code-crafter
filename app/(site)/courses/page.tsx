@@ -59,20 +59,20 @@ const CoursesListPage = async ({
 
   return (
     <>
-      {/* <div className="bg-gray-600 py-20 text-center text-white text-4xl">
+      {/* <div className="py-20 text-4xl text-center text-white bg-gray-600">
         Search Your Courses
       </div> */}
-      <section className="py-12 px-4 bg-blue-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <section className="px-4 py-12 bg-blue-50">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div className="md:col-span-1">
               <CourseFilter />
             </div>
 
             {/* course list */}
-            <div className="md:col-span-3 flex flex-col h-full">
+            <div className="flex flex-col h-full md:col-span-3">
               {/* Search and Sort */}
-              <div className="my-8 flex items-center justify-between">
+              <div className="flex items-center justify-between my-8">
                 {/* Search by */}
                 <CourseSearchForm />
 
@@ -85,9 +85,15 @@ const CoursesListPage = async ({
                 {courses.length < 1 ? (
                   <CourseNotFound />
                 ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {courses.map((course, index) => (
-                      <CourseCard key={index} {...course} />
+                      <CourseCard
+                        // need to remove hardcode price and imageURL
+                        price={""}
+                        imageUrl={""}
+                        key={index}
+                        {...course}
+                      />
                     ))}
                   </div>
                 )}
