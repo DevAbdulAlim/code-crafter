@@ -28,7 +28,7 @@ export default async function MainNav() {
 
       <SearchForm />
 
-      {session ? <Account /> : <Link href="/login">Login</Link>}
+      {session ? <Account /> : <Link href="/api/auth/signin">Login</Link>}
     </nav>
   );
 }

@@ -1,11 +1,10 @@
 import HeroSection from "@/app/(site)/HeroSection";
 import FeaturedCourses from "@/app/(site)/FeaturedCourses";
 import FeaturedCategories from "@/app/(site)/FeaturedCategories";
-import RecentPosts from "@/components/sections/RecentPosts";
-import TestimonialSection from "@/components/sections/TestimonialSection";
-import FactsSection from "@/components/sections/FactsSection";
-import SupportSection from "@/components/sections/SupportSection";
-import AboutSection from "@/components/sections/AboutSection";
+import RecentPosts from "@/app/(site)/RecentPosts";
+import TestimonialSection from "@/app/(site)/TestimonialSection";
+import FactsSection from "@/app/(site)/FactsSection";
+import AboutSection from "@/app/(site)/AboutSection";
 import Faq from "./faq";
 
 export default async function page() {
@@ -19,7 +18,6 @@ export default async function page() {
       <TestimonialSection />
       <RecentPosts />
       <Faq />
-      <SupportSection />
     </>
   );
 }

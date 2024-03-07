@@ -10,7 +10,7 @@ import {
 
 const AboutSection = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 px-3 bg-white">
       <div className="mx-auto text-center max-w-7xl">
         <h2 className="mb-8 text-4xl font-extrabold">About Us</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 ">

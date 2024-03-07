@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React from "react";
+import Link from "./ui/link";
 
 interface CourseCardProps {
   id: string;
@@ -24,26 +24,20 @@ const CourseCard: React.FC<CourseCardProps> = ({
   return (
     <div className="bg-gray-100 rounded-md overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
       <img
-        src="https://www.webfx.com/wp-content/uploads/2023/08/38_modern_web_design-1024x462.png"
+        src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"
         alt={title}
         className="w-full h-48 object-cover"
       />
-      {discountPrice && (
-        <div className="absolute top-0 right-0 p-2 bg-green-500 text-white rounded-tl-md">
-          <p>
-            ${price} <del className="ms-4 ">${discountedPrice?.toFixed(2)}</del>
-          </p>
-        </div>
-      )}
+
       <div className="p-4">
-        <h2 className="text-lg font-semibold mb-2">{title}</h2>
+        <Link to={`/courses/${id}`}>{title}</Link>
         <div className="flex items-center mb-4">
           <span
             className={
               discountPrice ? "text-gray-500 line-through mr-2" : "mr-2"
             }
           >
-            ${price}
+            {price}
           </span>
           {discountPrice && (
             <span className="text-green-500 font-semibold">
@@ -51,12 +45,6 @@ const CourseCard: React.FC<CourseCardProps> = ({
             </span>
           )}
         </div>
-        <Link
-          href={`/courses/${id}`}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-        >
-          Enroll Now
-        </Link>
       </div>
     </div>
   );

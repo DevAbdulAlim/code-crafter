@@ -71,7 +71,7 @@ const posts: Post[] = [
     content:
       "Learn how to build scalable and efficient APIs using Node.js and Express...",
     imageUrl:
-      "https://cherrywebdesign.co.uk/images/gallery/the-purpose-of-a-logo.jpg",
+      "https://img.freepik.com/free-photo/programming-background-concept_23-2150170137.jpg",
     date: "2024-02-17",
     time: "15:20:00",
     user: "Alex Johnson",
@@ -79,13 +79,13 @@ const posts: Post[] = [
 ];
 
 const PostCard = ({ post }: { post: Post }) => (
-  <div className="flex flex-col p-6 bg-white rounded-lg shadow-md">
+  <div className="flex flex-col bg-white overflow-hidden rounded-lg shadow-md">
     <img
       src={post.imageUrl}
       alt={`Post ${post.title}`}
-      className="object-cover w-full mb-4 rounded-md h-72"
+      className="object-cover w-full mb-4  h-72"
     />
-    <div className="mb-4">
+    <div className="p-4">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center space-x-2">
           <IoCalendarOutline className="text-2xl text-blue-500" />
@@ -102,7 +102,7 @@ const PostCard = ({ post }: { post: Post }) => (
     </div>
 
     {/* Additional Information with Border */}
-    <div className="flex justify-between pt-4 mt-auto border-t border-gray-300">
+    <div className="flex justify-between p-4 mt-auto border-t border-gray-300">
       <div className="flex items-center mb-2 space-x-2">
         <IoPersonOutline className="text-2xl text-purple-500" />
         <p className="text-gray-600">{post.user}</p>
@@ -118,8 +118,8 @@ const PostCard = ({ post }: { post: Post }) => (
 
 const RecentPosts: React.FC = () => {
   return (
-    <section className="py-12 bg-gray-200">
-      <div className="container mx-auto">
+    <section className="py-12 px-3 bg-gray-200">
+      <div className="max-w-7xl mx-auto">
         <h2 className="mb-8 text-3xl font-bold">Recent Posts</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {posts.map((post, index) => (

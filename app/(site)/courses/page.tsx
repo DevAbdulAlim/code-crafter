@@ -3,7 +3,7 @@ import Pagination from "@/components/Pagination";
 import CourseSearchForm from "@/components/sections/CourseSearchForm";
 import CourseSortForm from "@/components/sections/CourseSortForm";
 import CourseFilter from "@/components/sections/CourseFilter";
-import CourseCard from "@/components/Cards/CourseCard";
+import CourseCard from "@/components/CourseCard";
 import CourseNotFound from "@/components/sections/CourseNotFound";
 
 const CoursesListPage = async ({

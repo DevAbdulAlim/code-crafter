@@ -35,7 +35,7 @@ const facts = [
 
 const FactsSection = () => {
   return (
-    <section className="py-20 -mt-40 text-white">
+    <section className="py-20 px-3 -mt-40 text-white">
       <div className="mx-auto text-center max-w-7xl">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {facts.map((fact) => (

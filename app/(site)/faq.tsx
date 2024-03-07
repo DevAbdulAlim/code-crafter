@@ -8,10 +8,8 @@ import {
 
 export default function Faq() {
   return (
-    <section className="px-4 py-8 mx-auto max-w-7xl">
-      <h1 className="text-2xl font-bold text-center">
-        Frequently Asked Questions
-      </h1>
+    <section className="px-3 py-8 mx-auto max-w-7xl">
+      <h1 className="text-2xl font-bold">Frequently Asked Questions</h1>
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is there a free trial available?</AccordionTrigger>

@@ -28,8 +28,8 @@ const FeaturedCategories: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 ">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <section className="py-20 px-3 ">
+      <div className=" mx-auto max-w-7xl sm:px-6 lg:px-8">
         <h2 className="mb-8 text-3xl font-bold text-center">
           Featured Categories
         </h2>

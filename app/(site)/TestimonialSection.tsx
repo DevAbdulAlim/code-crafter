@@ -6,27 +6,27 @@ const testimonials = [
     name: "John Doe",
     position: "Web Developer",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "CodeCrafter has been an invaluable resource in my journey as a web developer. The courses are comprehensive, up-to-date, and taught by industry experts. I've been able to expand my skillset significantly thanks to the quality content provided by CodeCrafter.",
   },
   {
     id: 2,
     name: "Jane Smith",
     position: "UX Designer",
     comment:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "I've always been impressed by the attention to detail and the clarity of instruction in CodeCrafter's courses. As a UX designer, staying current with the latest trends and techniques is crucial, and CodeCrafter helps me do just that. The platform is user-friendly, and the content is top-notch.",
   },
   {
     id: 3,
     name: "Alex Johnson",
     position: "Product Manager",
     comment:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "CodeCrafter has been instrumental in my career growth as a product manager. The courses cover a wide range of topics relevant to my role, from agile methodologies to product development strategies. I appreciate the practical insights shared by instructors, which I can apply directly to my work.",
   },
 ];
 
 const TestimonialSection = () => {
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 px-3 bg-gray-100">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-8 text-4xl font-extrabold text-center">
           What Our Clients Say
