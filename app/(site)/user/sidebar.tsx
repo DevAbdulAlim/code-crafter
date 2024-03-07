@@ -15,27 +15,27 @@ import Link from "@/components/ui/link";
 
 const SideNavbar: React.FC = () => {
   return (
-    <div className="w-64 h-full mt-4 bg-gray-100 shadow-lg ">
+    <div className="w-64 h-full mt-4 shadow-lg ">
       <div className="p-4 ">
         <h1 className="mb-4 text-lg font-bold">SUBSCRIPTION</h1>
         <div className="flex flex-col space-y-2">
-          <Link to="/subscriptions">
+          <Link to="/user/subscriptions">
             <FaUsers className="w-6 h-6 mr-2" />
             My Subscriptions
           </Link>
-          <Link to="/billing">
+          <Link to="/user/billing">
             <FaCreditCard className="w-6 h-6 mr-2" />
             Billing Info
           </Link>
-          <Link to="/payment">
+          <Link to="/user/payment">
             <FaCreditCard className="w-6 h-6 mr-2" />
             Payment
           </Link>
-          <Link to="/invoice">
+          <Link to="/user/invoice">
             <FaFileInvoiceDollar className="w-6 h-6 mr-2" />
             Invoice
           </Link>
-          <Link to="/quiz-attempt">
+          <Link to="/user/quiz">
             <FaBook className="w-6 h-6 mr-2" />
             My Quiz Attempt
           </Link>

@@ -3,7 +3,7 @@ import { FaTwitter, FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Topbar() {
   return (
-    <div className="rounded-md shadow-md bg-gradient-to-r from-gray-100 to-gray-200">
+    <div className="rounded-md shadow-md bg-gradient-to-r ">
       <div className="container flex items-center justify-between px-4 py-6 mx-auto">
         <div className="flex items-center">
           <img
