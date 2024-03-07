@@ -12,6 +12,7 @@ import {
   FaBook,
 } from "react-icons/fa";
 import Link from "@/components/ui/link";
+import { TbSocial } from "react-icons/tb";
 
 const SideNavbar: React.FC = () => {
   return (
@@ -44,35 +45,35 @@ const SideNavbar: React.FC = () => {
       <div className="p-4 ">
         <h1 className="mb-4 text-lg font-bold">ACCOUNT SETTINGS</h1>
         <div className="flex flex-col space-y-2">
-          <Link to="/edit-profile">
+          <Link to="/user/edit-profile">
             <FaUserEdit className="w-6 h-6 mr-2" />
             Edit Profile
           </Link>
-          <Link to="/security">
+          <Link to="/user/security">
             <FaShieldAlt className="w-6 h-6 mr-2" />
             Security
           </Link>
-          <Link to="/social-profiles">
+          <Link to="/user/social-profiles">
             <FaUsers className="w-6 h-6 mr-2" />
             Social Profiles
           </Link>
-          <Link to="/notifications">
+          <Link to="/user/notifications">
             <FaBell className="w-6 h-6 mr-2" />
             Notifications
           </Link>
-          <Link to="/profile-privacy">
+          <Link to="/user/profile-privacy">
             <FaUserTimes className="w-6 h-6 mr-2" />
             Profile Privacy
           </Link>
-          <Link to="/delete-profile">
+          <Link to="/user/delete-profile">
             <FaUserAltSlash className="w-6 h-6 mr-2" />
             Delete Profile
           </Link>
-          <Link to="/linked-accounts">
-            <FaUserAltSlash className="w-6 h-6 mr-2" />
+          <Link to="/user/linked-accounts">
+            <TbSocial className="w-6 h-6 mr-2" />
             Linked Accounts
           </Link>
-          <Link to="/sign-out">
+          <Link to="/user/sign-out">
             <FaCog className="w-6 h-6 mr-2" />
             Sign Out
           </Link>
