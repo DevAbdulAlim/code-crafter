@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonLink from "@/components/ui/buttonLink";
+import ButtonLink from "@/components/ui/link";
 import { PencilIcon } from "lucide-react";
 import EnrollmentDeleteForm from "./EnrollmentDeleteForm"; // You might need to create this component
 

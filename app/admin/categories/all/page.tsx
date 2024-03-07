@@ -3,7 +3,7 @@ import CategoryTable from "@/components/admin/categories/CategoryTable";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
 import CategorySort from "@/components/admin/categories/CategorySort";
-import ButtonLink from "@/components/ui/buttonLink";
+import ButtonLink from "@/components/ui/link";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
 import { getAllCategories } from "@/lib/actions/categoryActions";

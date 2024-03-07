@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import MainNav from "@/components/sections/MainNav";
+import MainNav from "@/app/(site)/MainNav";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {

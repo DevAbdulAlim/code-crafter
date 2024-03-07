@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/buttonLink";
+import ButtonLink from "@/components/ui/link";
 import { updateLesson } from "@/lib/actions/lessonActions";
 
 type LessonDataType = {

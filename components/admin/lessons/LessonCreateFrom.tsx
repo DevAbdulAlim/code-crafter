@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/buttonLink";
+import ButtonLink from "@/components/ui/link";
 
 const LessonCreateForm = () => {
   const formRef = useRef<HTMLFormElement>(null);

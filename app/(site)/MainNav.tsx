@@ -2,19 +2,19 @@ import Link from "next/link";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 
-import CategoryDropdown from "../Dropdowns/CategoryDropdown";
+import CategoryDropdown from "../../components/Dropdowns/CategoryDropdown";
 import { FcDoughnutChart } from "react-icons/fc";
-import SearchForm from "./SearchForm";
+import SearchForm from "../../components/sections/SearchForm";
 import prisma from "@/lib/prisma";
-import Account from "../Dropdowns/Account";
+import Account from "../../components/Dropdowns/Account";
 
 export default async function MainNav() {
   const session = await getServerSession(authOptions);
   const categories = await prisma.category.findMany();
 
   return (
-    <nav className="flex max-w-7xl mx-auto justify-between py-2 md:py-4  px-6">
-      <Link className="my-1 text-3xl flex items-center md:mr-4" href="/">
+    <nav className="flex justify-between px-6 py-2 mx-auto max-w-7xl md:py-4">
+      <Link className="flex items-center my-1 text-3xl md:mr-4" href="/">
         <span className="text-4xl">
           <FcDoughnutChart />
         </span>
@@ -33,7 +33,7 @@ export default async function MainNav() {
       ) : (
         <Link
           href="/login"
-          className="rounded-md px-4 my-2 flex items-center justify-center font-semibold  hover:bg-blue-700 hover:text-white"
+          className="flex items-center justify-center px-4 my-2 font-semibold rounded-md hover:bg-blue-700 hover:text-white"
         >
           Login
         </Link>

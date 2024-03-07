@@ -1,15 +1,15 @@
-import Breadcrumbs from "@/components/Breadcrumb";
 import Pagination from "@/components/Pagination";
-import CourseSort from "@/components/admin/courses/CourseSort";
-import CourseTable from "@/components/admin/courses/CourseTable";
-import NotFound from "@/components/notFound";
+import EnrollmentTable from "@/components/admin/enrollments/EnrollmentTable";
 import Search from "@/components/search";
-import ButtonLink from "@/components/ui/buttonLink";
-import { getAllCourses } from "@/lib/actions/courseActions";
 import { Prisma } from "@prisma/client";
+import EnrollmentSort from "@/components/admin/enrollments/EnrollmentSort";
+import ButtonLink from "@/components/ui/link";
 import { PlusIcon } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumb";
+import { getAllEnrollments } from "@/lib/actions/enrollmentActions";
+import NotFound from "@/components/notFound";
 
-const CourseListPage = async ({
+const EnrollmentListPage = async ({
   searchParams,
 }: {
   searchParams: {
@@ -23,27 +23,28 @@ const CourseListPage = async ({
   const currentPage = page || 1;
   const itemsPerPage = 5;
   const skipAmount = (currentPage - 1) * itemsPerPage;
-  const orderBy = order || "title";
+  const orderBy = order || "userId";
   const sortBy = sort || "asc";
   const orderByField = {
     [orderBy]: sortBy as "asc" | "desc",
   };
-  const whereClause: Prisma.CourseWhereInput = query
+  const whereClause: Prisma.EnrollmentWhereInput = query
     ? {
-        OR: [{ title: { contains: query, mode: "insensitive" } }],
+        OR: [{ userId: { contains: query, mode: "insensitive" } }],
       }
     : {};
 
-  const foundedCourses = await getAllCourses(
+  const foundedEnrollments = await getAllEnrollments(
     skipAmount,
     itemsPerPage,
     orderByField,
     whereClause
   );
 
-  const [courses = [], totalItems = 0] = foundedCourses?.data ?? [];
+  const [enrollments = [], totalItems = 0] = foundedEnrollments?.data ?? [];
 
   const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
+  console.log(enrollments);
 
   return (
     <div className="p-4 md:p-8">
@@ -51,27 +52,27 @@ const CourseListPage = async ({
         <Breadcrumbs
           breadcrumbs={[
             {
-              label: "Courses",
-              href: "/admin/courses/all",
+              label: "Enrollments",
+              href: "/admin/enrollments/all",
               active: true,
             },
           ]}
         />
 
-        <ButtonLink href="/admin/courses/create">
-          <span className="hidden md:block">Create Course</span>
+        <ButtonLink href="/admin/enrollments/create">
+          <span className="hidden md:block">Create Enrollment</span>
           <PlusIcon className="md:ml-4" />
         </ButtonLink>
       </div>
 
       <div className="flex items-center justify-between my-8">
         <Search placeholder={query} />
-        <CourseSort />
+        <EnrollmentSort />
       </div>
 
-      {Array.isArray(courses) && courses.length > 0 ? (
+      {Array.isArray(enrollments) && enrollments.length > 0 ? (
         <>
-          <CourseTable data={courses} />
+          <EnrollmentTable data={enrollments} />
           <Pagination
             totalItems={totalItems as number}
             itemsPerPage={itemsPerPage}
@@ -86,4 +87,4 @@ const CourseListPage = async ({
   );
 };
 
-export default CourseListPage;
+export default EnrollmentListPage;

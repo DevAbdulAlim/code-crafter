@@ -1,4 +1,4 @@
-import ButtonLink from "@/components/ui/buttonLink";
+import ButtonLink from "@/components/ui/link";
 import { PencilIcon } from "lucide-react";
 import LessonDeleteForm from "./LessonDeleteForm";
 

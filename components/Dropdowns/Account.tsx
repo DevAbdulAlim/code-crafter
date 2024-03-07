@@ -1,17 +1,17 @@
-import Link from "next/link";
 import React from "react";
 import { MdAccountCircle } from "react-icons/md";
+import Link from "../ui/link";
 
 export default function Account() {
   return (
     <div className="relative hidden md:block group">
-      <button className="flex my-2 hover:text-blue-500">
-        <span className="text-2xl mr-1">
+      <Link to="/user">
+        <span className="mr-1 text-2xl">
           <MdAccountCircle />
         </span>
         Profile
-      </button>
-      <ul className="hidden group-hover:block text-gray-600 shadow-lg rounded-sm bg-white absolute z-50 right-0 space-y-2">
+      </Link>
+      <ul className="absolute right-0 z-50 hidden space-y-2 text-gray-600 bg-white rounded-sm shadow-lg group-hover:block">
         {[
           { title: "Orders", link: "/orders" },
           { title: "Settings", link: "settings" },
@@ -20,10 +20,7 @@ export default function Account() {
           { title: "Notification", link: "/notification" },
         ].map((item, index) => (
           <li key={index}>
-            <Link
-              href={item.link}
-              className="block hover:bg-blue-50 whitespace-nowrap py-3 px-6"
-            >
+            <Link variant="info" to={item.link}>
               {item.title}
             </Link>
           </li>

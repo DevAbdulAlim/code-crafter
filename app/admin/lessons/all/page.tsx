@@ -1,15 +1,15 @@
-import Pagination from "@/components/Pagination";
-import UserTable from "@/components/admin/users/UserTable";
-import Search from "@/components/search";
-import { Prisma } from "@prisma/client";
-import ButtonLink from "@/components/ui/buttonLink";
-import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
-import { getAllUsers } from "@/lib/actions/userActions";
+import Pagination from "@/components/Pagination";
+import LessonSort from "@/components/admin/lessons/LessonSort";
+import LessonTable from "@/components/admin/lessons/LessonTable";
 import NotFound from "@/components/notFound";
-import UserSort from "@/components/admin/users/UserSort";
+import Search from "@/components/search";
+import ButtonLink from "@/components/ui/link";
+import { getAllLessons } from "@/lib/actions/lessonActions";
+import { Prisma } from "@prisma/client";
+import { PlusIcon } from "lucide-react";
 
-const UserListPage = async ({
+const LessonListPage = async ({
   searchParams,
 }: {
   searchParams: {
@@ -23,28 +23,30 @@ const UserListPage = async ({
   const currentPage = page || 1;
   const itemsPerPage = 5;
   const skipAmount = (currentPage - 1) * itemsPerPage;
-  const orderBy = order || "name";
+  const orderBy = order || "title";
   const sortBy = sort || "asc";
   const orderByField = {
     [orderBy]: sortBy as "asc" | "desc",
   };
-  const whereClause: Prisma.UserWhereInput = query
+  const whereClause: Prisma.LessonWhereInput = query
     ? {
-        OR: [{ name: { contains: query, mode: "insensitive" } }],
+        OR: [
+          { title: { contains: query, mode: "insensitive" } },
+          { courseId: { contains: query, mode: "insensitive" } },
+        ],
       }
     : {};
 
-  const foundedUsers = await getAllUsers(
+  const foundedLessons = await getAllLessons(
     skipAmount,
     itemsPerPage,
     orderByField,
     whereClause
   );
 
-  const [users = [], totalItems = 0] = foundedUsers?.data ?? [];
+  const [lessons = [], totalItems = 0] = foundedLessons?.data ?? [];
 
   const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
-  console.log(users);
 
   return (
     <div className="p-4 md:p-8">
@@ -52,27 +54,27 @@ const UserListPage = async ({
         <Breadcrumbs
           breadcrumbs={[
             {
-              label: "Users",
-              href: "/admin/users/all",
+              label: "Lessons",
+              href: "/admin/lessons/all",
               active: true,
             },
           ]}
         />
 
-        <ButtonLink href="/admin/users/create">
-          <span className="hidden md:block">Create User</span>
+        <ButtonLink href="/admin/lessons/create">
+          <span className="hidden md:block">Create Lesson</span>
           <PlusIcon className="md:ml-4" />
         </ButtonLink>
       </div>
 
       <div className="flex items-center justify-between my-8">
         <Search placeholder={query} />
-        <UserSort />
+        <LessonSort />
       </div>
 
-      {Array.isArray(users) && users.length > 0 ? (
+      {Array.isArray(lessons) && lessons.length > 0 ? (
         <>
-          <UserTable data={users} />
+          <LessonTable data={lessons} />
           <Pagination
             totalItems={totalItems as number}
             itemsPerPage={itemsPerPage}
@@ -87,4 +89,4 @@ const UserListPage = async ({
   );
 };
 
-export default UserListPage;
+export default LessonListPage;

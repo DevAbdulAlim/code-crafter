@@ -1,15 +1,15 @@
 import Pagination from "@/components/Pagination";
-import ContentTable from "@/components/admin/contents/ContentTable";
+import UserTable from "@/components/admin/users/UserTable";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
-import ContentSort from "@/components/admin/contents/ContentSort";
-import ButtonLink from "@/components/ui/buttonLink";
+import ButtonLink from "@/components/ui/link";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
-import { getAllContents } from "@/lib/actions/contentActions";
+import { getAllUsers } from "@/lib/actions/userActions";
 import NotFound from "@/components/notFound";
+import UserSort from "@/components/admin/users/UserSort";
 
-const ContentListPage = async ({
+const UserListPage = async ({
   searchParams,
 }: {
   searchParams: {
@@ -23,28 +23,28 @@ const ContentListPage = async ({
   const currentPage = page || 1;
   const itemsPerPage = 5;
   const skipAmount = (currentPage - 1) * itemsPerPage;
-  const orderBy = order || "title";
+  const orderBy = order || "name";
   const sortBy = sort || "asc";
   const orderByField = {
     [orderBy]: sortBy as "asc" | "desc",
   };
-  const whereClause: Prisma.ContentWhereInput = query
+  const whereClause: Prisma.UserWhereInput = query
     ? {
-        OR: [{ title: { contains: query, mode: "insensitive" } }],
+        OR: [{ name: { contains: query, mode: "insensitive" } }],
       }
     : {};
 
-  const foundedContents = await getAllContents(
+  const foundedUsers = await getAllUsers(
     skipAmount,
     itemsPerPage,
     orderByField,
     whereClause
   );
 
-  const [contents = [], totalItems = 0] = foundedContents?.data ?? [];
+  const [users = [], totalItems = 0] = foundedUsers?.data ?? [];
 
   const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
-  console.log(contents);
+  console.log(users);
 
   return (
     <div className="p-4 md:p-8">
@@ -52,27 +52,27 @@ const ContentListPage = async ({
         <Breadcrumbs
           breadcrumbs={[
             {
-              label: "Contents",
-              href: "/admin/contents/all",
+              label: "Users",
+              href: "/admin/users/all",
               active: true,
             },
           ]}
         />
 
-        <ButtonLink href="/admin/contents/create">
-          <span className="hidden md:block">Create Content</span>
+        <ButtonLink href="/admin/users/create">
+          <span className="hidden md:block">Create User</span>
           <PlusIcon className="md:ml-4" />
         </ButtonLink>
       </div>
 
       <div className="flex items-center justify-between my-8">
         <Search placeholder={query} />
-        <ContentSort />
+        <UserSort />
       </div>
 
-      {Array.isArray(contents) && contents.length > 0 ? (
+      {Array.isArray(users) && users.length > 0 ? (
         <>
-          <ContentTable data={contents} />
+          <UserTable data={users} />
           <Pagination
             totalItems={totalItems as number}
             itemsPerPage={itemsPerPage}
@@ -87,4 +87,4 @@ const ContentListPage = async ({
   );
 };
 
-export default ContentListPage;
+export default UserListPage;

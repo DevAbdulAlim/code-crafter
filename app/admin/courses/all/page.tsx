@@ -1,15 +1,15 @@
 import Breadcrumbs from "@/components/Breadcrumb";
 import Pagination from "@/components/Pagination";
-import LessonSort from "@/components/admin/lessons/LessonSort";
-import LessonTable from "@/components/admin/lessons/LessonTable";
+import CourseSort from "@/components/admin/courses/CourseSort";
+import CourseTable from "@/components/admin/courses/CourseTable";
 import NotFound from "@/components/notFound";
 import Search from "@/components/search";
-import ButtonLink from "@/components/ui/buttonLink";
-import { getAllLessons } from "@/lib/actions/lessonActions";
+import ButtonLink from "@/components/ui/link";
+import { getAllCourses } from "@/lib/actions/courseActions";
 import { Prisma } from "@prisma/client";
 import { PlusIcon } from "lucide-react";
 
-const LessonListPage = async ({
+const CourseListPage = async ({
   searchParams,
 }: {
   searchParams: {
@@ -28,23 +28,20 @@ const LessonListPage = async ({
   const orderByField = {
     [orderBy]: sortBy as "asc" | "desc",
   };
-  const whereClause: Prisma.LessonWhereInput = query
+  const whereClause: Prisma.CourseWhereInput = query
     ? {
-        OR: [
-          { title: { contains: query, mode: "insensitive" } },
-          { courseId: { contains: query, mode: "insensitive" } },
-        ],
+        OR: [{ title: { contains: query, mode: "insensitive" } }],
       }
     : {};
 
-  const foundedLessons = await getAllLessons(
+  const foundedCourses = await getAllCourses(
     skipAmount,
     itemsPerPage,
     orderByField,
     whereClause
   );
 
-  const [lessons = [], totalItems = 0] = foundedLessons?.data ?? [];
+  const [courses = [], totalItems = 0] = foundedCourses?.data ?? [];
 
   const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
 
@@ -54,27 +51,27 @@ const LessonListPage = async ({
         <Breadcrumbs
           breadcrumbs={[
             {
-              label: "Lessons",
-              href: "/admin/lessons/all",
+              label: "Courses",
+              href: "/admin/courses/all",
               active: true,
             },
           ]}
         />
 
-        <ButtonLink href="/admin/lessons/create">
-          <span className="hidden md:block">Create Lesson</span>
+        <ButtonLink href="/admin/courses/create">
+          <span className="hidden md:block">Create Course</span>
           <PlusIcon className="md:ml-4" />
         </ButtonLink>
       </div>
 
       <div className="flex items-center justify-between my-8">
         <Search placeholder={query} />
-        <LessonSort />
+        <CourseSort />
       </div>
 
-      {Array.isArray(lessons) && lessons.length > 0 ? (
+      {Array.isArray(courses) && courses.length > 0 ? (
         <>
-          <LessonTable data={lessons} />
+          <CourseTable data={courses} />
           <Pagination
             totalItems={totalItems as number}
             itemsPerPage={itemsPerPage}
@@ -89,4 +86,4 @@ const LessonListPage = async ({
   );
 };
 
-export default LessonListPage;
+export default CourseListPage;

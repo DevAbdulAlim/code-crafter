@@ -6,7 +6,7 @@ import { createEnrollment } from "@/lib/actions/enrollmentActions";
 import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/buttonLink";
+import ButtonLink from "@/components/ui/link";
 
 const EnrollmentCreateForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
