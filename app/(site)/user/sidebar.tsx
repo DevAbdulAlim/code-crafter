@@ -18,7 +18,7 @@ const SideNavbar: React.FC = () => {
   return (
     <div className="w-64 h-full mt-4 shadow-lg ">
       <div className="p-4 ">
-        <h1 className="mb-4 text-lg font-bold">SUBSCRIPTION</h1>
+        <h3 className="mb-4 font-bold text-gray-600 text-md">SUBSCRIPTION</h3>
         <div className="flex flex-col space-y-2">
           <Link to="/user/subscriptions">
             <FaUsers className="w-6 h-6 mr-2" />
@@ -43,7 +43,9 @@ const SideNavbar: React.FC = () => {
         </div>
       </div>
       <div className="p-4 ">
-        <h1 className="mb-4 text-lg font-bold">ACCOUNT SETTINGS</h1>
+        <h3 className="mb-4 font-bold text-gray-600 text-md">
+          ACCOUNT SETTINGS
+        </h3>
         <div className="flex flex-col space-y-2">
           <Link to="/user/edit-profile">
             <FaUserEdit className="w-6 h-6 mr-2" />

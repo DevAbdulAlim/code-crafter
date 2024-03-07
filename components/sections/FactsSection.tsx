@@ -35,14 +35,13 @@ const facts = [
 
 const FactsSection = () => {
   return (
-    <section className="py-20 text-white bg-slate-700">
+    <section className="py-20 -mt-40 text-white">
       <div className="mx-auto text-center max-w-7xl">
-        <h2 className="mb-8 text-4xl font-extrabold">Facts About Us</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {facts.map((fact) => (
             <div
               key={fact.id}
-              className="p-6 text-gray-600 transition-transform transform bg-white rounded-md shadow-md hover:scale-105"
+              className="p-6 text-gray-600 rounded-md bg-gray-50 "
             >
               <span className="flex items-center justify-center">
                 {" "}

@@ -9,7 +9,7 @@ const linkVariants = cva(
   {
     variants: {
       variant: {
-        primary: "text-teal-800 hover:text-teal-950",
+        primary: "text-gray-500 hover:text-blue-500",
         secondary:
           "text-gray-500 hover:text-gray-600 focus:text-gray-600 focus:ring-gray-400",
         success:

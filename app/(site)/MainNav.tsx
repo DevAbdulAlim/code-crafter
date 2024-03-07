@@ -28,16 +28,7 @@ export default async function MainNav() {
 
       <SearchForm />
 
-      {session ? (
-        <Account />
-      ) : (
-        <Link
-          href="/login"
-          className="flex items-center justify-center px-4 my-2 font-semibold rounded-md hover:bg-blue-700 hover:text-white"
-        >
-          Login
-        </Link>
-      )}
+      {session ? <Account /> : <Link href="/login">Login</Link>}
     </nav>
   );
 }

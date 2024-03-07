@@ -1,7 +1,7 @@
 // components/sections/FeaturedCoursesSection.tsx
 import React from "react";
-import CourseCard from "../Cards/CourseCard";
-import CourseCard2 from "../Cards/CourseCard2";
+import CourseCard from "../../components/Cards/CourseCard";
+import CourseCard2 from "../../components/Cards/CourseCard2";
 
 const FeaturedCourses: React.FC = () => {
   const featuredCourses = [
