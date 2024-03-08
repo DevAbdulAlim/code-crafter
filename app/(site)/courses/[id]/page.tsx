@@ -1,4 +1,4 @@
-import Curriculum from "@/components/sections/Curriculum";
+import Curriculum from "@/app/(site)/courses/[id]/Curriculum";
 import CourseOverview from "@/components/sections/CourseOverview";
 import FAQ from "@/components/sections/FAQ";
 import CourseDescription from "@/components/sections/CourseDescription";
