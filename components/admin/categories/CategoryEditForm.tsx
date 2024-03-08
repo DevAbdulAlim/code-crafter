@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/buttonLink";
+import Link from "@/components/ui/link";
 
 type CategoryDataType = {
   name: string;
@@ -73,13 +73,13 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
           />
 
           <div className="flex justify-end mt-4">
-            <ButtonLink
-              href="/admin/categories/all"
+            <Link
+              to="/admin/categories/all"
               variant="secondary"
               className="mr-4"
             >
               Cancel
-            </ButtonLink>
+            </Link>
             <Button type="submit">Edit Category</Button>
           </div>
         </div>

@@ -1,7 +1,6 @@
-import React from "react";
-import ButtonLink from "@/components/ui/buttonLink";
 import { PencilIcon } from "lucide-react";
 import CourseDeleteForm from "./CourseDeleteForm";
+import Link from "@/components/ui/link";
 
 export default function CourseTable({ data }: { data: any }) {
   return (
@@ -18,13 +17,12 @@ export default function CourseTable({ data }: { data: any }) {
                 <p>{item.title}</p>
                 <p>{item.description}</p>
                 <div className="flex justify-between mt-2">
-                  <ButtonLink
-                    href={`/admin/courses/${item.id}/edit`}
-                    variant="ghost"
+                  <Link
+                    to={`/admin/courses/${item.id}/edit`}
                     className="px-2 border"
                   >
                     <PencilIcon className="w-4 h-4" />
-                  </ButtonLink>
+                  </Link>
                   <CourseDeleteForm id={item.id} />
                 </div>
               </div>
@@ -60,13 +58,12 @@ export default function CourseTable({ data }: { data: any }) {
                   </td>
                   <td className="py-3 pl-6 pr-3 whitespace-nowrap">
                     <div className="flex justify-end gap-3">
-                      <ButtonLink
-                        href={`/admin/courses/${item.id}/edit`}
-                        variant="ghost"
+                      <Link
+                        to={`/admin/courses/${item.id}/edit`}
                         className="px-2 border"
                       >
                         <PencilIcon className="w-4 h-4" />
-                      </ButtonLink>
+                      </Link>
                       <CourseDeleteForm id={item.id} />
                     </div>
                   </td>

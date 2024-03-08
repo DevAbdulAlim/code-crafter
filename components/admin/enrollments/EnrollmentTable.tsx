@@ -1,7 +1,6 @@
-import React from "react";
-import ButtonLink from "@/components/ui/buttonLink";
 import { PencilIcon } from "lucide-react";
-import EnrollmentDeleteForm from "./EnrollmentDeleteForm"; // You might need to create this component
+import EnrollmentDeleteForm from "./EnrollmentDeleteForm";
+import Link from "@/components/ui/link";
 
 export default function EnrollmentTable({ data }: { data: any }) {
   return (
@@ -17,13 +16,12 @@ export default function EnrollmentTable({ data }: { data: any }) {
                 <p>{item.userId}</p>
                 <p>{item.courseId}</p>
                 <div className="flex justify-between mt-2">
-                  <ButtonLink
-                    href={`/admin/enrollments/${item.id}/edit`}
-                    variant="ghost"
+                  <Link
+                    to={`/admin/enrollments/${item.id}/edit`}
                     className="px-2 border"
                   >
                     <PencilIcon className="w-4 h-4" />
-                  </ButtonLink>
+                  </Link>
                   <EnrollmentDeleteForm id={item.id} />
                 </div>
               </div>
@@ -55,13 +53,12 @@ export default function EnrollmentTable({ data }: { data: any }) {
                   </td>
                   <td className="py-3 pl-6 pr-3 whitespace-nowrap">
                     <div className="flex justify-end gap-3">
-                      <ButtonLink
-                        href={`/admin/enrollments/${item.id}/edit`}
-                        variant="ghost"
+                      <Link
+                        to={`/admin/enrollments/${item.id}/edit`}
                         className="px-2 border"
                       >
                         <PencilIcon className="w-4 h-4" />
-                      </ButtonLink>
+                      </Link>
                       <EnrollmentDeleteForm id={item.id} />
                     </div>
                   </td>

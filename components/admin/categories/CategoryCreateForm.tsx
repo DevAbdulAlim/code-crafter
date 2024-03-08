@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/buttonLink";
+import Link from "@/components/ui/link";
 
 /**
  * Component for adding a new course in the admin dashboard.
@@ -76,13 +76,13 @@ const CategoryCreateForm = () => {
           />
 
           <div className="flex justify-end mt-4">
-            <ButtonLink
-              href="/admin/categories/all"
+            <Link
+              to="/admin/categories/all"
               variant="secondary"
               className="mr-4"
             >
               Cancel
-            </ButtonLink>
+            </Link>
             <Button type="submit">Add Category</Button>
           </div>
         </div>

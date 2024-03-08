@@ -7,25 +7,24 @@ import {
   FaLanguage,
   FaUser,
 } from "react-icons/fa";
+import Link from "../ui/link";
 export default function CourseOverview() {
   return (
     <section>
-      <div className="border p-4">
-        <div className="flex my-4 justify-around">
-          <span className="text-2xl text-red-500 font-bold">$450</span>
-          <del className="text-2xl text-gray-500  font-bold">$500</del>
+      <div className="p-4 border">
+        <div className="flex justify-around my-4">
+          <span className="text-2xl font-bold text-red-500">$450</span>
+          <del className="text-2xl font-bold text-gray-500">$500</del>
         </div>
-        <button className="w-full px-6 py-3 my-4 font-sans font-semibold text-white bg-blue-500 rounded-lg">
-          Enroll Now
-        </button>
+        <Link to="/courses/checkout">Enroll Now</Link>
         <hr />
         <div className="my-4">
-          <h3 className="mb-2 text-2xl text-gray-700 font-semibold">
+          <h3 className="mb-2 text-2xl font-semibold text-gray-700">
             This course includes
           </h3>
           <div className="flex justify-between">
             <span className="flex">
-              <span className=" mr-2 flex justify-center items-center">
+              <span className="flex items-center justify-center mr-2 ">
                 <FaBookOpen />
               </span>
               Lectures
@@ -35,7 +34,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className=" mr-2 flex justify-center items-center">
+              <span className="flex items-center justify-center mr-2 ">
                 <FaClock />
               </span>
               Duration
@@ -45,7 +44,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className=" mr-2 flex justify-center items-center">
+              <span className="flex items-center justify-center mr-2 ">
                 <FaUser />
               </span>
               Skills
@@ -55,7 +54,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className=" mr-2 flex justify-center items-center">
+              <span className="flex items-center justify-center mr-2 ">
                 <FaLanguage />
               </span>
               Language
@@ -65,7 +64,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className=" mr-2 flex justify-center items-center">
+              <span className="flex items-center justify-center mr-2 ">
                 <FaCalendarAlt />
               </span>
               Deadline
@@ -75,7 +74,7 @@ export default function CourseOverview() {
 
           <div className="flex justify-between">
             <span className="flex">
-              <span className=" mr-2 flex justify-center items-center">
+              <span className="flex items-center justify-center mr-2 ">
                 <FaCertificate />
               </span>
               Certificate
@@ -92,7 +91,7 @@ export default function CourseOverview() {
             <img
               src="https://t4.ftcdn.net/jpg/01/42/20/17/360_F_142201762_qMCuIAolgpz4NbF5T5m66KQJzYzrEbUv.jpg"
               alt="Instructor Avatar"
-              className="rounded-full h-12 w-12 mr-4"
+              className="w-12 h-12 mr-4 rounded-full"
             />
             <div>
               <p className="text-xl font-semibold">Jacqueline Miller</p>
@@ -102,24 +101,24 @@ export default function CourseOverview() {
         </div>
       </div>
 
-      <div className="border p-4 mt-4">
-        <h3 className="text-xl font-semibold mb-4">Popular Tags</h3>
+      <div className="p-4 mt-4 border">
+        <h3 className="mb-4 text-xl font-semibold">Popular Tags</h3>
         <div className="flex flex-wrap">
           <a
             href="#"
-            className="bg-blue-500 text-white px-4 py-2 m-2 rounded-full hover:bg-blue-700 transition duration-300"
+            className="px-4 py-2 m-2 text-white transition duration-300 bg-blue-500 rounded-full hover:bg-blue-700"
           >
             Blog
           </a>
           <a
             href="#"
-            className="bg-green-500 text-white px-4 py-2 m-2 rounded-full hover:bg-green-700 transition duration-300"
+            className="px-4 py-2 m-2 text-white transition duration-300 bg-green-500 rounded-full hover:bg-green-700"
           >
             Web Development
           </a>
           <a
             href="#"
-            className="bg-yellow-500 text-white px-4 py-2 m-2 rounded-full hover:bg-yellow-700 transition duration-300"
+            className="px-4 py-2 m-2 text-white transition duration-300 bg-yellow-500 rounded-full hover:bg-yellow-700"
           >
             SEO
           </a>
