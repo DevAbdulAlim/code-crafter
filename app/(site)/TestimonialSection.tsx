@@ -26,7 +26,7 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="py-16 px-3 bg-gray-100">
+    <section className="px-3 py-16 ">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-8 text-4xl font-extrabold text-center">
           What Our Clients Say
@@ -35,7 +35,7 @@ const TestimonialSection = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="p-6 transition-transform transform bg-white rounded-md shadow-md hover:scale-105"
+              className="p-6 transition-transform transform rounded-md bg-blue-50 hover:scale-105"
             >
               <p className="mb-4 text-gray-700">{testimonial.comment}</p>
               <div className="flex items-center">

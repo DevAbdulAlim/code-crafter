@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 import {
   FaGraduationCap,
@@ -10,24 +11,22 @@ import {
 
 const AboutSection = () => {
   return (
-    <section className="py-16 px-3 bg-white">
+    <section className="px-3 py-20 text-gray-100 bg-gradient-to-b from-blue-500 to-blue-200">
       <div className="mx-auto text-center max-w-7xl">
         <h2 className="mb-8 text-4xl font-extrabold">About Us</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 ">
           <div>
-            <p className="leading-loose text-gray-700">
+            <p className="leading-loose ">
               Welcome to our online learning platform, where education meets
               innovation. We are dedicated to providing a transformative
               learning experience for individuals worldwide.
             </p>
-            <p className="mt-4 leading-loose text-gray-700">
+            <p className="mt-4 leading-loose ">
               Our mission is to empower learners of all backgrounds to acquire
               new skills, pursue their passions, and excel in their personal and
               professional endeavors.
             </p>
-            <button className="px-4 py-2 mt-8 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
-              Read More
-            </button>
+            <Button>Read More</Button>
           </div>
           <div className="flex items-center justify-center">
             <img
@@ -41,7 +40,10 @@ const AboutSection = () => {
           <h3 className="mb-4 text-2xl font-semibold">Our Commitments</h3>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {commitments.map((commitment) => (
-              <div key={commitment.id} className="p-4 bg-gray-100 rounded-md">
+              <div
+                key={commitment.id}
+                className="p-4 text-blue-800 bg-blue-100 rounded-md"
+              >
                 {commitment.icon}
                 <h4 className="mt-2 text-lg font-semibold">
                   {commitment.title}

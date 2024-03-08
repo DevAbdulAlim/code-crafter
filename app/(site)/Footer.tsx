@@ -2,11 +2,11 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white px-3 py-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="px-3 py-8 text-gray-200 bg-blue-950">
+      <div className="grid grid-cols-1 gap-8 mx-auto max-w-7xl md:grid-cols-2 lg:grid-cols-4">
         {/* Column 1 - About Us */}
         <div>
-          <h2 className="text-lg font-semibold mb-4">About Us</h2>
+          <h2 className="mb-4 text-lg font-semibold">About Us</h2>
           <p className="text-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -15,7 +15,7 @@ const Footer = () => {
 
         {/* Column 2 - Quick Links */}
         <div>
-          <h2 className="text-lg font-semibold mb-4">Quick Links</h2>
+          <h2 className="mb-4 text-lg font-semibold">Quick Links</h2>
           <ul className="text-sm">
             <li>
               <a href="#">Home</a>
@@ -34,7 +34,7 @@ const Footer = () => {
 
         {/* Column 3 - Contact Us */}
         <div>
-          <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
+          <h2 className="mb-4 text-lg font-semibold">Contact Us</h2>
           <p className="text-sm">1234 Main Street, Cityville</p>
           <p className="text-sm">Email: info@example.com</p>
           <p className="text-sm">Phone: +880 1890977793</p>
@@ -42,7 +42,7 @@ const Footer = () => {
 
         {/* Column 4 - Social Media */}
         <div>
-          <h2 className="text-lg font-semibold mb-4">Follow Us</h2>
+          <h2 className="mb-4 text-lg font-semibold">Follow Us</h2>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-gray-400">
               <FaFacebook size={24} />
@@ -61,8 +61,8 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-8 border-t text-center border-gray-700 pt-4">
-        <p className="text-sm text-gray-500">
+      <div className="pt-4 mt-8 text-center border-t border-gray-700">
+        <p className="text-sm text-gray-400">
           &copy; 2023 CodeCrafter. All rights reserved.
         </p>
       </div>

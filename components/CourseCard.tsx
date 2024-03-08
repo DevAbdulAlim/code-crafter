@@ -22,11 +22,11 @@ const CourseCard: React.FC<CourseCardProps> = ({
     : null;
 
   return (
-    <div className="bg-gray-100 rounded-md overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+    <div className="relative overflow-hidden transition duration-300 rounded-md shadow-md hover:shadow-lg">
       <img
         src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"
         alt={title}
-        className="w-full h-48 object-cover"
+        className="object-cover w-full h-48"
       />
 
       <div className="p-4">
@@ -40,7 +40,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
             {price}
           </span>
           {discountPrice && (
-            <span className="text-green-500 font-semibold">
+            <span className="font-semibold text-green-500">
               ${discountedPrice?.toFixed(2)}
             </span>
           )}

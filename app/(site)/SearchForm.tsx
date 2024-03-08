@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import Search from "../Dropdowns/Search";
+import Search from "../../components/Dropdowns/Search";
 
 export default function SearchForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,16 +14,16 @@ export default function SearchForm() {
     <>
       <form
         action="/courses"
-        className="relative grow hidden border-2 md:mx-8 rounded-full md:flex items-center"
+        className="relative items-center hidden border-2 rounded-full grow md:mx-8 md:flex"
       >
         <input
-          className="h-full w-full focus:text-blue-200 rounded-full p-2 focus:outline-none focus:ring focus:ring-blue-800"
+          className="w-full h-full p-2 rounded-full focus:text-blue-200 focus:outline-none focus:ring focus:ring-blue-800"
           type="text"
           name="title"
           placeholder="Search"
         />
         <button
-          className="absolute right-2  top-2 text-2xl"
+          className="absolute text-2xl text-gray-600 right-2 top-2"
           type="submit"
           aria-label="Search"
         >
@@ -32,9 +32,9 @@ export default function SearchForm() {
       </form>
 
       {/* Mobile Serach Button */}
-      <div className="items-center flex md:hidden">
+      <div className="flex items-center md:hidden">
         <button
-          className=" top-2 text-xl"
+          className="text-xl top-2"
           type="submit"
           aria-label="Search"
           onClick={toggleOpen}

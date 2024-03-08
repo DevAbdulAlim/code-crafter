@@ -79,11 +79,11 @@ const posts: Post[] = [
 ];
 
 const PostCard = ({ post }: { post: Post }) => (
-  <div className="flex flex-col bg-white overflow-hidden rounded-lg shadow-md">
+  <div className="flex flex-col overflow-hidden bg-white rounded-lg ">
     <img
       src={post.imageUrl}
       alt={`Post ${post.title}`}
-      className="object-cover w-full mb-4  h-72"
+      className="object-cover w-full mb-4 h-72"
     />
     <div className="p-4">
       <div className="flex items-center justify-between mb-2">
@@ -118,8 +118,8 @@ const PostCard = ({ post }: { post: Post }) => (
 
 const RecentPosts: React.FC = () => {
   return (
-    <section className="py-12 px-3 bg-gray-200">
-      <div className="max-w-7xl mx-auto">
+    <section className="px-3 py-12 bg-blue-100">
+      <div className="mx-auto max-w-7xl">
         <h2 className="mb-8 text-3xl font-bold">Recent Posts</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {posts.map((post, index) => (

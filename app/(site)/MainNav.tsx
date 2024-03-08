@@ -4,7 +4,7 @@ import { authOptions } from "@/lib/auth";
 
 import CategoryDropdown from "../../components/Dropdowns/CategoryDropdown";
 import { FcDoughnutChart } from "react-icons/fc";
-import SearchForm from "../../components/sections/SearchForm";
+import SearchForm from "./SearchForm";
 import prisma from "@/lib/prisma";
 import Account from "./Account";
 

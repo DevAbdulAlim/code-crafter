@@ -35,20 +35,20 @@ const facts = [
 
 const FactsSection = () => {
   return (
-    <section className="py-20 px-3 -mt-40 text-white">
+    <section className="px-3 py-20 text-white bg-blue-100">
       <div className="mx-auto text-center max-w-7xl">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {facts.map((fact) => (
             <div
               key={fact.id}
-              className="p-6 text-gray-600 rounded-md bg-gray-50 "
+              className="p-6 -mt-40 text-gray-700 bg-white rounded-md "
             >
               <span className="flex items-center justify-center">
                 {" "}
                 {fact.icon}
               </span>
               <div className="mb-2 text-3xl font-bold">{fact.value}</div>
-              <div className="text-gray-700">{fact.title}</div>
+              <div>{fact.title}</div>
             </div>
           ))}
         </div>

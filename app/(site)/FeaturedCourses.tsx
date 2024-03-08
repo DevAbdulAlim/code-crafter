@@ -49,7 +49,7 @@ const FeaturedCourses: React.FC = () => {
   ];
 
   return (
-    <section className="px-3 py-12 bg-blue-100">
+    <section className="px-3 py-20 ">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-8 text-3xl font-bold text-center">
           Featured Courses
