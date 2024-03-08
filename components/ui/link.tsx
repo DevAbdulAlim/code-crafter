@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import { BiLoaderCircle } from "react-icons/bi";
 
 const linkVariants = cva(
-  "transition-color focus:outline-none focus:ring-slate-400 focus:ring-offset-2",
+  "inline-flex items-center justify-center transition-color focus:outline-none focus:ring-slate-400 focus:ring-offset-2",
   {
     variants: {
       variant: {
