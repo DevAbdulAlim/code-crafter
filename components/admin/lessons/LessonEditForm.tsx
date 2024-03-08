@@ -7,8 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/link";
 import { updateLesson } from "@/lib/actions/lessonActions";
+import Link from "@/components/ui/link";
 
 type LessonDataType = {
   lessonId: number;
@@ -114,13 +114,9 @@ const LessonEditForm: React.FC<LessonEditFormProps> = ({ id, lesson }) => {
         </div>
 
         <div className="flex justify-end mt-4">
-          <ButtonLink
-            href="/admin/lessons/all"
-            variant="secondary"
-            className="mr-4"
-          >
+          <Link to="/admin/lessons/all" variant="secondary" className="mr-4">
             Cancel
-          </ButtonLink>
+          </Link>
           <Button type="submit">Update Lesson</Button>
         </div>
       </form>

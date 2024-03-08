@@ -5,8 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/link";
 import { updateEnrollment } from "@/lib/actions/enrollmentActions";
+import Link from "@/components/ui/link";
 
 type EnrollmentDataType = {
   userId: string;
@@ -80,13 +80,13 @@ const EnrollmentEditForm: React.FC<EnrollmentEditFormProps> = ({
         </div>
 
         <div className="flex justify-end mt-4">
-          <ButtonLink
-            href="/admin/enrollments/all"
+          <Link
+            to="/admin/enrollments/all"
             variant="secondary"
             className="mr-4"
           >
             Cancel
-          </ButtonLink>
+          </Link>
           <Button type="submit">Update Enrollment</Button>
         </div>
       </form>

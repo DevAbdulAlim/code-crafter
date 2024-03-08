@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/link";
+import Link from "@/components/ui/link";
 
 const CourseCreateForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -80,13 +80,9 @@ const CourseCreateForm = () => {
         </div>
 
         <div className="flex justify-end mt-4">
-          <ButtonLink
-            href="/admin/courses/all"
-            variant="secondary"
-            className="mr-4"
-          >
+          <Link to="/admin/courses/all" variant="secondary" className="mr-4">
             Cancel
-          </ButtonLink>
+          </Link>
           <Button type="submit">Add Course</Button>
         </div>
       </form>

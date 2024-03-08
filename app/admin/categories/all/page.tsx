@@ -3,11 +3,11 @@ import CategoryTable from "@/components/admin/categories/CategoryTable";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
 import CategorySort from "@/components/admin/categories/CategorySort";
-import ButtonLink from "@/components/ui/link";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
 import { getAllCategories } from "@/lib/actions/categoryActions";
 import NotFound from "@/components/notFound";
+import Link from "@/components/ui/link";
 
 const CoursesListPage = async ({
   searchParams,
@@ -59,10 +59,10 @@ const CoursesListPage = async ({
           ]}
         />
 
-        <ButtonLink href="/admin/categories/create">
+        <Link to="/admin/categories/create">
           <span className="hidden md:block">Create Category</span>
           <PlusIcon className="md:ml-4" />
-        </ButtonLink>
+        </Link>
       </div>
 
       <div className="flex items-center justify-between my-8">

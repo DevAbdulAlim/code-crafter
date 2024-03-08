@@ -2,12 +2,12 @@ import Pagination from "@/components/Pagination";
 import UserTable from "@/components/admin/users/UserTable";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
-import ButtonLink from "@/components/ui/link";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
 import { getAllUsers } from "@/lib/actions/userActions";
 import NotFound from "@/components/notFound";
 import UserSort from "@/components/admin/users/UserSort";
+import Link from "@/components/ui/link";
 
 const UserListPage = async ({
   searchParams,
@@ -59,10 +59,10 @@ const UserListPage = async ({
           ]}
         />
 
-        <ButtonLink href="/admin/users/create">
+        <Link to="/admin/users/create">
           <span className="hidden md:block">Create User</span>
           <PlusIcon className="md:ml-4" />
-        </ButtonLink>
+        </Link>
       </div>
 
       <div className="flex items-center justify-between my-8">

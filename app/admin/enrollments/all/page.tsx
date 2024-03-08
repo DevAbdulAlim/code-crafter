@@ -3,11 +3,11 @@ import EnrollmentTable from "@/components/admin/enrollments/EnrollmentTable";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
 import EnrollmentSort from "@/components/admin/enrollments/EnrollmentSort";
-import ButtonLink from "@/components/ui/link";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
 import { getAllEnrollments } from "@/lib/actions/enrollmentActions";
 import NotFound from "@/components/notFound";
+import Link from "@/components/ui/link";
 
 const EnrollmentListPage = async ({
   searchParams,
@@ -59,10 +59,10 @@ const EnrollmentListPage = async ({
           ]}
         />
 
-        <ButtonLink href="/admin/enrollments/create">
+        <Link to="/admin/enrollments/create">
           <span className="hidden md:block">Create Enrollment</span>
           <PlusIcon className="md:ml-4" />
-        </ButtonLink>
+        </Link>
       </div>
 
       <div className="flex items-center justify-between my-8">

@@ -3,11 +3,11 @@ import ContentTable from "@/components/admin/contents/ContentTable";
 import Search from "@/components/search";
 import { Prisma } from "@prisma/client";
 import ContentSort from "@/components/admin/contents/ContentSort";
-import ButtonLink from "@/components/ui/link";
 import { PlusIcon } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumb";
 import { getAllContents } from "@/lib/actions/contentActions";
 import NotFound from "@/components/notFound";
+import Link from "@/components/ui/link";
 
 const ContentListPage = async ({
   searchParams,
@@ -59,10 +59,10 @@ const ContentListPage = async ({
           ]}
         />
 
-        <ButtonLink href="/admin/contents/create">
+        <Link to="/admin/contents/create">
           <span className="hidden md:block">Create Content</span>
           <PlusIcon className="md:ml-4" />
-        </ButtonLink>
+        </Link>
       </div>
 
       <div className="flex items-center justify-between my-8">

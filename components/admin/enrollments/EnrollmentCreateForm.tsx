@@ -6,7 +6,7 @@ import { createEnrollment } from "@/lib/actions/enrollmentActions";
 import "react-toastify/dist/ReactToastify.css";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import ButtonLink from "@/components/ui/link";
+import Link from "@/components/ui/link";
 
 const EnrollmentCreateForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -65,13 +65,13 @@ const EnrollmentCreateForm = () => {
         </div>
 
         <div className="flex justify-end mt-4">
-          <ButtonLink
-            href="/admin/enrollments/all"
+          <Link
+            to="/admin/enrollments/all"
             variant="secondary"
             className="mr-4"
           >
             Cancel
-          </ButtonLink>
+          </Link>
           <Button type="submit">Add Enrollment</Button>
         </div>
       </form>

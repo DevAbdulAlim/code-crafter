@@ -4,7 +4,7 @@ import CourseSort from "@/components/admin/courses/CourseSort";
 import CourseTable from "@/components/admin/courses/CourseTable";
 import NotFound from "@/components/notFound";
 import Search from "@/components/search";
-import ButtonLink from "@/components/ui/link";
+import Link from "@/components/ui/link";
 import { getAllCourses } from "@/lib/actions/courseActions";
 import { Prisma } from "@prisma/client";
 import { PlusIcon } from "lucide-react";
@@ -58,10 +58,10 @@ const CourseListPage = async ({
           ]}
         />
 
-        <ButtonLink href="/admin/courses/create">
+        <Link to="/admin/courses/create">
           <span className="hidden md:block">Create Course</span>
           <PlusIcon className="md:ml-4" />
-        </ButtonLink>
+        </Link>
       </div>
 
       <div className="flex items-center justify-between my-8">
