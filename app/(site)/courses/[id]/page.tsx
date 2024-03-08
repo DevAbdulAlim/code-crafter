@@ -1,8 +1,8 @@
 import Curriculum from "@/app/(site)/courses/[id]/Curriculum";
 import CourseOverview from "@/components/sections/CourseOverview";
-import FAQ from "@/components/sections/FAQ";
-import CourseDescription from "@/components/sections/CourseDescription";
+import CourseDescription from "@/app/(site)/courses/[id]/CourseDescription";
 import CourseIntro from "@/components/sections/CourseIntro";
+import Faq from "./faq";
 const CourseDetails: React.FC = () => {
   return (
     <section className="px-3 my-12">
@@ -22,7 +22,7 @@ const CourseDetails: React.FC = () => {
 
             <CourseDescription />
             <Curriculum />
-            <FAQ />
+            <Faq />
           </div>
 
           <div className="md:col-span-2">

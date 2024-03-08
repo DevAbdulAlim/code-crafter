@@ -6,7 +6,7 @@ import CategoryDropdown from "../../components/Dropdowns/CategoryDropdown";
 import { FcDoughnutChart } from "react-icons/fc";
 import SearchForm from "../../components/sections/SearchForm";
 import prisma from "@/lib/prisma";
-import Account from "../../components/Dropdowns/Account";
+import Account from "./Account";
 
 export default async function MainNav() {
   const session = await getServerSession(authOptions);

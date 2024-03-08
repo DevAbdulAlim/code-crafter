@@ -1,9 +1,9 @@
 import React from "react";
 import { MdAccountCircle } from "react-icons/md";
-import Link from "../ui/link";
+import Link from "../../components/ui/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { Button } from "../ui/button";
+import { Button } from "../../components/ui/button";
 
 export default async function Account() {
   const session = await getServerSession(authOptions);

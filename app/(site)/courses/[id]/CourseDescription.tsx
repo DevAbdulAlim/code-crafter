@@ -1,10 +1,10 @@
 import React from "react";
-import { IoMdCheckmarkCircle } from "react-icons/io";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 
 export default function CourseDescription() {
   return (
-    <div className="border rounded-md mb-8">
-      <h2 className="text-2xl border-b bg-gray-100 text-gray-800  p-4 font-bold mb-4">
+    <div className="mb-8 border rounded-md">
+      <h2 className="p-4 mb-4 text-2xl font-bold text-gray-800 bg-gray-100 border-b">
         Course description
       </h2>
       <div className="p-4">
@@ -20,11 +20,11 @@ export default function CourseDescription() {
           digital marketing and what the future holds.
         </p>
 
-        <div className="grid py-4 grid-cols-1 md:grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 gap-2 py-4 md:grid-cols-2">
           {[...Array(10)].map((_, index) => (
-            <div className="flex" key={index}>
-              <span className="mr-2 text-green-600 text-2xl">
-                <IoMdCheckmarkCircle />
+            <div className="flex items-center" key={index}>
+              <span className="mr-2 text-2xl text-green-600">
+                <AiOutlineCheckCircle />
               </span>
               Digital marketing course introduction
             </div>

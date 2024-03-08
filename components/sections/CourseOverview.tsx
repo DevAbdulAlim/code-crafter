@@ -7,7 +7,7 @@ import {
   FaLanguage,
   FaUser,
 } from "react-icons/fa";
-import ButtonLink from "../ui/link";
+import Link from "../ui/link";
 export default function CourseOverview() {
   return (
     <section>
@@ -16,12 +16,7 @@ export default function CourseOverview() {
           <span className="text-2xl font-bold text-red-500">$450</span>
           <del className="text-2xl font-bold text-gray-500">$500</del>
         </div>
-        <ButtonLink
-          href="/courses/checkout"
-          className="w-full px-6 py-3 my-4 font-sans font-semibold text-white bg-blue-500 rounded-lg"
-        >
-          Enroll Now
-        </ButtonLink>
+        <Link to="/courses/checkout">Enroll Now</Link>
         <hr />
         <div className="my-4">
           <h3 className="mb-2 text-2xl font-semibold text-gray-700">
