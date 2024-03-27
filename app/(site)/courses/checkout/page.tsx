@@ -1,134 +1,65 @@
-import React from "react";
+"use client";
 
-const CheckoutPage = () => {
+import React, { useState } from "react";
+
+type PaymentMethod = "creditCard" | "paypal" | "other";
+
+const CourseEnrollmentPage: React.FC = () => {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] =
+    useState<PaymentMethod | null>(null);
+
+  const handlePaymentMethodSelection = (paymentMethod: PaymentMethod) => {
+    setSelectedPaymentMethod(paymentMethod);
+  };
+
   return (
-    <div className="container p-8 mx-auto my-8 bg-white rounded-md shadow-lg">
-      <h1 className="mb-6 text-3xl font-semibold">Checkout</h1>
-
-      {/* Product Information */}
-      <div className="mb-8">
-        <h2 className="mb-4 text-xl font-semibold">Course Title</h2>
-        <p>
-          Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-        <p>Price: $295.55</p>
-      </div>
-
-      {/* Billing Information Form */}
-      <form className="mb-8">
-        <h2 className="mb-4 text-xl font-semibold">Billing Information</h2>
-
-        {/* Name */}
-        <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-600"
-          >
-            Full Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className="w-full p-2 mt-1 border rounded-md"
-            placeholder="John Doe"
-            required
-          />
-        </div>
-
-        {/* Address */}
-        <div className="mb-4">
-          <label
-            htmlFor="address"
-            className="block text-sm font-medium text-gray-600"
-          >
-            Address
-          </label>
-          <textarea
-            id="address"
-            name="address"
-            rows={3}
-            className="w-full p-2 mt-1 border rounded-md"
-            placeholder="123 Main Street, City, Country"
-            required
-          ></textarea>
-        </div>
-
-        {/* Payment Details (For demonstration, use a fictional payment method) */}
-        <div className="mb-4">
-          <label
-            htmlFor="creditCard"
-            className="block text-sm font-medium text-gray-600"
-          >
-            Credit Card Number
-          </label>
-          <input
-            type="text"
-            id="creditCard"
-            name="creditCard"
-            className="w-full p-2 mt-1 border rounded-md"
-            placeholder="1234 5678 9012 3456"
-            required
-          />
-        </div>
-
-        {/* Expiry Date and CVV (For demonstration, use fictional data) */}
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label
-              htmlFor="expiryDate"
-              className="block text-sm font-medium text-gray-600"
-            >
-              Expiry Date
-            </label>
+    <div className="container max-w-2xl p-4 mx-auto mt-8 border border-gray-200 rounded-md shadow-md">
+      <p className="mb-4 text-lg">Choose a payment method:</p>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div
+          className={`payment-method bg-white border border-gray-300 rounded-md  cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 ${
+            selectedPaymentMethod === "creditCard"
+              ? "selected border-blue-500"
+              : ""
+          }`}
+          onClick={() => handlePaymentMethodSelection("creditCard")}
+        >
+          <label className="flex items-center p-4">
             <input
-              type="text"
-              id="expiryDate"
-              name="expiryDate"
-              className="w-full p-2 mt-1 border rounded-md"
-              placeholder="MM/YY"
-              required
+              type="radio"
+              name="paymentMethod"
+              value="creditCard"
+              className="mr-2"
             />
-          </div>
-          <div>
-            <label
-              htmlFor="cvv"
-              className="block text-sm font-medium text-gray-600"
-            >
-              CVV
-            </label>
-            <input
-              type="text"
-              id="cvv"
-              name="cvv"
-              className="w-full p-2 mt-1 border rounded-md"
-              placeholder="123"
-              required
-            />
-          </div>
+            Credit Card
+          </label>
         </div>
-      </form>
-
-      {/* Order Summary */}
-      <div className="mb-8">
-        <h2 className="mb-4 text-xl font-semibold">Order Summary</h2>
-        <p>Total Price: $295.55</p>
-        {/* Add any applicable taxes, discounts, or fees */}
+        <div
+          className={`payment-method bg-white border border-gray-300 rounded-md cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 ${
+            selectedPaymentMethod === "paypal" ? "selected border-blue-500" : ""
+          }`}
+          onClick={() => handlePaymentMethodSelection("paypal")}
+        >
+          <label className="flex items-center p-4 ">
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="paypal"
+              className="mr-2"
+            />
+            PayPal
+          </label>
+        </div>
+        {/* Add more payment method cards as needed */}
       </div>
-
-      {/* Payment Method */}
-      <div className="mb-8">
-        <h2 className="mb-4 text-xl font-semibold">Payment Method</h2>
-        <p>Card ending in 3456</p>
-        {/* Display payment method options, such as credit card icons or PayPal */}
-      </div>
-
-      {/* Place Order Button */}
-      <button className="px-6 py-3 text-white bg-blue-500 rounded-full hover:bg-blue-700">
-        Place Order
+      <button
+        type="submit"
+        className="px-4 py-2 mt-8 text-white transition duration-300 ease-in-out bg-blue-500 rounded-md hover:bg-blue-600"
+      >
+        Submit
       </button>
     </div>
   );
 };
 
-export default CheckoutPage;
+export default CourseEnrollmentPage;
