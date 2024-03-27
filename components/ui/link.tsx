@@ -24,9 +24,10 @@ const linkVariants = cva(
         dark: "text-gray-500 hover:text-gray-600 focus:text-gray-600 focus:ring-gray-400",
         link: "text-blue-500 hover:underline focus:text-blue-600 focus:ring-blue-400",
         text: "text-blue-900 hover:underline",
+        button: "bg-blue-500 text-white rounded",
       },
       size: {
-        default: "",
+        default: "px-2 py-1",
         sm: "",
         lg: "",
       },

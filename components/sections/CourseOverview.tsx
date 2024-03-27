@@ -12,11 +12,16 @@ export default function CourseOverview() {
   return (
     <section>
       <div className="p-4 border">
-        <div className="flex justify-around my-4">
-          <span className="text-2xl font-bold text-red-500">$450</span>
-          <del className="text-2xl font-bold text-gray-500">$500</del>
+        <div className="flex justify-between my-4">
+          <div>
+            <span className="text-2xl font-bold text-red-500">$450</span>
+            <del className="ml-2 text-xl font-bold text-gray-500">$500</del>
+          </div>
+          <Link to="/courses/checkout" variant="button">
+            Enroll Now
+          </Link>
         </div>
-        <Link to="/courses/checkout">Enroll Now</Link>
+
         <hr />
         <div className="my-4">
           <h3 className="mb-2 text-2xl font-semibold text-gray-700">
