@@ -7,7 +7,7 @@ import {
   FaLanguage,
   FaUser,
 } from "react-icons/fa";
-import Link from "../ui/link";
+import Link from "../../../../components/ui/link";
 export default function CourseOverview() {
   return (
     <section>

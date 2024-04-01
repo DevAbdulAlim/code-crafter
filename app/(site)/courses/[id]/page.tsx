@@ -1,5 +1,5 @@
 import Curriculum from "@/app/(site)/courses/[id]/Curriculum";
-import CourseOverview from "@/components/sections/CourseOverview";
+import CourseOverview from "@/app/(site)/courses/[id]/CourseOverview";
 import CourseDescription from "@/app/(site)/courses/[id]/CourseDescription";
 import CourseIntro from "@/components/sections/CourseIntro";
 import Faq from "./faq";

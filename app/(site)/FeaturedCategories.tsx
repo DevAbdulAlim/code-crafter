@@ -4,25 +4,29 @@ import { FaCode, FaDatabase, FaMobileAlt } from "react-icons/fa";
 
 const FeaturedCategories: React.FC = () => {
   const featuredCategories = [
-    { name: "Web Development", link: "/categories/web-dev", icon: <FaCode /> },
+    {
+      name: "Web Development",
+      link: "/search",
+      icon: <FaCode />,
+    },
     {
       name: "Data Science",
-      link: "/categories/data-science",
+      link: "/search",
       icon: <FaDatabase />,
     },
     {
       name: "Mobile App Development",
-      link: "/categories/mobile-dev",
+      link: "/search",
       icon: <FaMobileAlt />,
     },
     {
       name: "Data Science",
-      link: "/categories/data-science",
+      link: "/search",
       icon: <FaDatabase />,
     },
     {
       name: "Mobile App Development",
-      link: "/categories/mobile-dev",
+      link: "/search",
       icon: <FaMobileAlt />,
     },
     // Add more categories as needed
