@@ -33,32 +33,38 @@ const faqData = [
   {
     question: "How long does it take to complete the web design course?",
     answer:
-      "The course duration varies depending on your pace of learning, but typically, it can be completed within [insert estimated duration here].",
+      "The course duration varies depending on your pace of learning, but typically, it can be completed within 8–12 weeks.",
   },
 ];
 
 export default function Faq() {
   return (
-    <div className="mb-8 border rounded-md">
-      <h2 className="p-4 mb-4 text-2xl font-bold text-gray-800 bg-gray-100 border-b">
-        Frequently Asking Questions
+    <section className="mb-8 rounded-lg bg-white shadow-md">
+      {/* FAQ Header */}
+      <h2 className="p-6 text-2xl font-bold text-gray-800 bg-blue-50 border-b">
+        Frequently Asked Questions
       </h2>
-      <Accordion type="single" collapsible className="grid grid-cols-1 gap-4 m">
+
+      {/* Accordion Section */}
+      <Accordion type="single" collapsible className="p-6">
         {faqData.map((item, index) => (
           <AccordionItem
             key={index}
             value={`item-${index}`}
-            className="p-4 bg-white"
+            className="mb-4 border rounded-lg bg-gray-50 hover:shadow-lg"
           >
-            <AccordionTrigger className="mb-2 text-xl font-semibold">
+            {/* Question Trigger */}
+            <AccordionTrigger className="p-4 text-lg font-semibold text-blue-800 hover:text-blue-600">
               {item.question}
             </AccordionTrigger>
-            <AccordionContent className="text-gray-600">
+
+            {/* Answer Content */}
+            <AccordionContent className="px-4 pb-4 text-gray-700">
               {item.answer}
             </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
-    </div>
+    </section>
   );
 }
