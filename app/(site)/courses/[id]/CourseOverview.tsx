@@ -20,8 +20,8 @@ export default function CourseOverview() {
             <del className="ml-3 text-lg text-gray-500">$500</del>
           </div>
           <Link
-            to="/courses/checkout"
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+            to="/checkout"
+            className="px-6 py-2 bg-blue-600 text-white hover:text-white rounded-lg shadow-md hover:bg-blue-700 transition"
           >
             Enroll Now
           </Link>

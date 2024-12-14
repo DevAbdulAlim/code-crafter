@@ -88,10 +88,10 @@ const CoursesListPage = async ({
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {courses.map((course, index) => (
                       <CourseCard
-                        // need to remove hardcode price and imageURL
-                        price={""}
-                        imageUrl={""}
                         key={index}
+                        slug={`course-${course.id}`}
+                        price={555}
+                        imageUrl=""
                         {...course}
                       />
                     ))}
