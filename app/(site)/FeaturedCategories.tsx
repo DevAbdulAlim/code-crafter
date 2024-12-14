@@ -1,53 +1,78 @@
-import Link from "@/components/ui/link";
 import React from "react";
-import { FaCode, FaDatabase, FaMobileAlt } from "react-icons/fa";
+import CategoryCard from "@/components/CategoryCard";
+import {
+  FaCode,
+  FaDatabase,
+  FaMobileAlt,
+  FaPaintBrush,
+  FaShieldAlt,
+  FaCloud,
+  FaChartLine,
+  FaLightbulb,
+} from "react-icons/fa";
 
-const FeaturedCategories: React.FC = () => {
-  const featuredCategories = [
+const FeaturedCategories = () => {
+  const categories = [
     {
+      icon: <FaCode className="text-blue-600 text-3xl" />,
       name: "Web Development",
-      link: "/search",
-      icon: <FaCode />,
+      slug: "web-development",
     },
     {
+      icon: <FaDatabase className="text-blue-600 text-3xl" />,
       name: "Data Science",
-      link: "/search",
-      icon: <FaDatabase />,
+      slug: "data-science",
     },
     {
+      icon: <FaMobileAlt className="text-blue-600 text-3xl" />,
       name: "Mobile App Development",
-      link: "/search",
-      icon: <FaMobileAlt />,
+      slug: "mobile-app-development",
     },
     {
-      name: "Data Science",
-      link: "/search",
-      icon: <FaDatabase />,
+      icon: <FaPaintBrush className="text-blue-600 text-3xl" />,
+      name: "UI/UX Design",
+      slug: "ui-ux-design",
     },
     {
-      name: "Mobile App Development",
-      link: "/search",
-      icon: <FaMobileAlt />,
+      icon: <FaShieldAlt className="text-blue-600 text-3xl" />,
+      name: "Cybersecurity",
+      slug: "cybersecurity",
     },
-    // Add more categories as needed
+    {
+      icon: <FaCloud className="text-blue-600 text-3xl" />,
+      name: "Cloud Computing",
+      slug: "cloud-computing",
+    },
+    {
+      icon: <FaLightbulb className="text-blue-600 text-3xl" />,
+      name: "AI & Machine Learning",
+      slug: "ai-machine-learning",
+    },
+    {
+      icon: <FaChartLine className="text-blue-600 text-3xl" />,
+      name: "Business Analytics",
+      slug: "business-analytics",
+    },
   ];
 
   return (
-    <section className="px-3 pt-4 pb-16 bg-blue-100">
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-3xl font-bold text-center">
-          Featured Categories
-        </h2>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-          {featuredCategories.map((category, index) => (
-            <Link
-              key={index}
-              to={category.link}
-              className="flex items-center justify-center p-5 space-x-4 bg-white rounded-md"
-            >
-              <span className="text-xl"> {category.icon}</span>
-              <span>{category.name}</span>
-            </Link>
+    <section className="py-16 bg-gradient-to-b from-gray-100 to-white">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-extrabold text-gray-800">
+            Featured Categories
+          </h2>
+          <p className="mt-3 text-gray-600 text-lg max-w-2xl mx-auto">
+            Discover diverse categories that can help you build skills and
+            achieve your goals.
+          </p>
+        </div>
+
+        {/* Category Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+          {categories.map((category, index) => (
+            <CategoryCard key={index} {...category} />
           ))}
         </div>
       </div>

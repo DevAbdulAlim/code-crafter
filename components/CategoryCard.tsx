@@ -1,22 +1,23 @@
-// import React from 'react';
-// import { FaIcon } from 'react-icons/fa'; // Replace with your actual icon library import
+import React from "react";
 
-// interface CategoryCardProps {
-//   category: { name: string; link: string; icon: string }; // Assuming you have an 'icon' property in your category object
-// }
+interface CategoryCardProps {
+  icon: React.ReactNode;
+  name: string;
+  slug: string;
+}
 
-// const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
-//   return (
-//     <a
-//       key={index}
-//       href={category.link}
-//       className="bg-white p-4 rounded-md shadow-md hover:shadow-lg flex items-center"
-//     >
-//       {/* Assuming 'FaIcon' is your icon component */}
-//       <FaIcon className="mr-2" /> {/* Adjust margin as needed */}
-//       {category.name}
-//     </a>
-//   );
-// };
+const CategoryCard: React.FC<CategoryCardProps> = ({ icon, name, slug }) => {
+  return (
+    <a
+      href={`/category/${slug}`}
+      className="flex flex-col items-center justify-center p-6 text-center bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-blue-50 transition-transform transform hover:scale-105"
+    >
+      <div className="flex items-center justify-center w-16 h-16 mb-4 bg-blue-100 rounded-full">
+        {icon}
+      </div>
+      <h3 className="text-lg font-bold text-gray-800">{name}</h3>
+    </a>
+  );
+};
 
-// export default CategoryCard;
+export default CategoryCard;
