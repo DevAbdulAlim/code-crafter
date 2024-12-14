@@ -2,23 +2,20 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import {
   IoCalendarOutline,
-  IoDocumentLockOutline,
   IoPersonOutline,
   IoTimeOutline,
 } from "react-icons/io5";
 
-// Assuming Post type definition
 type Post = {
   title: string;
   category: string;
   content: string;
   imageUrl: string;
-  date: string; // Add date property
-  time: string; // Add time property
-  user: string; // Add user property
+  date: string;
+  time: string;
+  user: string;
 };
 
-// Function to format date
 const formatDate = (dateString: string): string => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
@@ -28,8 +25,6 @@ const formatDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
 
-// Function to format time
-// Function to format time
 const formatTime = (timeString: string): string => {
   const options: Intl.DateTimeFormatOptions = {
     hour: "numeric",
@@ -79,56 +74,69 @@ const posts: Post[] = [
 ];
 
 const PostCard = ({ post }: { post: Post }) => (
-  <div className="flex flex-col overflow-hidden bg-white rounded-lg ">
-    <img
-      src={post.imageUrl}
-      alt={`Post ${post.title}`}
-      className="object-cover w-full mb-4 h-72"
-    />
-    <div className="p-4">
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center space-x-2">
-          <IoCalendarOutline className="text-2xl text-blue-500" />
-          <p className="text-gray-600">{formatDate(post.date)}</p>
-        </div>
-        <div className="flex items-center space-x-2">
-          <IoTimeOutline className="text-2xl text-green-500" />
-          <p className="text-gray-600">{formatTime(post.time)}</p>
-        </div>
-      </div>
-      <h3 className="text-xl font-bold">{post.title}</h3>
-      <p className="mb-2 text-gray-600">{post.category}</p>
-      <p className="text-gray-800">{post.content}</p>
+  <div className="relative flex flex-col overflow-hidden bg-white shadow-md rounded-lg transform transition-transform hover:scale-105 hover:shadow-lg">
+    {/* Image Section */}
+    <div className="relative h-64">
+      <img
+        src={post.imageUrl}
+        alt={post.title}
+        className="absolute inset-0 object-cover w-full h-full"
+      />
+      <p className="absolute top-4 left-4 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">
+        {post.category}
+      </p>
     </div>
 
-    {/* Additional Information with Border */}
-    <div className="flex justify-between p-4 mt-auto border-t border-gray-300">
-      <div className="flex items-center mb-2 space-x-2">
-        <IoPersonOutline className="text-2xl text-purple-500" />
-        <p className="text-gray-600">{post.user}</p>
+    {/* Content Section */}
+    <div className="flex-grow p-6">
+      <div className="flex justify-between text-sm text-gray-500 mb-3">
+        <div className="flex items-center space-x-2">
+          <IoCalendarOutline className="text-blue-500" />
+          <p>{formatDate(post.date)}</p>
+        </div>
+        <div className="flex items-center space-x-2">
+          <IoTimeOutline className="text-green-500" />
+          <p>{formatTime(post.time)}</p>
+        </div>
       </div>
-      <div className="flex items-center space-x-2">
-        <Button variant="link" className="text-blue-500">
-          Read More
-        </Button>
+      <h3 className="text-xl font-bold text-gray-800">{post.title}</h3>
+      <p className="mt-2 text-gray-600">{post.content}</p>
+    </div>
+
+    {/* Footer Section */}
+    <div className="flex justify-between items-center p-4 border-t bg-gray-100">
+      <div className="flex items-center space-x-2 text-gray-600">
+        <IoPersonOutline className="text-purple-500" />
+        <span>{post.user}</span>
       </div>
+      <Button
+        variant="default"
+        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+      >
+        Read More
+      </Button>
     </div>
   </div>
 );
 
-const RecentPosts: React.FC = () => {
-  return (
-    <section className="px-3 py-12 bg-blue-100">
-      <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-3xl font-bold">Recent Posts</h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {posts.map((post, index) => (
-            <PostCard key={index} post={post} />
-          ))}
-        </div>
+const RecentPosts: React.FC = () => (
+  <section className="py-16 bg-white">
+    <div className="max-w-7xl mx-auto px-6">
+      {/* Section Title and Subtitle */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold mb-4 text-gray-800">Recent Posts</h2>
+        <p className="text-lg text-gray-600">
+          Stay updated with our latest tutorials, tips, and industry insights.
+        </p>
       </div>
-    </section>
-  );
-};
+      {/* Posts Grid */}
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post, index) => (
+          <PostCard key={index} post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default RecentPosts;

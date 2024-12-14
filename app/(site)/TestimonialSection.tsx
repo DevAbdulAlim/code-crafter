@@ -26,18 +26,27 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="px-3 py-16 ">
-      <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-4xl font-extrabold text-center">
-          What Our Clients Say
-        </h2>
+    <section className="py-16 bg-white">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Section Title and Subtitle */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            What Our Clients Say
+          </h2>
+          <p className="text-lg text-gray-600">
+            Hear from our satisfied clients about their journey with
+            CodeCrafter.
+          </p>
+        </div>
+
+        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="p-6 transition-transform transform rounded-md bg-blue-50 hover:scale-105"
+              className="p-6 transition-transform transform rounded-lg bg-white shadow-lg hover:scale-105"
             >
-              <p className="mb-4 text-gray-700">{testimonial.comment}</p>
+              <p className="mb-6 text-gray-700">{testimonial.comment}</p>
               <div className="flex items-center">
                 <div className="flex-shrink-0">
                   <img
