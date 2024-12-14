@@ -1,10 +1,4 @@
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -12,11 +6,11 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300">
+    <footer className="bg-gradient-to-br from-blue-900 to-blue-950 text-gray-300">
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Column 1 - About CodeCrafter */}
+          {/* About Section */}
           <div>
             <h2 className="text-2xl font-bold text-white mb-5">
               About CodeCrafter
@@ -37,100 +31,61 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Column 2 - Quick Links */}
+          {/* Quick Links */}
           <div>
             <h2 className="text-2xl font-bold text-white mb-5">Quick Links</h2>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="/" className="hover:underline hover:text-blue-400">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/courses"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  Courses
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  Contact Us
-                </Link>
-              </li>
+              {[
+                { href: "/", label: "Home" },
+                { href: "/courses", label: "Courses" },
+                { href: "/blog", label: "Blog" },
+                { href: "/about", label: "About Us" },
+                { href: "/contact", label: "Contact Us" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="hover:underline hover:text-blue-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3 - Popular Courses */}
+          {/* Popular Courses */}
           <div>
             <h2 className="text-2xl font-bold text-white mb-5">
               Popular Courses
             </h2>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link
-                  href="/courses/full-stack"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  Full Stack Web Development
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/courses/data-science"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  Data Science & Machine Learning
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/courses/python"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  Python for Beginners
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/courses/ui-ux"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  UI/UX Design Essentials
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/courses/javascript"
-                  className="hover:underline hover:text-blue-400"
-                >
-                  JavaScript Mastery
-                </Link>
-              </li>
+              {[
+                {
+                  href: "/courses/full-stack",
+                  label: "Full Stack Web Development",
+                },
+                {
+                  href: "/courses/data-science",
+                  label: "Data Science & Machine Learning",
+                },
+                { href: "/courses/python", label: "Python for Beginners" },
+                { href: "/courses/ui-ux", label: "UI/UX Design Essentials" },
+                { href: "/courses/javascript", label: "JavaScript Mastery" },
+              ].map((course) => (
+                <li key={course.href}>
+                  <Link
+                    href={course.href}
+                    className="hover:underline hover:text-blue-400"
+                  >
+                    {course.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 4 - Contact Us */}
+          {/* Contact Section */}
           <div>
             <h2 className="text-2xl font-bold text-white mb-5">Contact Us</h2>
             <p className="text-sm mb-3">
@@ -161,54 +116,31 @@ const Footer = () => {
         {/* Divider */}
         <Separator className="my-10 bg-gray-700" />
 
-        {/* Social Media and Newsletter */}
-        <div className="flex flex-col lg:flex-row items-center justify-between">
-          {/* Social Media Icons */}
-          <div className="flex space-x-6 mb-6 lg:mb-0">
-            <Link
-              href="#"
-              className="hover:text-blue-400 transition duration-200"
-              aria-label="Facebook"
-            >
-              <FaFacebook size={30} />
-            </Link>
-            <Link
-              href="#"
-              className="hover:text-blue-400 transition duration-200"
-              aria-label="Twitter"
-            >
-              <FaTwitter size={30} />
-            </Link>
-            <Link
-              href="#"
-              className="hover:text-blue-400 transition duration-200"
-              aria-label="Instagram"
-            >
-              <FaInstagram size={30} />
-            </Link>
-            <Link
-              href="#"
-              className="hover:text-blue-400 transition duration-200"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={30} />
-            </Link>
-            <Link
-              href="#"
-              className="hover:text-blue-400 transition duration-200"
-              aria-label="YouTube"
-            >
-              <FaYoutube size={30} />
-            </Link>
+        {/* Bottom Section */}
+        <div className="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0">
+          {/* Social Media Links */}
+          <div className="flex space-x-6">
+            {[FaFacebook, FaTwitter, FaLinkedin, FaYoutube].map(
+              (Icon, index) => (
+                <Link
+                  key={index}
+                  href="#"
+                  className="flex items-center justify-center w-12 h-12 bg-blue-800 hover:bg-blue-700 rounded-full transition duration-300"
+                  aria-label={`Social Media ${index}`}
+                >
+                  <Icon size={24} className="text-white" />
+                </Link>
+              )
+            )}
           </div>
 
-          {/* Newsletter Signup */}
+          {/* Newsletter Subscription */}
           <form className="w-full max-w-lg">
             <div className="flex items-center space-x-4">
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full"
+                className="w-full text-gray-800"
               />
               <Button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2">
                 Subscribe
@@ -217,7 +149,7 @@ const Footer = () => {
           </form>
         </div>
 
-        {/* Bottom Section */}
+        {/* Footer Text */}
         <div className="mt-10 text-center text-sm text-gray-400">
           <p>
             &copy; {new Date().getFullYear()}{" "}

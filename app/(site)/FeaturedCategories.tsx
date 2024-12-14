@@ -56,7 +56,7 @@ const FeaturedCategories = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-100 to-white">
+    <section className="py-16 bg-gradient-to-b from-blue-100 to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">

@@ -11,12 +11,12 @@ import {
 
 const AboutSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-200 to-blue-500 text-gray-900">
+    <section className="py-20 bg-gradient-to-b from-blue-900 to-blue-700 text-white">
       <div className="mx-auto max-w-7xl px-6 text-center">
         {/* Section Title and Subtitle */}
         <div className="mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
-          <p className="text-lg text-gray-700">
+          <h2 className="text-4xl font-extrabold mb-4">About Us</h2>
+          <p className="text-lg text-blue-100">
             Discover our mission, values, and dedication to delivering an
             exceptional learning experience for all.
           </p>
@@ -25,17 +25,17 @@ const AboutSection = () => {
         {/* Introductory Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-left">
           <div>
-            <p className="text-lg leading-loose text-gray-700">
+            <p className="text-lg leading-loose">
               Welcome to our online learning platform, where education meets
               innovation. We are dedicated to providing a transformative
               learning experience for individuals worldwide.
             </p>
-            <p className="mt-4 text-lg leading-loose text-gray-700">
+            <p className="mt-4 text-lg leading-loose">
               Our mission is to empower learners of all backgrounds to acquire
               new skills, pursue their passions, and excel in their personal and
               professional endeavors.
             </p>
-            <Button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+            <Button className="mt-6 bg-yellow-400 text-blue-900 px-6 py-3 rounded-lg hover:bg-yellow-500">
               Read More
             </Button>
           </div>
@@ -50,23 +50,19 @@ const AboutSection = () => {
 
         {/* Commitments Section */}
         <div className="mt-16">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">
-            Our Commitments
-          </h3>
+          <h3 className="text-2xl font-bold mb-6">Our Commitments</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {commitments.map((commitment) => (
               <div
                 key={commitment.id}
-                className="p-6 bg-white rounded-lg shadow-md text-center"
+                className="p-6 bg-white text-blue-900 rounded-lg shadow-md text-center"
               >
                 {/* Rounded Icon */}
                 <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-blue-100">
                   {commitment.icon}
                 </div>
-                <h4 className="text-lg font-semibold text-gray-800">
-                  {commitment.title}
-                </h4>
-                <p className="mt-2 text-gray-600">{commitment.text}</p>
+                <h4 className="text-lg font-semibold">{commitment.title}</h4>
+                <p className="mt-2 text-gray-700">{commitment.text}</p>
               </div>
             ))}
           </div>

@@ -82,7 +82,7 @@ const PostCard = ({ post }: { post: Post }) => (
         alt={post.title}
         className="absolute inset-0 object-cover w-full h-full"
       />
-      <p className="absolute top-4 left-4 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">
+      <p className="absolute top-4 left-4 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">
         {post.category}
       </p>
     </div>
@@ -91,11 +91,15 @@ const PostCard = ({ post }: { post: Post }) => (
     <div className="flex-grow p-6">
       <div className="flex justify-between text-sm text-gray-500 mb-3">
         <div className="flex items-center space-x-2">
-          <IoCalendarOutline className="text-blue-500" />
+          <div className="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
+            <IoCalendarOutline className="text-blue-600 text-lg" />
+          </div>
           <p>{formatDate(post.date)}</p>
         </div>
         <div className="flex items-center space-x-2">
-          <IoTimeOutline className="text-green-500" />
+          <div className="flex items-center justify-center w-8 h-8 bg-green-100 rounded-full">
+            <IoTimeOutline className="text-green-600 text-lg" />
+          </div>
           <p>{formatTime(post.time)}</p>
         </div>
       </div>
@@ -104,9 +108,11 @@ const PostCard = ({ post }: { post: Post }) => (
     </div>
 
     {/* Footer Section */}
-    <div className="flex justify-between items-center p-4 border-t bg-gray-100">
+    <div className="flex justify-between items-center p-4 border-t bg-blue-50">
       <div className="flex items-center space-x-2 text-gray-600">
-        <IoPersonOutline className="text-purple-500" />
+        <div className="flex items-center justify-center w-8 h-8 bg-purple-100 rounded-full">
+          <IoPersonOutline className="text-purple-600 text-lg" />
+        </div>
         <span>{post.user}</span>
       </div>
       <Button
@@ -120,7 +126,7 @@ const PostCard = ({ post }: { post: Post }) => (
 );
 
 const RecentPosts: React.FC = () => (
-  <section className="py-16 bg-white">
+  <section className="py-16 bg-gray-50">
     <div className="max-w-7xl mx-auto px-6">
       {/* Section Title and Subtitle */}
       <div className="text-center mb-12">

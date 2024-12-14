@@ -41,14 +41,15 @@ const FactsSection = () => {
           {facts.map((fact) => (
             <div
               key={fact.id}
-              className="p-6 -mt-40 text-gray-700 bg-white rounded-md "
+              className="flex flex-col items-center lg:-mt-44 p-6 bg-white text-gray-800 rounded-lg"
             >
-              <span className="flex items-center justify-center">
-                {" "}
+              <div className="mb-4 flex items-center justify-center w-16 h-16 rounded-full bg-blue-100">
                 {fact.icon}
-              </span>
-              <div className="mb-2 text-3xl font-bold">{fact.value}</div>
-              <div>{fact.title}</div>
+              </div>
+              <div className="text-3xl font-extrabold text-blue-900">
+                {fact.value}
+              </div>
+              <div className="mt-2 text-lg font-medium">{fact.title}</div>
             </div>
           ))}
         </div>
