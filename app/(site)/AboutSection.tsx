@@ -11,44 +11,62 @@ import {
 
 const AboutSection = () => {
   return (
-    <section className="px-3 py-20 text-gray-100 bg-gradient-to-b from-blue-500 to-blue-200">
-      <div className="mx-auto text-center max-w-7xl">
-        <h2 className="mb-8 text-4xl font-extrabold">About Us</h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 ">
+    <section className="py-20 bg-gradient-to-b from-blue-200 to-blue-500 text-gray-900">
+      <div className="mx-auto max-w-7xl px-6 text-center">
+        {/* Section Title and Subtitle */}
+        <div className="mb-12">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
+          <p className="text-lg text-gray-700">
+            Discover our mission, values, and dedication to delivering an
+            exceptional learning experience for all.
+          </p>
+        </div>
+
+        {/* Introductory Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-left">
           <div>
-            <p className="leading-loose ">
+            <p className="text-lg leading-loose text-gray-700">
               Welcome to our online learning platform, where education meets
               innovation. We are dedicated to providing a transformative
               learning experience for individuals worldwide.
             </p>
-            <p className="mt-4 leading-loose ">
+            <p className="mt-4 text-lg leading-loose text-gray-700">
               Our mission is to empower learners of all backgrounds to acquire
               new skills, pursue their passions, and excel in their personal and
               professional endeavors.
             </p>
-            <Button>Read More</Button>
+            <Button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+              Read More
+            </Button>
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex justify-center">
             <img
-              src="https://miro.medium.com/v2/resize:fit:1400/1*zbDLAcx-DJwahRiOOtejow.jpeg" // Replace with the actual image URL
+              src="https://miro.medium.com/v2/resize:fit:1400/1*zbDLAcx-DJwahRiOOtejow.jpeg" // Replace with your image URL
               alt="About Us"
-              className="object-cover w-full rounded-md shadow-md h-80"
+              className="object-cover rounded-lg shadow-lg w-full h-80"
             />
           </div>
         </div>
-        <div className="mt-12">
-          <h3 className="mb-4 text-2xl font-semibold">Our Commitments</h3>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        {/* Commitments Section */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            Our Commitments
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {commitments.map((commitment) => (
               <div
                 key={commitment.id}
-                className="p-4 text-blue-800 bg-blue-100 rounded-md"
+                className="p-6 bg-white rounded-lg shadow-md text-center"
               >
-                {commitment.icon}
-                <h4 className="mt-2 text-lg font-semibold">
+                {/* Rounded Icon */}
+                <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-blue-100">
+                  {commitment.icon}
+                </div>
+                <h4 className="text-lg font-semibold text-gray-800">
                   {commitment.title}
                 </h4>
-                <p className="mt-2 text-gray-700">{commitment.text}</p>
+                <p className="mt-2 text-gray-600">{commitment.text}</p>
               </div>
             ))}
           </div>
@@ -61,37 +79,37 @@ const AboutSection = () => {
 const commitments = [
   {
     id: 1,
-    icon: <FaGraduationCap className="text-4xl text-blue-600" />,
+    icon: <FaGraduationCap className="text-2xl text-blue-600" />,
     title: "Diverse Courses",
     text: "Provide diverse and high-quality courses for lifelong learners.",
   },
   {
     id: 2,
-    icon: <FaChalkboardTeacher className="text-4xl text-green-600" />,
+    icon: <FaChalkboardTeacher className="text-2xl text-green-600" />,
     title: "Expert Instructors",
     text: "Engage expert instructors passionate about teaching and knowledge sharing.",
   },
   {
     id: 3,
-    icon: <FaUsers className="text-4xl text-purple-600" />,
+    icon: <FaUsers className="text-2xl text-purple-600" />,
     title: "Supportive Community",
     text: "Build a supportive community fostering collaboration and networking.",
   },
   {
     id: 4,
-    icon: <FaLightbulb className="text-4xl text-yellow-600" />,
+    icon: <FaLightbulb className="text-2xl text-yellow-600" />,
     title: "Creativity and Innovation",
     text: "Encourage creativity and innovation through interactive learning experiences.",
   },
   {
     id: 5,
-    icon: <FaRegSmileBeam className="text-4xl text-pink-600" />,
+    icon: <FaRegSmileBeam className="text-2xl text-pink-600" />,
     title: "Positive Learning Journey",
     text: "Ensure a positive and enjoyable learning journey for every student.",
   },
   {
     id: 6,
-    icon: <FaHeart className="text-4xl text-red-600" />,
+    icon: <FaHeart className="text-2xl text-red-600" />,
     title: "Passionate Teaching",
     text: "Deliver courses with passion and dedication to inspire our learners.",
   },
