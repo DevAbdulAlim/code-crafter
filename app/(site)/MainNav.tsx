@@ -13,22 +13,43 @@ export default async function MainNav() {
   const categories = await prisma.category.findMany();
 
   return (
-    <nav className="flex justify-between px-6 py-2 mx-auto max-w-7xl md:py-4">
-      <Link className="flex items-center my-1 text-3xl md:mr-4" href="/">
-        <span className="text-4xl">
-          <FcDoughnutChart />
-        </span>
-        <p className="ml-2 text-xl font-bold">
-          <span className="text-blue-500">Code</span>
-          <span className="text-teal-500">Crafter</span>
-        </p>
-      </Link>
+    <nav className="bg-blue-900 text-white shadow-md">
+      <div className="flex justify-between items-center px-6 py-3 mx-auto max-w-7xl">
+        {/* Logo */}
+        <Link className="flex items-center text-3xl md:mr-4" href="/">
+          <span className="text-4xl">
+            <FcDoughnutChart />
+          </span>
+          <p className="ml-2 text-xl font-bold">
+            <span className="text-yellow-400">Code</span>
+            <span className="text-teal-400">Crafter</span>
+          </p>
+        </Link>
 
-      <CategoryDropdown categories={categories} />
+        {/* Categories Dropdown */}
+        <div className="hidden md:block">
+          <CategoryDropdown categories={categories} />
+        </div>
 
-      <SearchForm />
+        {/* Search Bar */}
+        <div className="hidden lg:flex flex-grow mx-6">
+          <SearchForm />
+        </div>
 
-      {session ? <Account /> : <Link href="/api/auth/signin">Login</Link>}
+        {/* Account/Login */}
+        <div>
+          {session ? (
+            <Account />
+          ) : (
+            <Link
+              href="/api/auth/signin"
+              className="px-4 py-2 bg-yellow-400 text-blue-950 rounded-md hover:bg-yellow-500 transition"
+            >
+              Login
+            </Link>
+          )}
+        </div>
+      </div>
     </nav>
   );
 }

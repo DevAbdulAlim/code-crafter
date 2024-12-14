@@ -4,12 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import { BiSolidCategory } from "react-icons/bi";
 import Link from "next/link";
 
-export default function CategoryDropdown({ categories }: any) {
+interface Category {
+  id: string;
+  name: string;
+}
+
+export default function CategoryDropdown({
+  categories,
+}: {
+  categories: Category[];
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   const closeDropdown = () => {
@@ -34,36 +43,35 @@ export default function CategoryDropdown({ categories }: any) {
   }, []);
 
   return (
-    <div className="relative hidden mt-1 md:block" ref={dropdownRef}>
-      <div>
-        <button
-          type="button"
-          id="options-menu"
-          className="hover:bg-blue-50 p-2 mx-2 flex rounded-full focus:bg-blue-200"
-          onClick={toggleDropdown}
-          aria-haspopup="listbox"
-          aria-label="Category"
-        >
-          <span className="text-2xl">
-            <BiSolidCategory />
-          </span>
-          <span>Categories</span>
-        </button>
-      </div>
+    <div className="relative hidden md:block" ref={dropdownRef}>
+      {/* Dropdown Button */}
+      <button
+        type="button"
+        id="options-menu"
+        className="flex items-center gap-2 p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:ring focus:ring-blue-300"
+        onClick={toggleDropdown}
+        aria-haspopup="listbox"
+        aria-label="Category"
+      >
+        <BiSolidCategory className="text-2xl" />
+        <span className="font-medium">Categories</span>
+      </button>
 
+      {/* Dropdown Menu */}
       {isOpen && (
-        <div className="bg-white text-black mt-4 z-30 shadow-2xl p-4 absolute w-56">
-          <div className="py-1">
-            {categories.map((item: any) => (
-              <Link
-                className="block hover:bg-gray-100 py-2 px-4 text-gray-700 text-sm"
-                href={`/courses?categories=${item.id}`}
-                key={item.id}
-              >
-                {item.name}
-              </Link>
+        <div className="absolute left-0 mt-2 w-56 bg-white text-gray-800 shadow-lg rounded-lg z-30">
+          <ul className="py-2">
+            {categories.map((item) => (
+              <li key={item.id}>
+                <Link
+                  href={`/courses?categories=${item.id}`}
+                  className="block px-4 py-2 text-sm font-medium hover:bg-blue-50 hover:text-blue-700 rounded-md"
+                >
+                  {item.name}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
     </div>
