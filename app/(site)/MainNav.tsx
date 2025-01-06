@@ -17,12 +17,9 @@ export default async function MainNav() {
       <div className="flex justify-between items-center px-6 py-3 mx-auto max-w-7xl">
         {/* Logo */}
         <Link className="flex items-center text-3xl md:mr-4" href="/">
-          <span className="text-4xl">
-            <FcDoughnutChart />
-          </span>
           <p className="ml-2 text-xl font-bold">
-            <span className="text-yellow-400">Code</span>
-            <span className="text-teal-400">Crafter</span>
+            <span className="text-white">CO</span>
+            <span className="text-yellow-400">CRAFT</span>
           </p>
         </Link>
 
@@ -32,7 +29,7 @@ export default async function MainNav() {
         </div>
 
         {/* Search Bar */}
-        <div className="hidden lg:flex flex-grow mx-6">
+        <div className="hidden lg:flex flex-grow mx-6 max-w-2xl">
           <SearchForm />
         </div>
 
