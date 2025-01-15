@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative bg-gradient-to-br from-blue-900 to-blue-800 text-white">
+    <section className="relative bg-gradient-to-br from-blue-950 to-blue-950 text-white">
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center py-16 px-6">
         {/* Left Content */}
         <div className="md:w-1/2 text-center md:text-left">
@@ -43,8 +43,8 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-500 opacity-20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 right-10 w-40 h-40 bg-blue-500 opacity-20 rounded-full blur-3xl"></div>
+      {/* <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-500 opacity-20 rounded-full blur-3xl"></div> */}
+      {/* <div className="absolute bottom-10 right-10 w-40 h-40 bg-blue-500 opacity-20 rounded-full blur-3xl"></div> */}
     </section>
   );
 };

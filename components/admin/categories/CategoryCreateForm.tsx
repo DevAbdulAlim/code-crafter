@@ -50,6 +50,19 @@ const CategoryCreateForm = () => {
       <form ref={formRef} onSubmit={handleSubmit}>
         <div className="p-4 rounded-md bg-slate-50 md:p-6">
           <label
+            htmlFor="parentId"
+            className="block mb-2 text-sm font-medium text-gray-600"
+          >
+            Parent ID
+          </label>
+          <Input
+            type="text"
+            name="parentId"
+            id="parentId"
+            placeholder="Parent ID"
+          />
+
+          <label
             htmlFor="name"
             className="block mb-2 text-sm font-medium text-gray-600"
           >

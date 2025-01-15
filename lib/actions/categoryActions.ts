@@ -5,12 +5,14 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const CategorySchema = z.object({
+  parentId: z.string().nullable(),
   name: z.string(),
   description: z.string().optional(),
 });
 
 const CategoryParser = (formData: FormData) =>
   CategorySchema.safeParse({
+    parentId: formData.get("parentId"),
     name: formData.get("name"),
     description: formData.get("description"),
   });
