@@ -13,13 +13,13 @@ export default async function MainNav() {
   const categories = await prisma.category.findMany();
 
   return (
-    <nav className="bg-blue-900 text-white shadow-md">
+    <nav className="bg-blue-950 text-white">
       <div className="flex justify-between items-center px-6 py-3 mx-auto max-w-7xl">
         {/* Logo */}
         <Link className="flex items-center text-3xl md:mr-4" href="/">
-          <p className="ml-2 text-xl font-bold">
-            <span className="text-white">CO</span>
-            <span className="text-yellow-400">CRAFT</span>
+          <p className="ml-2 text-4xl font-extrabold">
+            <span className="text-yellow-400 font-mono">Ment</span>
+            <span className="text-blue-400 font-mono">Ora</span>
           </p>
         </Link>
 
