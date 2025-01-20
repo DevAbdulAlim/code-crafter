@@ -59,9 +59,9 @@ const CoursesListPage = async ({
           ]}
         />
 
-        <Link to="/admin/categories/create">
+        <Link variant="button" to="/admin/categories/create">
+          <PlusIcon className="mr-2" />
           <span className="hidden md:block">Create Category</span>
-          <PlusIcon className="md:ml-4" />
         </Link>
       </div>
 

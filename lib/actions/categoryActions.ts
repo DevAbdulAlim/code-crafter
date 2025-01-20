@@ -7,14 +7,22 @@ import { z } from "zod";
 const CategorySchema = z.object({
   parentId: z.string().nullable(),
   name: z.string(),
+  slug: z.string(),
   description: z.string().optional(),
+  image: z.string().optional(),
+  sortOrder: z.number().default(0),
+  status: z.enum(["ACTIVE", "INACTIVE", "ARCHIVED"]).default("ACTIVE"),
 });
 
 const CategoryParser = (formData: FormData) =>
   CategorySchema.safeParse({
-    parentId: formData.get("parentId"),
+    parentId: formData.get("parentId") || null,
     name: formData.get("name"),
+    slug: formData.get("slug"),
     description: formData.get("description"),
+    image: formData.get("image"),
+    sortOrder: Number(formData.get("sortOrder")) || 0,
+    status: formData.get("status") || "ACTIVE",
   });
 
 const createCategory = async (formData: FormData) => {
@@ -33,7 +41,8 @@ const createCategory = async (formData: FormData) => {
 
     revalidatePath("/admin/categories");
     return { message: "Create operation completed successfully" };
-  } catch {
+  } catch (error) {
+    console.error(error);
     return { message: "Database Error: Failed to Create Category" };
   }
 };
@@ -57,7 +66,8 @@ const updateCategory = async (formData: FormData, categoryId: string) => {
 
     revalidatePath("/admin/categories");
     return { message: "Update operation completed successfully" };
-  } catch {
+  } catch (error) {
+    console.error(error);
     return { message: "Database Error: Failed to Update Category" };
   }
 };

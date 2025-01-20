@@ -8,14 +8,28 @@ export default async function CategoryTable({ data }: { data: any }) {
     <div className="flow-root mt-6">
       <div className="inline-block min-w-full align-middle">
         <div className="p-2 rounded-lg bg-slate-50 md:pt-0">
+          {/* Mobile View */}
           <div className="md:hidden">
             {data?.map((item: any) => (
               <div
                 key={item.id}
                 className="w-full p-4 mb-2 bg-white rounded-md"
               >
-                <p>{item.id}</p>
-                <p>{item.name}</p>
+                <p>
+                  <strong>ID:</strong> {item.id}
+                </p>
+                <p>
+                  <strong>Name:</strong> {item.name}
+                </p>
+                <p>
+                  <strong>Slug:</strong> {item.slug}
+                </p>
+                <p>
+                  <strong>Status:</strong> {item.status}
+                </p>
+                <p>
+                  <strong>Sort Order:</strong> {item.sortOrder}
+                </p>
                 <div className="flex justify-between mt-2">
                   <Link
                     to={`/admin/categories/${item.id}/edit`}
@@ -28,6 +42,8 @@ export default async function CategoryTable({ data }: { data: any }) {
               </div>
             ))}
           </div>
+
+          {/* Desktop Table View */}
           <table className="hidden min-w-full text-gray-900 md:table">
             <thead className="text-sm font-normal text-left rounded-lg">
               <tr>
@@ -36,6 +52,18 @@ export default async function CategoryTable({ data }: { data: any }) {
                 </th>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                   Name
+                </th>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                  Slug
+                </th>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                  Status
+                </th>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                  Sort Order
+                </th>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                  Actions
                 </th>
               </tr>
             </thead>
@@ -47,6 +75,11 @@ export default async function CategoryTable({ data }: { data: any }) {
                 >
                   <td className="px-3 py-3 whitespace-nowrap">{item.id}</td>
                   <td className="px-3 py-3 whitespace-nowrap">{item.name}</td>
+                  <td className="px-3 py-3 whitespace-nowrap">{item.slug}</td>
+                  <td className="px-3 py-3 whitespace-nowrap">{item.status}</td>
+                  <td className="px-3 py-3 whitespace-nowrap">
+                    {item.sortOrder}
+                  </td>
 
                   <td className="py-3 pl-6 pr-3 whitespace-nowrap">
                     <div className="flex justify-end gap-3">
