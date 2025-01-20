@@ -44,7 +44,6 @@ const CoursesListPage = async ({
   const [categories = [], totalItems = 0] = foundedCategories?.data ?? [];
 
   const totalPages = Math.ceil((totalItems as number) / itemsPerPage);
-  console.log(categories);
 
   return (
     <div className="p-4 md:p-8">
