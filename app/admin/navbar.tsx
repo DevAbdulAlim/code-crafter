@@ -16,12 +16,13 @@ import Link from "next/link";
 
 const links = [
   { href: "/admin/dashboard", label: "Dashboard", icon: Grid },
-  { href: "/admin/categories/all", label: "Categories", icon: Layers },
-  { href: "/admin/courses/all", label: "Courses", icon: BookOpen },
-  { href: "/admin/lessons/all", label: "Lessons", icon: FileText },
-  { href: "/admin/contents/all", label: "Content", icon: ListChecks },
-  { href: "/admin/enrollments/all", label: "Enrollments", icon: Users },
-  { href: "/admin/users/all", label: "Users", icon: Users },
+  { href: "/admin/categories", label: "Categories", icon: Layers },
+  { href: "/admin/courses", label: "Courses", icon: BookOpen },
+  { href: "/admin/lessons", label: "Lessons", icon: FileText },
+  { href: "/admin/contents", label: "Content", icon: ListChecks },
+  { href: "/admin/enrollments", label: "Enrollments", icon: Users },
+  { href: "/admin/payments", label: "Payments", icon: Users },
+  { href: "/admin/users", label: "Users", icon: Users },
 ];
 
 const Navbar: React.FC = () => {
@@ -83,12 +84,12 @@ const Navbar: React.FC = () => {
         <div className="h-full flex flex-col justify-between">
           <div>
             {/* Sidebar Links */}
-            <nav className="flex flex-col mt-5 space-y-4">
+            <nav className="flex flex-col mt-5 space-y-2">
               {links.map((link, index) => (
                 <Link
                   key={index}
                   href={link.href}
-                  className="flex items-center px-4 py-3 text-white rounded-lg hover:bg-blue-600 transition"
+                  className="flex items-center px-4 py-3 text-white hover:bg-blue-600 transition"
                 >
                   <link.icon size={20} className="mr-3" />
                   {link.label}

@@ -1,22 +1,18 @@
 import Breadcrumbs from "@/components/Breadcrumb";
-import CategoryCreateForm from "@/components/admin/categories/CategoryCreateForm";
-import React from "react";
+import CreateForm from "./create-form";
 
-export default function NewCategory() {
+export default function CreateCategoryPage() {
+  const breadcrumbs = [
+    { label: "Dashboard", href: "/admin" },
+    { label: "Categories", href: "/admin/categories" },
+    { label: "Create", href: "/admin/categories/create", active: true },
+  ];
+
   return (
-    <div className="p-4 md:p-8">
-      <Breadcrumbs
-        breadcrumbs={[
-          { label: "Categories", href: "/admin/categories/all" },
-          {
-            label: "Create Category",
-            href: "/admin/categories/create",
-            active: true,
-          },
-        ]}
-      />
-
-      <CategoryCreateForm />
+    <div className="container mx-auto py-10">
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <h1 className="text-2xl font-bold mb-5">Create New Category</h1>
+      <CreateForm />
     </div>
   );
 }

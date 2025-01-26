@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import Link from "next/link";
-import { lusitana } from "./ui/fonts";
+import { ChevronRight } from "lucide-react";
 
 interface Breadcrumb {
   label: string;
@@ -14,20 +14,31 @@ export default function Breadcrumbs({
   breadcrumbs: Breadcrumb[];
 }) {
   return (
-    <nav aria-label="Breadcrumb" className="block mb-6">
-      <ol className={clsx(lusitana.className, "flex text-xl md:text-2xl")}>
+    <nav aria-label="Breadcrumb" className="w-full mb-4">
+      <ol className="flex items-center space-x-2 text-sm">
         {breadcrumbs.map((breadcrumb, index) => (
           <li
             key={breadcrumb.href}
-            aria-current={breadcrumb.active}
             className={clsx(
-              breadcrumb.active ? "text-gray-900" : "text-gray-500"
+              "flex items-center",
+              breadcrumb.active
+                ? "text-gray-900 font-semibold"
+                : "text-gray-500"
             )}
           >
-            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
-            {index < breadcrumbs.length - 1 ? (
-              <span className="inline-block mx-3">/</span>
-            ) : null}
+            {index > 0 && (
+              <ChevronRight className="h-4 w-4 mx-2 text-gray-400 flex-shrink-0" />
+            )}
+            <Link
+              href={breadcrumb.href}
+              className={clsx(
+                "hover:text-gray-700 transition-colors duration-200",
+                breadcrumb.active && "cursor-default pointer-events-none"
+              )}
+              aria-current={breadcrumb.active ? "page" : undefined}
+            >
+              {breadcrumb.label}
+            </Link>
           </li>
         ))}
       </ol>
