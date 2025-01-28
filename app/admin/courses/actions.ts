@@ -2,64 +2,130 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { PrismaClient, type Prisma } from "@prisma/client";
+import prisma from "@/lib/prisma";
 
-const prisma = new PrismaClient();
+export const CourseStatus = z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]);
+export const SkillLevel = z.enum([
+  "BEGINNER",
+  "INTERMEDIATE",
+  "ADVANCED",
+  "EXPERT",
+  "MASTER",
+]);
+export const ContentType = z.enum(["TEXT", "VIDEO", "PDF"]);
 
-const courseSchema = z.object({
-  title: z.string().min(1, "Title is required"),
+export const lessonContentSchema = z.object({
+  type: ContentType,
+  content: z.string(),
+  duration: z.number().optional(),
+  attachments: z.string().optional(),
+  order: z.number().optional(),
+});
+
+export const lessonSchema = z.object({
+  title: z.string().min(1, "Lesson title is required"),
+  description: z.string().optional(),
+  order: z.number().optional(),
+  content: z.array(lessonContentSchema),
+});
+
+export const courseSchema = z.object({
+  title: z.string().min(1, "Course title is required"),
   description: z.string().optional(),
   price: z.number().min(0, "Price must be a positive number"),
   salePrice: z.number().min(0, "Sale price must be a positive number"),
-  duration: z.string().min(1, "Duration is required"),
-  level: z.enum(["BEGINNER", "INTERMEDIATE", "ADVANCED", "EXPERT", "MASTER"]),
-  language: z.string().min(1, "Language is required"),
-  deadline: z.date().optional(),
-  status: z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]),
+  duration: z.string(),
+  level: SkillLevel,
+  language: z.string(),
+  deadline: z
+    .string()
+    .optional()
+    .refine((val) => !val || !isNaN(Date.parse(val)), {
+      message: "Invalid date format",
+    }),
+  status: CourseStatus,
   image: z.string().url().optional(),
   thumbnail: z.string().url().optional(),
   video: z.string().url().optional(),
-  isFeatured: z.boolean(),
+  isFeatured: z.boolean().default(false),
   maxStudents: z.number().int().positive().optional(),
   seoTitle: z.string().optional(),
   seoDescription: z.string().optional(),
   seoKeywords: z.string().optional(),
-  categoryId: z.string().min(1, "Category is required"),
+  categoryId: z.string(),
+  lessons: z.array(lessonSchema),
 });
 
-const lessonSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  description: z.string().optional(),
-  order: z.number().int().positive().optional(),
-});
+export interface CourseState {
+  message: string;
+}
 
-const contentSchema = z.object({
-  type: z.enum(["TEXT", "VIDEO", "PDF"]),
-  content: z.string().min(1, "Content is required"),
-  duration: z.number().int().positive().optional(),
-  order: z.number().int().positive().optional(),
-});
+export async function createCourse(prevState: CourseState, formData: FormData) {
+  const validatedFields = courseSchema.safeParse({
+    title: formData.get("title"),
+    description: formData.get("description"),
+    price: Number.parseFloat(formData.get("price") as string),
+    salePrice: Number.parseFloat(formData.get("salePrice") as string),
+    duration: formData.get("duration"),
+    level: formData.get("level"),
+    language: formData.get("language"),
+    deadline: formData.get("deadline"),
+    status: formData.get("status"),
+    image: formData.get("image"),
+    thumbnail: formData.get("thumbnail"),
+    video: formData.get("video"),
+    isFeatured: formData.get("isFeatured") === "on",
+    maxStudents: Number.parseInt(formData.get("maxStudents") as string),
+    seoTitle: formData.get("seoTitle"),
+    seoDescription: formData.get("seoDescription"),
+    seoKeywords: formData.get("seoKeywords"),
+    categoryId: formData.get("categoryId"),
+    lessons: JSON.parse(formData.get("lessons") as string),
+  });
 
-export async function createCourse(formData: {
-  course: Prisma.CourseCreateInput;
-  lessons: Prisma.LessonCreateInput[];
-  content: Record<number, Omit<Prisma.ContentCreateInput, "lesson">[]>;
-}): Promise<{ success: boolean; courseId?: string; error?: string }> {
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Failed to create course.",
+    };
+  }
+
+  const courseData = validatedFields.data;
+
   try {
-    const validatedCourse = courseSchema.parse(formData.course);
-    const validatedLessons = z.array(lessonSchema).parse(formData.lessons);
-    const validatedContent = Object.values(formData.content).map(
-      (lessonContent) => z.array(contentSchema).parse(lessonContent)
-    );
-
-    const course = await prisma.course.create({
+    const createdCourse = await prisma.course.create({
       data: {
-        ...validatedCourse,
+        title: courseData.title,
+        description: courseData.description,
+        price: courseData.price,
+        salePrice: courseData.salePrice,
+        duration: courseData.duration,
+        level: courseData.level,
+        language: courseData.language,
+        deadline: courseData.deadline ? new Date(courseData.deadline) : null,
+        status: courseData.status,
+        image: courseData.image,
+        thumbnail: courseData.thumbnail,
+        video: courseData.video,
+        isFeatured: courseData.isFeatured,
+        maxStudents: courseData.maxStudents,
+        seoTitle: courseData.seoTitle,
+        seoDescription: courseData.seoDescription,
+        seoKeywords: courseData.seoKeywords,
+        categoryId: courseData.categoryId,
         lessons: {
-          create: validatedLessons.map((lesson, index) => ({
-            ...lesson,
+          create: courseData.lessons.map((lesson) => ({
+            title: lesson.title,
+            description: lesson.description,
+            order: lesson.order,
             content: {
-              create: validatedContent[index],
+              create: lesson.content.map((content) => ({
+                type: content.type,
+                content: content.content,
+                duration: content.duration,
+                attachments: content.attachments,
+                order: content.order,
+              })),
             },
           })),
         },
@@ -73,13 +139,14 @@ export async function createCourse(formData: {
       },
     });
 
+    console.log("Course created:", createdCourse);
+
     revalidatePath("/courses");
-    return { success: true, courseId: course.id };
+    return { message: "Course created successfully!" };
   } catch (error) {
     console.error("Failed to create course:", error);
-    return {
-      success: false,
-      error: "Failed to create course. Please try again.",
-    };
+    return { message: "Failed to create course." };
+  } finally {
+    await prisma.$disconnect();
   }
 }
