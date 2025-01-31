@@ -150,3 +150,85 @@ export async function createCourse(prevState: CourseState, formData: FormData) {
     await prisma.$disconnect();
   }
 }
+
+export async function getFilteredCourses(params: {
+  page?: number;
+  limit?: number;
+  search?: string;
+  status?: z.infer<typeof CourseStatus>;
+  categoryId?: string;
+  level?: z.infer<typeof SkillLevel>;
+  orderBy?: "title" | "price" | "createdAt";
+  orderDirection?: "asc" | "desc";
+}) {
+  const {
+    page = 1,
+    limit = 10,
+    search = "",
+    status,
+    categoryId,
+    level,
+    orderBy = "createdAt",
+    orderDirection = "desc",
+  } = params;
+
+  const where: {
+    OR?: { title: { contains: string; mode: "insensitive" } }[];
+    status?: z.infer<typeof CourseStatus>;
+    categoryId?: string;
+    level?: z.infer<typeof SkillLevel>;
+  } = {};
+
+  if (search) {
+    where.OR = [{ title: { contains: search, mode: "insensitive" } }];
+  }
+  if (status) {
+    where.status = status;
+  }
+  if (categoryId) {
+    where.categoryId = categoryId;
+  }
+  if (level) {
+    where.level = level;
+  }
+
+  const [courses, totalCount] = await Promise.all([
+    prisma.course.findMany({
+      where,
+      orderBy: { [orderBy]: orderDirection },
+      skip: (page - 1) * limit,
+      take: limit,
+      include: {
+        category: { select: { id: true, name: true } },
+        _count: { select: { enrollments: true, lessons: true } },
+      },
+    }),
+    prisma.course.count({ where }),
+  ]);
+
+  return {
+    courses,
+    pagination: {
+      currentPage: page,
+      totalPages: Math.ceil(totalCount / limit),
+      totalItems: totalCount,
+    },
+  };
+}
+
+export async function getCourseById(id: string) {
+  const course = await prisma.course.findUnique({
+    where: { id },
+    include: {
+      category: { select: { id: true, name: true } },
+      lessons: { select: { id: true, title: true }, orderBy: { order: "asc" } },
+      enrollments: { select: { id: true, userId: true }, take: 5 },
+    },
+  });
+
+  if (!course) {
+    throw new Error("Course not found");
+  }
+
+  return course;
+}
