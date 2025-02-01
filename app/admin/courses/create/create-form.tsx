@@ -14,7 +14,6 @@ import ContentList from "./content-list";
 import { ContentType } from "@prisma/client";
 import ContentForm, { ContentInput } from "./content-form";
 import CourseForm from "./course-form";
-import { Trash2 } from "lucide-react";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -142,14 +141,11 @@ export default function CreateForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-8 max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg"
+      className="space-y-8 p-6 bg-white shadow-lg rounded-lg"
     >
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold mb-6">Create New Course</h2>
-
         {/* Course basic information */}
         <CourseForm />
-
         {/* Lessons */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-4">Lessons</h3>
