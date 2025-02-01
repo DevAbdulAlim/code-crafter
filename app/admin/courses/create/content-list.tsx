@@ -20,7 +20,7 @@ export default function ContentList({
   return (
     <div className="flex justify-between items-center py-2 border-b">
       <span>
-        {content.type}: {content.content.substring(0, 30)}
+        {content.type}: {content.content.substring(0, 80)}
         ...
       </span>
       <div>

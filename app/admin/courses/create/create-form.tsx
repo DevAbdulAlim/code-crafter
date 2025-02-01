@@ -14,6 +14,7 @@ import ContentList from "./content-list";
 import { ContentType } from "@prisma/client";
 import ContentForm, { ContentInput } from "./content-form";
 import CourseForm from "./course-form";
+import { Trash2 } from "lucide-react";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -156,18 +157,8 @@ export default function CreateForm() {
             {lessons.map((lesson, lessonIndex) => (
               <AccordionItem value={`lesson-${lessonIndex}`} key={lessonIndex}>
                 <AccordionTrigger className="text-left">
-                  <div className="flex justify-between items-center w-full">
+                  <div className="flex items-center w-full">
                     <span>{lesson.title || `Lesson ${lessonIndex + 1}`}</span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDeleteLesson(lessonIndex);
-                      }}
-                      className="text-red-500 hover:text-red-600"
-                    >
-                      Delete Lesson
-                    </button>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
@@ -206,6 +197,16 @@ export default function CreateForm() {
                       }
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteLesson(lessonIndex);
+                      }}
+                      className="text-red-500 hover:text-red-600"
+                    >
+                      Delete Lesson
+                    </button>
                     <div>
                       <h5 className="font-semibold mt-2 mb-1">Content</h5>
                       {lesson.content.map((content, contentIndex) => (

@@ -4,17 +4,17 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import prisma from "@/lib/prisma";
 
-export const CourseStatus = z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]);
-export const SkillLevel = z.enum([
+const CourseStatus = z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]);
+const SkillLevel = z.enum([
   "BEGINNER",
   "INTERMEDIATE",
   "ADVANCED",
   "EXPERT",
   "MASTER",
 ]);
-export const ContentType = z.enum(["TEXT", "VIDEO", "PDF"]);
+const ContentType = z.enum(["TEXT", "VIDEO", "PDF"]);
 
-export const lessonContentSchema = z.object({
+const lessonContentSchema = z.object({
   type: ContentType,
   content: z.string(),
   duration: z.number().optional(),
@@ -22,14 +22,14 @@ export const lessonContentSchema = z.object({
   order: z.number().optional(),
 });
 
-export const lessonSchema = z.object({
+const lessonSchema = z.object({
   title: z.string().min(1, "Lesson title is required"),
   description: z.string().optional(),
   order: z.number().optional(),
   content: z.array(lessonContentSchema),
 });
 
-export const courseSchema = z.object({
+const courseSchema = z.object({
   title: z.string().min(1, "Course title is required"),
   description: z.string().optional(),
   price: z.number().min(0, "Price must be a positive number"),
@@ -56,7 +56,7 @@ export const courseSchema = z.object({
   lessons: z.array(lessonSchema),
 });
 
-export interface CourseState {
+interface CourseState {
   message: string;
 }
 
@@ -232,3 +232,7 @@ export async function getCourseById(id: string) {
 
   return course;
 }
+
+export type FilteredCourses = Awaited<
+  ReturnType<typeof getFilteredCourses>
+>["courses"];
