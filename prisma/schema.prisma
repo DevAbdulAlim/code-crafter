@@ -91,6 +91,7 @@ model Category {
 model Course {
   id             String       @id @default(cuid())
   title          String
+  slug           String       @unique
   description    String?
   price          Float
   salePrice      Float

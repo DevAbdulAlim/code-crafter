@@ -31,6 +31,7 @@ const lessonSchema = z.object({
 
 const courseSchema = z.object({
   title: z.string().min(1, "Course title is required"),
+  slug: z.string().min(1, "Slug is required"),
   description: z.string().optional(),
   price: z.number().min(0, "Price must be a positive number"),
   salePrice: z.number().min(0, "Sale price must be a positive number"),
@@ -63,6 +64,7 @@ interface CourseState {
 export async function createCourse(prevState: CourseState, formData: FormData) {
   const validatedFields = courseSchema.safeParse({
     title: formData.get("title"),
+    slug: formData.get("slug"),
     description: formData.get("description"),
     price: Number.parseFloat(formData.get("price") as string),
     salePrice: Number.parseFloat(formData.get("salePrice") as string),
@@ -96,6 +98,7 @@ export async function createCourse(prevState: CourseState, formData: FormData) {
     const createdCourse = await prisma.course.create({
       data: {
         title: courseData.title,
+        slug: courseData.slug,
         description: courseData.description,
         price: courseData.price,
         salePrice: courseData.salePrice,

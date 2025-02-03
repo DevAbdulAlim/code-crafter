@@ -91,6 +91,7 @@ CREATE TABLE "Category" (
 CREATE TABLE "Course" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "description" TEXT,
     "price" DOUBLE PRECISION NOT NULL,
     "salePrice" DOUBLE PRECISION NOT NULL,
@@ -216,6 +217,9 @@ CREATE INDEX "Category_order_idx" ON "Category"("order");
 
 -- CreateIndex
 CREATE INDEX "Category_status_idx" ON "Category"("status");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Course_slug_key" ON "Course"("slug");
 
 -- CreateIndex
 CREATE INDEX "Course_categoryId_idx" ON "Course"("categoryId");

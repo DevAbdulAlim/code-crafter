@@ -1,34 +1,27 @@
+import type React from "react";
 import Link from "next/link";
+import type { Course } from "@prisma/client";
 
 interface CourseCardProps {
-  id: string;
-  title: string;
-  price: number;
-  discountPrice?: number;
-  imageUrl: string;
-  slug: string;
+  course: Course;
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({
-  title,
-  price,
-  discountPrice,
-  imageUrl,
-  slug,
-}) => {
-  const isDiscounted = discountPrice !== undefined && discountPrice < price;
+const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
+  const { title, price, salePrice, image, slug } = course;
+
+  const isDiscounted = salePrice !== null && salePrice < price;
 
   return (
     <div className="relative bg-gradient-to-br from-blue-100 to-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-transform">
       {/* Course Image */}
       <img
-        src={imageUrl}
+        src={image || "/placeholder.svg"}
         alt={title}
         className="w-full h-48 object-cover rounded-t-lg"
       />
       {isDiscounted && (
         <div className="absolute top-2 left-2 bg-yellow-400 text-blue-950 text-xs font-semibold px-2 py-1 rounded-md">
-          Save ${(price - discountPrice).toFixed(2)}!
+          Save ${(price - salePrice).toFixed(2)}!
         </div>
       )}
 
@@ -47,7 +40,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
             </span>
             {isDiscounted && (
               <span className="text-blue-600 text-lg font-bold">
-                ${discountPrice?.toFixed(2)}
+                ${salePrice.toFixed(2)}
               </span>
             )}
           </div>
