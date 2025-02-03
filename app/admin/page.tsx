@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BookOpen,
   Users,
@@ -7,8 +6,12 @@ import {
   GraduationCap,
   DollarSign,
 } from "lucide-react";
+import { getDashboardStats, getRecentEnrollments } from "./actions";
 
-const DashboardPage: React.FC = () => {
+export default async function DashboardPage() {
+  const stats = await getDashboardStats();
+  const recentEnrollments = await getRecentEnrollments();
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* Dashboard Heading */}
@@ -26,7 +29,9 @@ const DashboardPage: React.FC = () => {
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold text-gray-700">Categories</h2>
-            <p className="text-2xl font-extrabold text-blue-600">12</p>
+            <p className="text-2xl font-extrabold text-blue-600">
+              {stats.categoriesCount}
+            </p>
           </div>
         </div>
 
@@ -37,7 +42,9 @@ const DashboardPage: React.FC = () => {
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold text-gray-700">Courses</h2>
-            <p className="text-2xl font-extrabold text-blue-600">35</p>
+            <p className="text-2xl font-extrabold text-blue-600">
+              {stats.coursesCount}
+            </p>
           </div>
         </div>
 
@@ -48,7 +55,9 @@ const DashboardPage: React.FC = () => {
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold text-gray-700">Lessons</h2>
-            <p className="text-2xl font-extrabold text-blue-600">245</p>
+            <p className="text-2xl font-extrabold text-blue-600">
+              {stats.lessonsCount}
+            </p>
           </div>
         </div>
 
@@ -59,7 +68,9 @@ const DashboardPage: React.FC = () => {
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold text-gray-700">Enrollments</h2>
-            <p className="text-2xl font-extrabold text-blue-600">1,200</p>
+            <p className="text-2xl font-extrabold text-blue-600">
+              {stats.enrollmentsCount}
+            </p>
           </div>
         </div>
 
@@ -70,7 +81,9 @@ const DashboardPage: React.FC = () => {
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold text-gray-700">Users</h2>
-            <p className="text-2xl font-extrabold text-blue-600">550</p>
+            <p className="text-2xl font-extrabold text-blue-600">
+              {stats.usersCount}
+            </p>
           </div>
         </div>
 
@@ -81,41 +94,41 @@ const DashboardPage: React.FC = () => {
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold text-gray-700">Revenue</h2>
-            <p className="text-2xl font-extrabold text-blue-600">$75,000</p>
+            <p className="text-2xl font-extrabold text-blue-600">
+              ${stats.revenue.toFixed(2)}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Recent Activities */}
+      {/* Recent Enrollments */}
       <section>
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
-          Recent Activities
+          Recent Enrollments
         </h2>
         <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
           <ul className="divide-y divide-gray-200">
-            <li className="py-4 flex justify-between items-center">
-              <p className="text-gray-700">
-                New course "React for Beginners" added.
-              </p>
-              <span className="text-sm text-gray-500">1 hour ago</span>
-            </li>
-            <li className="py-4 flex justify-between items-center">
-              <p className="text-gray-700">
-                John Doe enrolled in "JavaScript Basics".
-              </p>
-              <span className="text-sm text-gray-500">2 hours ago</span>
-            </li>
-            <li className="py-4 flex justify-between items-center">
-              <p className="text-gray-700">
-                Lesson "Introduction to Node.js" updated.
-              </p>
-              <span className="text-sm text-gray-500">Yesterday</span>
-            </li>
+            {recentEnrollments.map((enrollment) => (
+              <li
+                key={enrollment.id}
+                className="py-4 flex justify-between items-center"
+              >
+                <div>
+                  <p className="text-gray-700 font-semibold">
+                    {enrollment.user.name}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Enrolled in "{enrollment.course.title}"
+                  </p>
+                </div>
+                <span className="text-sm text-gray-500">
+                  {new Date(enrollment.createdAt).toLocaleString()}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
     </div>
   );
-};
-
-export default DashboardPage;
+}
