@@ -15,11 +15,9 @@ import {
 import Link from "next/link";
 
 const links = [
-  { href: "/admin/dashboard", label: "Dashboard", icon: Grid },
+  { href: "/admin", label: "Dashboard", icon: Grid },
   { href: "/admin/categories", label: "Categories", icon: Layers },
   { href: "/admin/courses", label: "Courses", icon: BookOpen },
-  { href: "/admin/lessons", label: "Lessons", icon: FileText },
-  { href: "/admin/contents", label: "Content", icon: ListChecks },
   { href: "/admin/enrollments", label: "Enrollments", icon: Users },
   { href: "/admin/payments", label: "Payments", icon: Users },
   { href: "/admin/users", label: "Users", icon: Users },
