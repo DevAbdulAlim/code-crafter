@@ -7,5 +7,8 @@
     "activityBar.background": "#351778",
     "titleBar.activeBackground": "#4A20A7",
     "titleBar.activeForeground": "#FCFCFE"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
   }
 }

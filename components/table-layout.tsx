@@ -1,6 +1,6 @@
 import Search from "./search";
 import Sort from "./sort";
-import Pagination from "./pagination";
+import Pagination from "./Pagination";
 
 interface TableLayoutProps {
   children: React.ReactNode;
