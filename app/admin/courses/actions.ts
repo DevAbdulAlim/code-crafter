@@ -86,6 +86,7 @@ export async function createCourse(prevState: CourseState, formData: FormData) {
   });
 
   if (!validatedFields.success) {
+    console.error(validatedFields.error);
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Failed to create course.",

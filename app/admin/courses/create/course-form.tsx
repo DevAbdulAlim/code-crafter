@@ -16,7 +16,6 @@ export default function CourseForm() {
           type="text"
           id="title"
           name="title"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -31,7 +30,6 @@ export default function CourseForm() {
           type="text"
           id="slug"
           name="slug"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -60,7 +58,6 @@ export default function CourseForm() {
           id="price"
           name="price"
           step="0.01"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -76,7 +73,6 @@ export default function CourseForm() {
           id="salePrice"
           name="salePrice"
           step="0.01"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -91,7 +87,6 @@ export default function CourseForm() {
           type="text"
           id="duration"
           name="duration"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -105,7 +100,6 @@ export default function CourseForm() {
         <select
           id="level"
           name="level"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           {Object.values(SkillLevel).map((level) => (
@@ -126,7 +120,6 @@ export default function CourseForm() {
           type="text"
           id="language"
           name="language"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
@@ -154,7 +147,6 @@ export default function CourseForm() {
         <select
           id="status"
           name="status"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           {Object.values(CourseStatus).map((status) => (
@@ -278,7 +270,6 @@ export default function CourseForm() {
           type="text"
           id="categoryId"
           name="categoryId"
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>

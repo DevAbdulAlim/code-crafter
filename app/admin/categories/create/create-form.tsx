@@ -4,6 +4,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { createCategory } from "../actions";
 import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -26,6 +27,8 @@ export default function CreateForm() {
     success: false,
   });
 
+  const router = useRouter();
+
   const formRef = useRef<HTMLFormElement | null>(null);
 
   useEffect(() => {
@@ -33,6 +36,7 @@ export default function CreateForm() {
       if (state.success) {
         formRef.current?.reset();
         toast.success(state.message);
+        router.push("/admin/categories");
       } else {
         toast.error(state.message);
       }
@@ -58,7 +62,6 @@ export default function CreateForm() {
               type="text"
               id="name"
               name="name"
-              required
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
             {state.errors?.name && (
@@ -78,7 +81,6 @@ export default function CreateForm() {
               type="text"
               id="slug"
               name="slug"
-              required
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
             {state.errors?.slug && (
