@@ -71,7 +71,7 @@ export default function CourseOverview({ course }: CourseOverviewProps) {
             )}
           </div>
           <Link
-            href="/checkout"
+            href={`/courses/${course.slug}/checkout`}
             className="px-6 py-2 bg-blue-600 text-white hover:text-white rounded-lg shadow-md hover:bg-blue-700 transition"
           >
             Enroll Now
