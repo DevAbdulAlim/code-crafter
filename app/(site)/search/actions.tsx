@@ -30,7 +30,6 @@ export async function getFilteredCourses(params: {
     status: CourseStatus.PUBLISHED,
     title: {
       contains: search,
-      mode: "insensitive",
     },
   };
 

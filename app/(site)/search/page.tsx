@@ -1,5 +1,5 @@
 import { getFilteredCourses, getCategories } from "./actions";
-import Pagination from "@/components/pagination";
+import Pagination from "@/components/Pagination";
 import CourseSearchForm from "@/components/sections/CourseSearchForm";
 import CourseSortForm from "@/components/sections/CourseSortForm";
 import CourseCard from "@/components/CourseCard";
