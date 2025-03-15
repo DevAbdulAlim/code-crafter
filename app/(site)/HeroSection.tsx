@@ -33,7 +33,7 @@ const HeroSection: React.FC = () => {
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg transform rotate-2"></div>
             <div className="absolute inset-0 w-full h-full bg-white rounded-xl shadow-lg transform -rotate-2">
               <img
-                src="https://via.placeholder.com/300x400"
+                src="/img/hero.jpeg"
                 alt="Mockup"
                 className="w-full h-full object-cover rounded-xl"
               />
