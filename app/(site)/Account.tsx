@@ -22,10 +22,10 @@ export default async function Account() {
       {/* Dropdown Menu */}
       <ul className="absolute right-0 z-50 hidden p-4 space-y-2 text-gray-700 bg-white rounded-lg shadow-lg group-hover:block w-60">
         {[
-          { title: "Dashboard", link: "/dashboard" },
-          { title: "My Courses", link: "/my-courses" },
-          { title: "Subscriptions", link: "/subscriptions" },
-          { title: "Settings", link: "/settings" },
+          { title: "Dashboard", link: "/user" },
+          { title: "Courses", link: "/user/courses" },
+          { title: "Payments", link: "/user/payments" },
+          { title: "Profile", link: "/user/profile" },
         ].map((item, index) => (
           <li
             key={index}
